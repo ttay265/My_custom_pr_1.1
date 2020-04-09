@@ -1,0 +1,214 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+          controllerName="com.tw.mypr.My_custom_pr.controller.PRDetail"
+          xmlns:smartForm="sap.ui.comp.smartform"
+          xmlns:smartField="sap.ui.comp.smartfield"
+          xmlns:smartTable="sap.ui.comp.smarttable"
+          xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout">
+    <uxap:ObjectPageLayout showFooter="{= ${ui>/editting} }" upperCaseAnchorBar="false"
+                           showTitleInHeaderContent="false"
+                           showHeaderContent="{= !${ui>/editting} }">
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader headerDesign="Light"
+                                   objectTitle="10001980" objectSubtitle="Bérenger ARPIN 06.04.2020 18:39:44"
+                                   objectImageShape="Square"
+                                   objectImageURI="./images/PurchaseReqn.jpg"
+                                   isObjectIconAlwaysVisible="false"
+                                   isObjectTitleAlwaysVisible="true"
+                                   isObjectSubtitleAlwaysVisible="true"
+                                   isActionAreaAlwaysVisible="true">
+                <uxap:actions>
+                    <uxap:ObjectPageHeaderActionButton type="Emphasized" hideText="false" hideIcon="false"
+                                                       visible="{= !${ui>/editting} }"
+                                                       press="onEditPress"
+                                                       importance="High" text="{i18n>editPR}"/>
+                    <uxap:ObjectPageHeaderActionButton type="Transparent" hideText="false" hideIcon="false"
+                                                       visible="{= !${ui>/editting} }"
+                                                       press="onPressDeletePR"
+                                                       importance="Medium" text="{i18n>deletePR}"/>
+                    <uxap:ObjectPageHeaderActionButton type="Transparent" hideText="false" hideIcon="false"
+                                                       visible="{= !${ui>/editting} }"
+                                                       importance="Medium" text="{i18n>copyPR}"/>
+                    <uxap:ObjectPageHeaderActionButton type="Transparent" hideText="false" hideIcon="false"
+                                                       importance="High" icon="sap-icon://action"/>
+                </uxap:actions>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+        <uxap:headerContent>
+            <Image backgroundSize="cover" decorative="true"
+                   densityAware="false"
+                   mode="Image"
+                   width="6.2rem"
+                   backgroundPosition="initial"
+                   backgroundRepeat="no-repeat"
+                   src="./images/PurchaseReqn.jpg"/>
+            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                <Label labelFor="statusID" text="{i18n>Status}:"/>
+                <Title id="statusID" titleStyle="H2" text="Approved"/>
+            </layout:VerticalLayout>
+            <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                <Label labelFor="TotalValue" text="{i18n>TotalValue}:"/>
+                <Title id="TotalValue" titleStyle="H2" text="10,000.00 USD"/>
+            </layout:VerticalLayout>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection titleLevel="Auto" showTitle="true" titleUppercase="false"
+                                    title="{i18n>GeneralInfo}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <smartForm:SmartForm id="smartFormColumn"
+                                                 editable="{ui>/editting}" title="{Name}">
+                                <smartForm:layout>
+                                    <smartForm:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" labelCellsLarge="12"
+                                                            emptyCellsLarge="0"/>
+                                </smartForm:layout>
+                                <smartForm:Group>
+                                    <smartForm:GroupElement label="{i18n>PRDesc}">
+                                        <smartField:SmartField value="{PRDesc}"/>
+                                    </smartForm:GroupElement>
+                                </smartForm:Group>
+                                <smartForm:Group>
+                                    <smartForm:GroupElement label="{i18n>DocTyp}">
+                                        <smartField:SmartField value="{DocTyp}"/>
+                                    </smartForm:GroupElement>
+                                </smartForm:Group>
+                            </smartForm:SmartForm>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>Items}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <smartTable:SmartTable editable="{ui>/editting}" useExportToExcel="false"
+                                                   entitySet="PR_ItemSet">
+                                <smartTable:customToolbar width="20%">
+                                    <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
+                                             height="60px">
+                                        <ToolbarSpacer/>
+                                        <Button visible="{ui>/editting}" enabled="false" press="onPressCopyItem"
+                                                text="{i18n>copyItem}"/>
+                                        <Button enabled="false" press="onUpdatePriceItem" text="{i18n>UpdatePrice}"/>
+                                        <Button visible="{ui>/editting}" enabled="false"
+                                                press="onPressDeleteItem"
+                                                text="{i18n>deleteItem}"/>
+                                        <Button visible="{ui>/editting}" enabled="true" icon="sap-icon://add"
+                                                press="onPressAddItem"/>
+                                    </Toolbar>
+                                </smartTable:customToolbar>
+                                <Table>
+                                    <columns>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </smartTable:SmartTable>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="{i18n>LimitItems}" visible="{ui>/editting}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <smartTable:SmartTable editable="{ui>/editting}" useExportToExcel="false"
+                                                   entitySet="PR_LimitItemSet">
+                                <smartTable:customToolbar width="20%">
+                                    <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
+                                             height="60px">
+                                        <ToolbarSpacer/>
+                                        <Button enabled="false"
+                                                press="onPressDeleteItem"
+                                                text="{i18n>deleteItem}"/>
+                                        <Button enabled="true" icon="sap-icon://add"
+                                                press="onPressAddItem"/>
+                                    </Toolbar>
+                                </smartTable:customToolbar>
+                                <Table>
+                                    <columns>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                        <Column demandPopin="true" minScreenWidth="Phone">
+                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                                <Text text="123"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </smartTable:SmartTable>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+        <uxap:footer>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer/>
+                    <Button text="{i18n>save}" type="Emphasized" press="onSavePR"/>
+                    <Button text="{i18n>cancel}" type="Transparent" press="onCancelEditPR"/>
+                </content>
+            </OverflowToolbar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</mvc:View>

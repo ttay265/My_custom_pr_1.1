@@ -15,6 +15,14 @@ sap.ui.define([
         },
         onSearchPRList: function () {
 
+        },
+        onPressNavPRDetail: function (e) {
+            var o = e.getSource().getBindingContext().getObject();
+            var PreqNo = o.PreqNo;
+            var router = this.getRouter();
+            router.navTo("PRDetail",{
+                PreqNo: PreqNo
+            }, false)
         }
 
         /**

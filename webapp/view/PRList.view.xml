@@ -1,6 +1,6 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
           controllerName="com.tw.mypr.My_custom_pr.controller.PRList"
-          xmlns:f="sap.f" xmlns:sv="sap.ui.comp.smartvariants"
+          xmlns:f="sap.f" xmlns:sv="sap.ui.comp.smartvariants" xmlns:u="sap.ui.unified"
           xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar">
     <f:DynamicPage headerExpanded="true">
         <f:title>
@@ -126,7 +126,7 @@
                                    showVariantManagement="false"
                                    showTablePersonalisation="false"
                                    tableType="Table"
-                                   entitySet="/PR_ItemSet" header="{i18n>PurReqHeader}"
+                                   entitySet="PR_ItemSet" header="{i18n>PurReqHeader}"
                                    id="idSmartTablePRList"
                                    persistencyKey="RequisitionsTable.customPR.PurReqList" showRowCount="true"
                                    smartFilterId="smartFilterBar" useExportToExcel="false"
@@ -154,104 +154,98 @@
                        width="auto">
                     <columns>
                         <Column demandPopin="true" minScreenWidth="Phone">
-                            <Text wrapping="false" maxLines="2" text="{i18n>PurReq}"/>
-<!--                            <customData>-->
-<!--                                <core:CustomData key="p13nData"-->
-<!--                                                 value='\{"columnKey":"PreqNoColKey","type":"String", "leadingProperty":"PreqNo", "sortProperty":"PreqNo", "filterProperty":"PreqNo" }'/>-->
-<!--                            </customData>-->
+                            <Text wrapping="true" maxLines="2" text="{i18n>PurReq}"/>
+                            <!--                            <customData>-->
+                            <!--                                <core:CustomData key="p13nData"-->
+                            <!--                                                 value='\{"columnKey":"PreqNoColKey","type":"String", "leadingProperty":"PreqNo", "sortProperty":"PreqNo", "filterProperty":"PreqNo" }'/>-->
+                            <!--                            </customData>-->
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Phone">
+                        <Column width="auto" demandPopin="true" minScreenWidth="Phone">
                             <Text text="{i18n>createdOn}"/>
-<!--                            <customData>-->
-<!--                                <core:CustomData key="p13nData"-->
-<!--                                                 value='\{"columnKey":"CreationDateColKey","type":"Date", "leadingProperty":"CreationDate", "sortProperty":"CreationDate", "filterProperty":"CreationDate" }'/>-->
-<!--                            </customData>-->
+                            <!--                            <customData>-->
+                            <!--                                <core:CustomData key="p13nData"-->
+                            <!--                                                 value='\{"columnKey":"CreationDateColKey","type":"Date", "leadingProperty":"CreationDate", "sortProperty":"CreationDate", "filterProperty":"CreationDate" }'/>-->
+                            <!--                            </customData>-->
                         </Column>
                         <Column demandPopin="true" minScreenWidth="Phone">
                             <Text text="{i18n>LastModDate}"/>
-<!--                            <customData>-->
-<!--                                <core:CustomData key="p13nData"-->
-<!--                                                 value='\{"columnKey":"LastChangeDateColKey","type":"Date", "leadingProperty":"LastChangeDate", "sortProperty":"LastChangeDate", "filterProperty":"LastChangeDate" }'/>-->
-<!--                            </customData>-->
+                            <!--                            <customData>-->
+                            <!--                                <core:CustomData key="p13nData"-->
+                            <!--                                                 value='\{"columnKey":"LastChangeDateColKey","type":"Date", "leadingProperty":"LastChangeDate", "sortProperty":"LastChangeDate", "filterProperty":"LastChangeDate" }'/>-->
+                            <!--                            </customData>-->
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Phone">
+                        <Column demandPopin="true" popinDisplay="Inline" minScreenWidth="2000px">
                             <Text text="{i18n>ItemNo}"/>
-<!--                            <customData>-->
-<!--                                <core:CustomData key="p13nData"-->
-<!--                                                 value='\{"columnKey":"PreqItem","type":"String", "leadingProperty":"PreqItem", "sortProperty":"PreqItem", "filterProperty":"PreqItem" }'/>-->
-<!--                            </customData>-->
+                            <!--                            <customData>-->
+                            <!--                                <core:CustomData key="p13nData"-->
+                            <!--                                                 value='\{"columnKey":"PreqItem","type":"String", "leadingProperty":"PreqItem", "sortProperty":"PreqItem", "filterProperty":"PreqItem" }'/>-->
+                            <!--                            </customData>-->
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Phone">
+                        <Column demandPopin="true" popinDisplay="Inline" minScreenWidth="2000px">
                             <Text text="{i18n>Material}"/>
-<!--                            <customData>-->
-<!--                                <core:CustomData key="p13nData"-->
-<!--                                                 value='\{"columnKey":"MaterialColKey","type":"String", "leadingProperty":"Material", "sortProperty":"Material", "filterProperty":"Material" }'/>-->
-<!--                            </customData>-->
+                            <!--                            <customData>-->
+                            <!--                                <core:CustomData key="p13nData"-->
+                            <!--                                                 value='\{"columnKey":"MaterialColKey","type":"String", "leadingProperty":"Material", "sortProperty":"Material", "filterProperty":"Material" }'/>-->
+                            <!--                            </customData>-->
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Column demandPopin="true" popinDisplay="WithoutHeader" minScreenWidth="2000px">
                             <Text text="{i18n>Description}"/>
-<!--                            <customData>-->
-<!--                                <core:CustomData key="p13nData"-->
-<!--                                                 value='\{"columnKey":"ItemDescriptionColKey","type":"String", "leadingProperty":"ItemDescription", "sortProperty":"ItemDescription", "filterProperty":"ItemDescription" }'/>-->
-<!--                            </customData>-->
+                            <!--                            <customData>-->
+                            <!--                                <core:CustomData key="p13nData"-->
+                            <!--                                                 value='\{"columnKey":"ItemDescriptionColKey","type":"String", "leadingProperty":"ItemDescription", "sortProperty":"ItemDescription", "filterProperty":"ItemDescription" }'/>-->
+                            <!--                            </customData>-->
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Column hAlign="Right">
                             <Text text="{i18n>Quantity}"/>
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Column hAlign="Right">
                             <Text text="{i18n>Price}"/>
                         </Column>
                         <Column demandPopin="true" minScreenWidth="Desktop">
                             <Text text="{i18n>DelivDate}"/>
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Column demandPopin="true" popinDisplay="Inline" minScreenWidth="2000px">
                             <Text text="{i18n>PurGrp}"/>
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Column demandPopin="true" popinDisplay="Inline" minScreenWidth="2000px">
                             <Text text="{i18n>Plant}"/>
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Tablet">
+                        <Column demandPopin="true" popinDisplay="Inline" minScreenWidth="2000px">
                             <Text text="{i18n>PurOrg}"/>
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Tablet">
+                        <Column demandPopin="true" popinDisplay="Inline" minScreenWidth="2000px">
                             <Text text="{i18n>Vendor}"/>
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Tablet">
+                        <Column demandPopin="true" minScreenWidth="Desktop">
                             <Text text="{i18n>Status}"/>
                         </Column>
-                        <Column demandPopin="true" minScreenWidth="Tablet">
+                        <Column demandPopin="true" popinDisplay="Inline" minScreenWidth="2000px">
                             <Text text="{i18n>MatGroup}"/>
                         </Column>
                     </columns>
                     <items>
                         <ColumnListItem class="sapUiSmallMarginTop sapUiSmallMarginBottom"
-                                        press="fnNavigateItemList" type="Navigation">
+                                        press="onPressNavPRDetail" type="Navigation">
                             <cells>
                                 <Text text="{PreqNo}"/>
                                 <Text text="{ path: 'CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', UTC: true } }"/> <!--	Creation Date -->
                                 <Text text="{ path: 'LastChangeDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', UTC: true } }"/> <!--	Last Modification Date -->
                                 <Text text="{PreqItem}"/> <!--	Item number -->
                                 <Text text="{Material}"/> <!--	Material number -->
-                                <Text text="{ShortText}"/> <!--	Description -->
+                                <Text text="{ItemDescription}"/> <!--	Description -->
                                 <ObjectNumber class="sapUiMediumMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
                                               number="{Quantity}"
                                               unit="{Unit}"/>                                                                <!--Quantity + Unit-->
-                                <ObjectNumber class="sapUiMediumMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
-                                              number="{Price}"
-                                              unit="{Currency}"/>                                                            <!-- Price + Ccy -->
-                                <Text text="{parts:[{path:'CreationDate'}],formatter:'.formatter.date'}"/> <!-- 	Delivery date -->
+                                <u:Currency class="sapUiMediumMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
+                                            useSymbol="false" stringValue="{PreqPrice}"
+                                            currency="{Currency}"/>                                             <!-- Price + Ccy -->
+                                <Text text="{ path: 'DelivDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', UTC: true } }"/> <!-- 	Delivery date -->
                                 <Text text="{PurGroup}"/> <!-- 	Purchasing group  -->
                                 <Text text="{Plant}"/> <!--	Plant  -->
                                 <Text text="{PurchOrg}"/> <!--	Purchasing organization  -->
                                 <Text text="{SuppVendor}"/> <!--	Vendor  -->
-                                <Text text=""/> <!--	Status  -->
+                                <Text text="{StatusID}"/> <!--	Status  -->
                                 <Text text="{MatlGroup}"/> <!--	Material Group  -->
-                                <Link class="sapUiLargeMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
-                                      text="{path: 'NumberOfItems', formatter:'.formatter.formatNumberOfItems'} "
-                                      press="handleStatusPress"/>
-                                <Text text="{PurReqnLifeCycleStatusName}"/>
-                                <Text class="sapUiSmallMarginTop sapUiSmallMarginBottom"
-                                      text="{parts:[{path:'CreationDate'}],formatter:'.formatter.date'}"/>
                             </cells>
                         </ColumnListItem>
                     </items>

@@ -11,5 +11,9 @@ sap.ui.define(["sap/ui/core/format/DateFormat"], function () {
                 return v;
             }
         },
+        formatCurrency: function (v, a) {
+            var n = sap.ui.core.format.NumberFormat.getCurrencyInstance();
+            return n.format(v);
+        }
     };
 });

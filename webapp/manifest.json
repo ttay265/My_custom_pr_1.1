@@ -104,12 +104,23 @@
           "target": [
             "PRList"
           ]
+        },
+        {
+          "name": "PRDetail",
+          "pattern": "PRDetail/{PreqNo}",
+          "target": [
+            "PRDetail"
+          ]
         }
       ],
       "targets": {
         "PRList": {
           "viewType": "XML",
           "viewName": "PRList"
+        },
+        "PRDetail": {
+          "viewType": "XML",
+          "viewName": "PRDetail"
         }
       }
     }
