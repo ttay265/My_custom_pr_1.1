@@ -1,0 +1,6 @@
+<mvc:View controllerName="com.tw.mypr.My_custom_pr.controller.Init" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+          xmlns="sap.m">
+    <Shell id="shell">
+        <App id="app"></App>
+    </Shell>
+</mvc:View>

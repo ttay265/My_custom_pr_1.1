@@ -1,0 +1,207 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+          controllerName="com.tw.mypr.My_custom_pr.controller.PRList"
+          xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar">
+    <Page title="Title">
+        <content>
+            <smartfilterbar:SmartFilterBar inset="true"
+                                           basicSearchFieldName="searchField" class="sapUiSizeCompact"
+                                           enableBasicSearch="true"
+                                           entitySet="PR_ItemSet"
+                                           filterBarExpanded="true" filterChange="" initialise="onInitDone"
+                                           reset="ResetFields" search="onSearchPRList" cancel="cancelFilter">
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="auto" width="20rem" groupId="_BASIC"
+                                                         hasValueHelpDialog="true" index="1" key="PreqNo"
+                                                         label="{i18n>PurReq}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration groupId="_BASIC" hasValueHelpDialog="true" index="2"
+                                                         key="CreationDate" label="{i18n>createdOn}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true">
+                        <smartfilterbar:customControl>
+                            <DateRangeSelection change="checkDateNow"/>
+                        </smartfilterbar:customControl>
+                    </smartfilterbar:ControlConfiguration>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration groupId="_BASIC" hasValueHelpDialog="true" index="3"
+                                                         key="LastChangeDate" label="{i18n>LastModDate}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true">
+                        <smartfilterbar:customControl>
+                            <DateRangeSelection change="checkDateNow"/>
+                        </smartfilterbar:customControl>
+                    </smartfilterbar:ControlConfiguration>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="auto" groupId="_BASIC" width="20rem"
+                                                         hasValueHelpDialog="true" index="4" key="Material"
+                                                         label="{i18n>Material}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration groupId="_BASIC" hasValueHelpDialog="true" index="5"
+                                                         key="DelivDate" label="{i18n>DelivDate}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true">
+                        <smartfilterbar:customControl>
+                            <DateRangeSelection change="checkDateNow"/>
+                        </smartfilterbar:customControl>
+                    </smartfilterbar:ControlConfiguration>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="dropDownList" width="20rem" groupId="_BASIC"
+                                                         hasValueHelpDialog="true" index="6"
+                                                         key="PurGroup" label="{i18n>PurchGr}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="dropDownList" width="20rem" groupId="_BASIC"
+                                                         hasValueHelpDialog="true" index="7"
+                                                         key="Plant" label="{i18n>Plant}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="dropDownList" width="20rem" groupId="_BASIC"
+                                                         hasValueHelpDialog="true" index="8"
+                                                         key="PurchOrg" label="{i18n>PurOrg}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="dropDownList" width="20rem" groupId="_BASIC"
+                                                         hasValueHelpDialog="true" index="9"
+                                                         key="FixedVend" label="{i18n>Vendor}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="dropDownList" width="20rem" groupId="_BASIC"
+                                                         hasValueHelpDialog="true" index="10"
+                                                         key="StatusID" label="{i18n>Status}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+                <smartfilterbar:controlConfiguration>
+                    <smartfilterbar:ControlConfiguration controlType="dropDownList" width="20rem" groupId="_BASIC"
+                                                         hasValueHelpDialog="true" index="11"
+                                                         key="MatlGroup" label="{i18n>MatGroup}"
+                                                         preventInitialDataFetchInValueHelpDialog="false"
+                                                         visible="true"/>
+                </smartfilterbar:controlConfiguration>
+
+            </smartfilterbar:SmartFilterBar>
+            <smartTable:SmartTable entitySet="C_PurchaseRequisition_WL" header="{i18n>PurReqHeader}"
+                                   persistencyKey="RequisitionsTable.controller.PurReqList"
+                                   showRowCount="true" smartFilterId=""
+                                   useTablePersonalisation="false" ignoreFromPersonalisation="NumberOfItems"
+                                   requestAtLeastFields="IsExtPurgScenario">
+                <smartTable:customToolbar width="20%">
+                    <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent" height="60px">
+                        <ToolbarSpacer/>
+                        <Link enabled="false" id="CopyPRBtn" press="fnNavigateCopyPR" text="{i18n>copyPR}"/>
+                        <Link align="Right" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" enabled="false"
+                              id="deleteReqLinkId" press="onPressDeleteRequisition"
+                              text="{i18n>overviewDelete}"/>
+                        <!--<Link enabled="false" id="EditReqLinkId" press="fnNavigateEditItemList" text="{i18n>edit}"/>-->
+                        <Link enabled="false" id="ConfirmGRLinkId" press="fnNavigateConfirmGR" text="{i18n>confirmGR}"/>
+                        <Link enabled="false" id="ReturnGRLinkId" press="fnNavigateReturnGR" text="{i18n>returnGR}"/>
+                    </Toolbar>
+                </smartTable:customToolbar>
+                <Table class="sapUiMediumMarginBegin sapUiMediumMarginEnd" enableBusyIndicator="true" growing="true"
+                       growingScrollToLoad="true"
+                       items="{/PR_ItemSet}"
+                       mode="MultiSelect" selectionChange="onPressRow" visible="true"
+                       width="auto">
+                    <columns>
+
+                        <Column demandPopin="true" minScreenWidth="Phone">
+                            <Text wrapping="true" maxLines="2" text="{i18n>PurReq}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Phone">
+                            <Text text="{i18n>createdOn}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Phone">
+                            <Text text="{i18n>LastModDate}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Phone">
+                            <Text text="{i18n>ItemNo}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Phone">
+                            <Text text="{i18n>Material}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>Description}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>Quantity}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>Price}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>DelivDate}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>PurGrp}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>Plant}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>PurOrg}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>Vendor}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>Status}"/>
+                        </Column>
+                        <Column demandPopin="true" minScreenWidth="Tablet">
+                            <Text text="{i18n>MatGroup}"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem class="sapUiSmallMarginTop sapUiSmallMarginBottom"
+                                        press="fnNavigateItemList" type="Navigation">
+                            <cells>
+                                <ObjectIdentifier text="{PreqNo}" title="{PurchaseRequisition}"
+                                                  titleActive="false"/>
+                                <Text text="{parts:[{path:'CreationDate'}],formatter:'.formatter.date'}"/> <!--	Creation Date -->
+                                <Text text="{parts:[{path:'CreationDate'}],formatter:'.formatter.date'}"/> <!--	Last Modification Date -->
+                                <Text text="{PreqItem}"/> <!--	Item number -->
+                                <Text text="{Material}"/> <!--	Material number -->
+                                <Text text="{ShortText}"/> <!--	Description -->
+                                <ObjectNumber class="sapUiMediumMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
+                                              number="{Quantity}"
+                                              unit="{Unit}"/>                                                                <!--Quantity + Unit-->
+                                <ObjectNumber class="sapUiMediumMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
+                                              number="{Price}"
+                                              unit="{Currency}"/>                                                            <!-- Price + Ccy -->
+                                <Text text="{parts:[{path:'CreationDate'}],formatter:'.formatter.date'}"/> <!-- 	Delivery date -->
+                                <Text text="{PurGroup}"/> <!-- 	Purchasing group  -->
+                                <Text text="{Plant}"/> <!--	Plant  -->
+                                <Text text="{PurchOrg}"/> <!--	Purchasing organization  -->
+                                <Text text="{SuppVendor}"/> <!--	Vendor  -->
+                                <Text text=""/> <!--	Status  -->
+                                <Text text="{MatlGroup}"/> <!--	Material Group  -->
+                                <Link class="sapUiLargeMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
+                                      text="{path: 'NumberOfItems', formatter:'.formatter.formatNumberOfItems'} "
+                                      press="handleStatusPress"/>
+                                <Text text="{PurReqnLifeCycleStatusName}"/>
+                                <Text class="sapUiSmallMarginTop sapUiSmallMarginBottom"
+                                      text="{parts:[{path:'CreationDate'}],formatter:'.formatter.date'}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>
