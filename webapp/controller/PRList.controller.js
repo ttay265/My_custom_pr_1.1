@@ -1,6 +1,7 @@
 sap.ui.define([
-    "com/tw/mypr/My_custom_pr/controller/BaseController"
-], function (BaseController) {
+    "com/tw/mypr/My_custom_pr/controller/BaseController",
+    "sap/ui/model/json/JSONModel"
+], function (BaseController, JSONModel) {
     "use strict";
 
     return BaseController.extend("com.tw.mypr.My_custom_pr.controller.PRList", {
@@ -11,7 +12,10 @@ sap.ui.define([
          * @memberOf com.tw.mypr.My_custom_pr.view.PRList
          */
         onInit: function () {
-
+            this.UIModel = new JSONModel({
+                hasItemSelected: false    // By default, no items have been selected yet.
+            });
+            this.setModel(this.UIModel, "ui");
         },
         onSearchPRList: function () {
 
@@ -23,6 +27,11 @@ sap.ui.define([
             router.navTo("PRDetail",{
                 PreqNo: PreqNo
             }, false)
+        },
+        onPressRow: function (e) {
+            var table = e.getSource();
+            var hasItemSelected = table.getSelectedItems().length > 0 ? true : false;
+            this.getModel("ui").setProperty("/hasItemSelected", hasItemSelected);
         }
 
         /**

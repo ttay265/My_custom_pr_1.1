@@ -98,7 +98,7 @@
                                                 press="onPressAddItem"/>
                                     </Toolbar>
                                 </smartTable:customToolbar>
-                                <Table>
+                                <Table >
                                     <columns>
                                         <Column demandPopin="true" minScreenWidth="Phone">
                                             <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>

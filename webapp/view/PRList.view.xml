@@ -139,8 +139,8 @@
                 <smartTable:customToolbar width="20%">
                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent" height="60px">
                         <ToolbarSpacer/>
-                        <Link enabled="false" press="onNavCopyPR" text="{i18n>copyPR}"/>
-                        <Link class="sapUiTinyMarginBegin sapUiTinyMarginEnd" enabled="false"
+                        <Link enabled="{ui>/hasItemSelected}" press="onNavCopyPR" text="{i18n>copyPR}"/>
+                        <Link class="sapUiTinyMarginBegin sapUiTinyMarginEnd" enabled="{ui>/hasItemSelected}"
                               press="onPressDeletePR"
                               text="{i18n>deletePR}"/>
                         <!--<Link enabled="false" id="EditReqLinkId" press="fnNavigateEditItemList" text="{i18n>edit}"/>-->
