@@ -82,6 +82,7 @@
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
                             <smartTable:SmartTable editable="{ui>/editting}" useExportToExcel="false"
+
                                                    entitySet="PR_ItemSet">
                                 <smartTable:customToolbar width="20%">
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"

@@ -1,0 +1,66 @@
+{
+  "d": {
+    "__metadata": {
+      "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/sap/MM_PUR_PR_PROFNL_MAINTAIN_SRV/C_PurchaseReqnHeader(PurchaseRequisition='',DraftUUID=guid'0050569a-2c73-1eda-9fc7-ce8094bab071',IsActiveEntity=false)",
+      "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/sap/MM_PUR_PR_PROFNL_MAINTAIN_SRV/C_PurchaseReqnHeader(PurchaseRequisition='',DraftUUID=guid'0050569a-2c73-1eda-9fc7-ce8094bab071',IsActiveEntity=false)",
+      "type": "MM_PUR_PR_PROFNL_MAINTAIN_SRV.C_PurchaseReqnHeaderType"
+    },
+    "Activation_ac": true,
+    "Copy_header_ac": false,
+    "Edit_ac": false,
+    "Preparation_ac": true,
+    "Validation_ac": true,
+    "NumberOfItems_fc": 0,
+    "PurchaseRequisitionType_fc": 7,
+    "PurReqnDescription_fc": 3,
+    "PurReqnHasAdvncdUsrInterface_fc": 0,
+    "PurReqnHeaderDescription_fc": 0,
+    "SourceDetermination_fc": 3,
+    "Delete_mc": true,
+    "PurchaseRequisition": "",
+    "PurchaseRequisitionForEdit": "",
+    "PurchaseRequisitionType": "NB",
+    "PurchasingDocumentTypeName": "Purchase Requisition",
+    "PurReqnDescription": "QTNGO 04/14/2020 10:55:28",
+    "SourceDetermination": false,
+    "NumberOfItems": "0",
+    "PurchasingDocumentSubtype": "",
+    "PurReqnHasAdvncdUsrInterface": false,
+    "PurReqnHeaderDescription": "QTNGO 04/14/2020 10:55:28",
+    "TotalNetAmount": "0.00",
+    "Currency": "",
+    "PurReqnLifeCycleStatus": "",
+    "PurReqnLifeCycleStatusName": "Save",
+    "PurReqnIsItemCrtnSupported": true,
+    "PurReqnIsLimitItemSupported": true,
+    "PurReqnIsStandardItemSupported": true,
+    "PurReqnOrigin": "",
+    "PurReqnOriginDesc": "",
+    "HasDraftEntity": false,
+    "DraftUUID": "0050569a-2c73-1eda-9fc7-ce8094bab071",
+    "DraftEntityCreationDateTime": "\/Date(1586861728857+0000)\/",
+    "DraftEntityLastChangeDateTime": "\/Date(1586861728857+0000)\/",
+    "HasActiveEntity": false,
+    "IsActiveEntity": false,
+    "DraftAdministrativeData": {
+      "__deferred": {
+        "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/sap/MM_PUR_PR_PROFNL_MAINTAIN_SRV/C_PurchaseReqnHeader(PurchaseRequisition='',DraftUUID=guid'0050569a-2c73-1eda-9fc7-ce8094bab071',IsActiveEntity=false)/DraftAdministrativeData"
+      }
+    },
+    "SiblingEntity": {
+      "__deferred": {
+        "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/sap/MM_PUR_PR_PROFNL_MAINTAIN_SRV/C_PurchaseReqnHeader(PurchaseRequisition='',DraftUUID=guid'0050569a-2c73-1eda-9fc7-ce8094bab071',IsActiveEntity=false)/SiblingEntity"
+      }
+    },
+    "to_PurchaseReqnItem": {
+      "__deferred": {
+        "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/sap/MM_PUR_PR_PROFNL_MAINTAIN_SRV/C_PurchaseReqnHeader(PurchaseRequisition='',DraftUUID=guid'0050569a-2c73-1eda-9fc7-ce8094bab071',IsActiveEntity=false)/to_PurchaseReqnItem"
+      }
+    },
+    "to_PurchaseReqnLimitItem": {
+      "__deferred": {
+        "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/sap/MM_PUR_PR_PROFNL_MAINTAIN_SRV/C_PurchaseReqnHeader(PurchaseRequisition='',DraftUUID=guid'0050569a-2c73-1eda-9fc7-ce8094bab071',IsActiveEntity=false)/to_PurchaseReqnLimitItem"
+      }
+    }
+  }
+}

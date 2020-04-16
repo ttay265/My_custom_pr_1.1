@@ -16,6 +16,9 @@ sap.ui.define([
             this.setModel(new JSONModel({
                 editting: false
             }), "ui");
+
+        },
+        onAfterLoading: function () {
             this.getRouter().getRoute("PRDetail").attachPatternMatched(this._onObjectMatched, this);
         },
         _onObjectMatched: function (o) {
@@ -40,7 +43,8 @@ sap.ui.define([
                 var Desc = bindingObj.Desc;
             } catch (ex) {
 
-            };
+            }
+            ;
             var close = function (e) {
                 if (e === MessageBox.Action.OK) {
                     console.log("asd");
