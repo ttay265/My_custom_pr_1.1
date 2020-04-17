@@ -1,4 +1,8 @@
-sap.ui.define(["sap/ui/core/format/DateFormat"], function () {
+sap.ui.define([
+        "sap/ui/core/format/DateFormat",
+        "com/tw/mypr/My_custom_pr/controller/BaseController",
+        "sap/ui/model/json/JSONModel"],
+    function (DateFormat, BaseController, JSONModel) {
     "use strict";
     return {
         date: function (v) {
@@ -14,6 +18,23 @@ sap.ui.define(["sap/ui/core/format/DateFormat"], function () {
         formatCurrency: function (v, a) {
             var n = sap.ui.core.format.NumberFormat.getCurrencyInstance();
             return n.format(v);
+        },
+        prStatusText: function (s) {
+            var that = this;
+            var statusModel = this.getModel("statusText");
+            if (statusModel) {
+                var statusList = statusModel.getProperty("/");
+                if (statusList.length > 0) {
+                    var statusCondtion = function (c) {
+                        return c.StatusID === s;
+                    };
+                    var result = statusList.find(statusCondtion);
+                    if (result) {
+                        return result.StatusText;
+                    }
+                }
+            }
+
         }
     };
 });

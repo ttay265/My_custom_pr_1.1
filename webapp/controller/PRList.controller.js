@@ -1,11 +1,13 @@
 sap.ui.define([
     "com/tw/mypr/My_custom_pr/controller/BaseController",
-    "sap/ui/model/json/JSONModel"
-], function (BaseController, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "com/tw/mypr/My_custom_pr/model/formatter"
+], function (BaseController, JSONModel, formatter) {
     "use strict";
 
     return BaseController.extend("com.tw.mypr.My_custom_pr.controller.PRList", {
 
+        formatter: formatter,
         /**
          * Called when a controller is instantiated and its View controls (if available) are already created.
          * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -26,14 +28,32 @@ sap.ui.define([
             var router = this.getRouter();
             router.navTo("PRDetail",{
                 PreqNo: PreqNo
-            }, false)
+            }, false);
         },
         onPressRow: function (e) {
             var table = e.getSource();
             var hasItemSelected = table.getSelectedItems().length > 0 ? true : false;
             this.getModel("ui").setProperty("/hasItemSelected", hasItemSelected);
+        },
+        onNavCopyPR: function (o) {
+            // var router = this.getRouter();
+            //get selected PR
+            var table = o.getSource();
+            var selectedPR = [];
+            var selectedItems = table.getSelectedItems();
+            var ob = selectedItems.getBindingContext().getObject();
+            console.log(ob);
+            for (var i =0; i < selectedItems.length; i++) {
+                selectedPR.push({
+                    PreqNo: selectedItems[i].PreqNo,
+                    PreqItem
+                })
+            }
+            // this.setCopyPR();
+            // router.navTo("newPR", {
+            //     copy: true
+            // }, false)
         }
-
         /**
          * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
          * (NOT before the first rendering! onInit() is used for that one!).

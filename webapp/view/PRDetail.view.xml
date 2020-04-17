@@ -1,15 +1,13 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
           controllerName="com.tw.mypr.My_custom_pr.controller.PRDetail"
-          xmlns:smartForm="sap.ui.comp.smartform"
-          xmlns:smartField="sap.ui.comp.smartfield"
-          xmlns:smartTable="sap.ui.comp.smarttable"
+          xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
           xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout">
     <uxap:ObjectPageLayout showFooter="{= ${ui>/editting} }" upperCaseAnchorBar="false"
                            showTitleInHeaderContent="false"
                            showHeaderContent="{= !${ui>/editting} }">
         <uxap:headerTitle>
             <uxap:ObjectPageHeader headerDesign="Light"
-                                   objectTitle="10001980" objectSubtitle="Bérenger ARPIN 06.04.2020 18:39:44"
+                                   objectTitle="{display>/PreqNo}"
                                    objectImageShape="Square"
                                    objectImageURI="./images/PurchaseReqn.jpg"
                                    isObjectIconAlwaysVisible="false"
@@ -43,11 +41,12 @@
                    src="./images/PurchaseReqn.jpg"/>
             <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
                 <Label labelFor="statusID" text="{i18n>Status}:"/>
-                <Title id="statusID" titleStyle="H2" text="Approved"/>
+                <Title id="statusID" titleStyle="H2"
+                       text="{path:'display>/StatusID', formatter:'.formatter.prStatusText'}"/>
             </layout:VerticalLayout>
             <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
                 <Label labelFor="TotalValue" text="{i18n>TotalValue}:"/>
-                <Title id="TotalValue" titleStyle="H2" text="10,000.00 USD"/>
+                <Title id="TotalValue" titleStyle="H2" text="{display>/TotalValue}"/>
             </layout:VerticalLayout>
         </uxap:headerContent>
         <uxap:sections>
@@ -56,23 +55,10 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <smartForm:SmartForm id="smartFormColumn"
-                                                 editable="{ui>/editting}" title="{Name}">
-                                <smartForm:layout>
-                                    <smartForm:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" labelCellsLarge="12"
-                                                            emptyCellsLarge="0"/>
-                                </smartForm:layout>
-                                <smartForm:Group>
-                                    <smartForm:GroupElement label="{i18n>PRDesc}">
-                                        <smartField:SmartField value="{PRDesc}"/>
-                                    </smartForm:GroupElement>
-                                </smartForm:Group>
-                                <smartForm:Group>
-                                    <smartForm:GroupElement label="{i18n>DocTyp}">
-                                        <smartField:SmartField value="{DocTyp}"/>
-                                    </smartForm:GroupElement>
-                                </smartForm:Group>
-                            </smartForm:SmartForm>
+                            <f:SimpleForm>
+                                <Label text="{i18n>PRType}"/>
+                                <Text text="{/PrType}"/>
+                            </f:SimpleForm>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
@@ -81,10 +67,8 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <smartTable:SmartTable editable="{ui>/editting}" useExportToExcel="false"
-
-                                                   entitySet="PR_ItemSet">
-                                <smartTable:customToolbar width="20%">
+                            <Table items="display>/To_PRItems/results" visible="{= !${ui>/editting} }">
+                                <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
                                         <ToolbarSpacer/>
@@ -97,46 +81,125 @@
                                         <Button visible="{ui>/editting}" enabled="true" icon="sap-icon://add"
                                                 press="onPressAddItem"/>
                                     </Toolbar>
-                                </smartTable:customToolbar>
-                                <Table >
-                                    <columns>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                    </columns>
-                                    <items>
-                                        <ColumnListItem>
-                                            <cells>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                            </cells>
-                                        </ColumnListItem>
-                                    </items>
-                                </Table>
-                            </smartTable:SmartTable>
+                                </headerToolbar>
+                                <columns>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Material}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>MatGroup}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Plant}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Quantity}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>ValuationPrice}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Requisitioner}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>desiredVendor}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{display>PreqItem}"/>
+                                            <Text text="{display>ProdTypGrp}"/>
+                                            <Text text="{display>Material}"/>
+                                            <Text text="{display>MatGroup}"/>
+                                            <Text text="{display>Plant}"/>
+                                            <ObjectNumber number="{display>Quanity}" numberUnit="{display>Unit}"/>
+                                            <u:Currency useSymbol="false" stringValue="{display>PreqPrice}"
+                                                        currency="{display>Currency}"/>
+                                            <Text text="{display>Requisitioner}"/>
+                                            <Text text="{display>FixedVend}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <Table items="{draft>/items}" visible="{ui>/editting}">
+                                <headerToolbar>
+                                    <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
+                                             height="60px">
+                                        <ToolbarSpacer/>
+                                        <Button visible="{ui>/editting}" enabled="false" press="onPressCopyItem"
+                                                text="{i18n>copyItem}"/>
+                                        <Button enabled="false" press="onUpdatePriceItem" text="{i18n>UpdatePrice}"/>
+                                        <Button visible="{ui>/editting}" enabled="false"
+                                                press="onPressDeleteItem"
+                                                text="{i18n>deleteItem}"/>
+                                        <Button visible="{ui>/editting}" enabled="true" icon="sap-icon://add"
+                                                press="onPressAddItem"/>
+                                        <!--<Popover -->
+                                        <!--placement="Bottom">-->
+                                        <!--<footer>-->
+                                        <!--<OverflowToolbar>-->
+                                        <!--<Button text="{i18n>Material}"-->
+                                        <!--press="handleAddMaterial"/>-->
+                                        <!--</OverflowToolbar>-->
+                                        <!--</footer>-->
+                                        <!--<Image src="{ProductPicUrl}" width="15em" densityAware="false"/>-->
+                                        <!--</Popover>-->
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Material}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>MatGroup}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Plant}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Quantity}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>ValuationPrice}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>Requisitioner}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>desiredVendor}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Input value="{display>PreqItem}"/>
+                                            <Input value="{display>ProdTypGrp}"/>
+                                            <Input value="{display>Material}"/>
+                                            <Input value="{display>MatGroup}"/>
+                                            <Input value="{display>Plant}"/>
+                                            <Input value="{display>Quanity}" fieldWidth="50%"
+                                                   description="{display>Unit}"/>
+                                            <u:Currency useSymbol="false" stringValue="{display>PreqPrice}"
+                                                        currency="{display>Currency}"/>
+                                            <Text text="{display>Requisitioner}"/>
+                                            <Text text="{display>FixedVend}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
@@ -145,9 +208,8 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <smartTable:SmartTable editable="{ui>/editting}" useExportToExcel="false"
-                                                   entitySet="PR_LimitItemSet">
-                                <smartTable:customToolbar width="20%">
+                            <Table items="{draft>/limitItems}">
+                                <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
                                         <ToolbarSpacer/>
@@ -155,48 +217,42 @@
                                                 press="onPressDeleteItem"
                                                 text="{i18n>deleteItem}"/>
                                         <Button enabled="true" icon="sap-icon://add"
-                                                press="onPressAddItem"/>
+                                                press="onPressAddLimitItem"/>
                                     </Toolbar>
-                                </smartTable:customToolbar>
-                                <Table>
-                                    <columns>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                        <Column demandPopin="true" minScreenWidth="Phone">
-                                            <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                        </Column>
-                                    </columns>
-                                    <items>
-                                        <ColumnListItem>
-                                            <cells>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                                <Text text="123"/>
-                                            </cells>
-                                        </ColumnListItem>
-                                    </items>
-                                </Table>
-                            </smartTable:SmartTable>
+                                </headerToolbar>
+                                <columns>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>expectedValue}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>overallLimit}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>accountAssignmentCategory}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>plant}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text wrapping="true" maxLines="2" text="{i18n>desiredVendor}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Input value="{draft>/PreqItem}"/>
+                                            <Input value="{draft>/expectedValue}"/>
+                                            <Input value="{draft>/overallLimit}"/>
+                                            <Input value="{draft>/AcctAssCat}"/>
+                                            <Input value="{draft>/Plant}"/>
+                                            <Input value="{draft>/Plant}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>

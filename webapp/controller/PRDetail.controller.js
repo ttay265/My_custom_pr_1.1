@@ -1,12 +1,13 @@
 sap.ui.define([
     "com/tw/mypr/My_custom_pr/controller/BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageBox"
-], function (BaseController, JSONModel, MessageBox) {
+    "sap/m/MessageBox",
+    "com/tw/mypr/My_custom_pr/model/formatter"
+], function (BaseController, JSONModel, MessageBox, formatter) {
     "use strict";
 
     return BaseController.extend("com.tw.mypr.My_custom_pr.controller.PRDetail", {
-
+        formatter: formatter,
         /**
          * Called when a controller is instantiated and its View controls (if available) are already created.
          * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -16,22 +17,86 @@ sap.ui.define([
             this.setModel(new JSONModel({
                 editting: false
             }), "ui");
+            this.setModel(new JSONModel({
+                totalValue: 0,
+                items: [],
+                limitItems: []
+            }), "draft");
+        },
+        onPressDeleteItem: function () {
 
         },
-        onAfterLoading: function () {
+        onAfterRendering: function () {
             this.getRouter().getRoute("PRDetail").attachPatternMatched(this._onObjectMatched, this);
+            this.getRouter().getRoute("newPR").attachPatternMatched(this._onNewPRMatch, this);
+        },
+        onPressAddItem: function () {
+            var items = this.getModel("draft").getProperty("/items");
+            if (!items) {
+                items = new Array();
+            }
+            items.push();
+            this.getModel("draft").refresh();
+            this.getModel("draft").updateBindings(true);
+        },
+        onPressAddLimitItem: function () {
+            var items = this.getModel("draft").getProperty("/limitItems");
+            if (!items) {
+                items = new Array();
+            }
+            items.push();
+            this.getModel("draft").updateBindings();
+        },
+        _onNewPRMatch: function (o) {
+            //Default mode is EDIT
+            this.getModel("ui").setProperty("/editting", true);
+
+            //Load
+            var isCopy = o.getParameter("arguments").copy;
+            if (isCopy) {
+                //Read Copy PR data
+
+            }
         },
         _onObjectMatched: function (o) {
-            var PreqNo = o.getParameter("arguments").PreqNo;
+            var odataModel = this.getModel();
+            var that = this;
+            this.PreqNo = o.getParameter("arguments").PreqNo;
             var key = this.getModel().createKey("/PR_HeaderSet", {
-                PreqNo: PreqNo
+                PreqNo: this.PreqNo
             });
-            this.getView().bindElement({
-                path: key
+            var onSuccess = function (d, r) {
+                //Bind data in response with display oData
+                that.setModel(new JSONModel(d), "display");
+            }, onError = function (e) {
+                console.log(e);
+            };
+
+            odataModel.read(key, {
+                urlParameters: "$expand=To_PRItems",
+                success: onSuccess,
+                error: onError
+            });
+            // this.getView().setBindingContext(key);
+
+            var detailKey = key + "/$expand=To_PRItems";
+            var onSuccess = function (d, r) {
+                //Bind data in response with display oData
+                that.getModel("display").setProperty("/items", d.results);
+            }, onError = function (e) {
+                console.log(e);
+            };
+
+            odataModel.read(key, {
+                success: onSuccess,
+                error: onError
             });
         },
         onEditPress: function (e) {
             this.getModel("ui").setProperty("/editting", true);
+            //copy display data to edit model
+            var prData = this.getModel("display").getProperty("/");
+            this.getModel("draft").setProperty("/", prData);
         },
         onCancelEditPR: function (e) {
             this.getModel("ui").setProperty("/editting", false);
@@ -47,9 +112,21 @@ sap.ui.define([
             ;
             var close = function (e) {
                 if (e === MessageBox.Action.OK) {
-                    console.log("asd");
+                    var key = this.getModel().createKey("/PR_HeaderSet", {
+                        PreqNo: this.PreqNo
+                    });
+                    var onSuccess = function () {
+                            console.log("Deleted" + this.PreqNo);
+                        },
+                        onError = function (e) {
+                            console.log("Cannot delete" + this.PreqNo + ": " + e);
+                        };
+
+                    this.getModel().remove(key, {
+                        success: onSuccess,
+                        error: onError
+                    });
                 } else if (e === sap.m.MessageBox.Action.Cancel) {
-                    console.log("dsa");
                 }
                 ;
             };
@@ -64,24 +141,6 @@ sap.ui.define([
                 }
             );
         }
-
-        /**
-         * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-         * (NOT before the first rendering! onInit() is used for that one!).
-         * @memberOf com.tw.mypr.My_custom_pr.view.PRList
-         */
-        //	onBeforeRendering: function() {
-        //
-        //	},
-
-        /**
-         * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-         * This hook is the same one that SAPUI5 controls get after being rendered.
-         * @memberOf com.tw.mypr.My_custom_pr.view.PRList
-         */
-        //	onAfterRendering: function() {
-        //
-        //	},
 
         /**
          * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

@@ -2,8 +2,8 @@ sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/Device",
     "com/tw/mypr/My_custom_pr/model/models",
-    "sap/ui/model/odata/v2/ODataModel"
-], function (UIComponent, Device, models, ODataModel) {
+    "sap/ui/model/json/JSONModel"
+], function (UIComponent, Device, models, JSONModel) {
     "use strict";
 
     return UIComponent.extend("com.tw.mypr.My_custom_pr.Component", {
@@ -12,7 +12,6 @@ sap.ui.define([
             manifest: "json",
             config: {fullWidth: true}
         },
-
         /**
          * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
          * @public
@@ -27,6 +26,7 @@ sap.ui.define([
 
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
+            this.loadStatusTextTypeSet();
         }, createContent: function () {
             var r = UIComponent.prototype.createContent.apply(this, arguments);
             r.addStyleClass(this.getContentDensityClass());
@@ -40,6 +40,19 @@ sap.ui.define([
                 }
             }
             return this._sContentDensityClass;
+        },
+        loadStatusTextTypeSet: function () {
+            var that = this;
+            var onSuccess = function (d, r) {
+                    that.setModel(new JSONModel(d.results), "statusText");
+                },
+                onError = function (e) {
+                    console.log(e);
+                };
+            this.getModel().read("/StatusTextTypeSet", {
+                success: onSuccess,
+                error: onError
+            });
         }
     });
 });

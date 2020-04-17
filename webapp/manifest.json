@@ -111,6 +111,13 @@
           "target": [
             "PRDetail"
           ]
+        },
+        {
+          "name": "newPR",
+          "pattern": "newPR/:copy:",
+          "target": [
+            "PRDetail"
+          ]
         }
       ],
       "targets": {

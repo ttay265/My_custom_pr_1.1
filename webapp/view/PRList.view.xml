@@ -150,6 +150,7 @@
                 <Table class="sapUiMediumMarginBegin sapUiMediumMarginEnd" enableBusyIndicator="true" growing="true"
                        growingScrollToLoad="true"
                        inset="false"
+
                        mode="MultiSelect" selectionChange="onPressRow" visible="true"
                        width="auto">
                     <columns>
@@ -233,18 +234,16 @@
                                 <Text text="{PreqItem}"/> <!--	Item number -->
                                 <Text text="{Material}"/> <!--	Material number -->
                                 <Text text="{ItemDescription}"/> <!--	Description -->
-                                <ObjectNumber class="sapUiMediumMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
-                                              number="{Quantity}"
+                                <ObjectNumber number="{Quantity}"
                                               unit="{Unit}"/>                                                                <!--Quantity + Unit-->
-                                <u:Currency class="sapUiMediumMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom"
-                                            useSymbol="false" stringValue="{PreqPrice}"
+                                <u:Currency useSymbol="false" stringValue="{PreqPrice}"
                                             currency="{Currency}"/>                                             <!-- Price + Ccy -->
                                 <Text text="{ path: 'DelivDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', UTC: true } }"/> <!-- 	Delivery date -->
                                 <Text text="{PurGroup}"/> <!-- 	Purchasing group  -->
                                 <Text text="{Plant}"/> <!--	Plant  -->
                                 <Text text="{PurchOrg}"/> <!--	Purchasing organization  -->
                                 <Text text="{SuppVendor}"/> <!--	Vendor  -->
-                                <Text text="{StatusID}"/> <!--	Status  -->
+                                <Text text="{path:'StatusID', formatter:'.formatter.prStatusText'}"/> <!--	Status  -->
                                 <Text text="{MatlGroup}"/> <!--	Material Group  -->
                             </cells>
                         </ColumnListItem>
