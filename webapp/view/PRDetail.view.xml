@@ -7,7 +7,7 @@
                            showHeaderContent="{= !${ui>/editting} }">
         <uxap:headerTitle>
             <uxap:ObjectPageHeader headerDesign="Light"
-                                   objectTitle="{display>/PreqNo}"
+                                   objectTitle="{= ${ui>/editting} ? ${draft>/PreqNo} : ${PreqNo} }"
                                    objectImageShape="Square"
                                    objectImageURI="./images/PurchaseReqn.jpg"
                                    isObjectIconAlwaysVisible="false"
@@ -128,7 +128,7 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                            <Table items="{draft>/items}" visible="{ui>/editting}">
+                            <Table items="{draft>/To_PRItems}" visible="{ui>/editting}">
                                 <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
@@ -185,17 +185,17 @@
                                 <items>
                                     <ColumnListItem>
                                         <cells>
-                                            <Input value="{display>PreqItem}"/>
-                                            <Input value="{display>ProdTypGrp}"/>
-                                            <Input value="{display>Material}"/>
-                                            <Input value="{display>MatGroup}"/>
-                                            <Input value="{display>Plant}"/>
-                                            <Input value="{display>Quanity}" fieldWidth="50%"
-                                                   description="{display>Unit}"/>
-                                            <u:Currency useSymbol="false" stringValue="{display>PreqPrice}"
-                                                        currency="{display>Currency}"/>
-                                            <Text text="{display>Requisitioner}"/>
-                                            <Text text="{display>FixedVend}"/>
+                                            <Text text="{draft>PreqItem}"/>
+                                            <Input value="{draft>ProdTypGrp}"/>
+                                            <Input value="{draft>Material}"/>
+                                            <Input value="{draft>MatGroup}"/>
+                                            <Input value="{draft>Plant}"/>
+                                            <Input value="{draft>Quanity}" fieldWidth="50%"
+                                                   description="{draft>Unit}"/>
+                                            <u:Currency useSymbol="false" stringValue="{draft>PreqPrice}"
+                                                        currency="{draft>Currency}"/>
+                                            <Text text="{draft>Requisitioner}"/>
+                                            <Text text="{draft>FixedVend}"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -204,59 +204,59 @@
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection title="{i18n>LimitItems}" visible="{ui>/editting}">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection>
-                        <uxap:blocks>
-                            <Table items="{draft>/limitItems}">
-                                <headerToolbar>
-                                    <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
-                                             height="60px">
-                                        <ToolbarSpacer/>
-                                        <Button enabled="false"
-                                                press="onPressDeleteItem"
-                                                text="{i18n>deleteItem}"/>
-                                        <Button enabled="true" icon="sap-icon://add"
-                                                press="onPressAddLimitItem"/>
-                                    </Toolbar>
-                                </headerToolbar>
-                                <columns>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
-                                    </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>expectedValue}"/>
-                                    </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>overallLimit}"/>
-                                    </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>accountAssignmentCategory}"/>
-                                    </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>plant}"/>
-                                    </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>desiredVendor}"/>
-                                    </Column>
-                                </columns>
-                                <items>
-                                    <ColumnListItem>
-                                        <cells>
-                                            <Input value="{draft>/PreqItem}"/>
-                                            <Input value="{draft>/expectedValue}"/>
-                                            <Input value="{draft>/overallLimit}"/>
-                                            <Input value="{draft>/AcctAssCat}"/>
-                                            <Input value="{draft>/Plant}"/>
-                                            <Input value="{draft>/Plant}"/>
-                                        </cells>
-                                    </ColumnListItem>
-                                </items>
-                            </Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
+            <!--            <uxap:ObjectPageSection title="{i18n>LimitItems}" visible="{ui>/editting}">-->
+            <!--                <uxap:subSections>-->
+            <!--                    <uxap:ObjectPageSubSection>-->
+            <!--                        <uxap:blocks>-->
+            <!--                            <Table items="{draft>/limitItems}">-->
+            <!--                                <headerToolbar>-->
+            <!--                                    <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"-->
+            <!--                                             height="60px">-->
+            <!--                                        <ToolbarSpacer/>-->
+            <!--                                        <Button enabled="false"-->
+            <!--                                                press="onPressDeleteItem"-->
+            <!--                                                text="{i18n>deleteItem}"/>-->
+            <!--                                        <Button enabled="true" icon="sap-icon://add"-->
+            <!--                                                press="onPressAddLimitItem"/>-->
+            <!--                                    </Toolbar>-->
+            <!--                                </headerToolbar>-->
+            <!--                                <columns>-->
+            <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+            <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>-->
+            <!--                                    </Column>-->
+            <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+            <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>expectedValue}"/>-->
+            <!--                                    </Column>-->
+            <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+            <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>overallLimit}"/>-->
+            <!--                                    </Column>-->
+            <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+            <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>accountAssignmentCategory}"/>-->
+            <!--                                    </Column>-->
+            <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+            <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>plant}"/>-->
+            <!--                                    </Column>-->
+            <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+            <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>desiredVendor}"/>-->
+            <!--                                    </Column>-->
+            <!--                                </columns>-->
+            <!--                                <items>-->
+            <!--                                    <ColumnListItem>-->
+            <!--                                        <cells>-->
+            <!--                                            <Input value="{draft>/PreqItem}"/>-->
+            <!--                                            <Input value="{draft>/expectedValue}"/>-->
+            <!--                                            <Input value="{draft>/overallLimit}"/>-->
+            <!--                                            <Input value="{draft>/AcctAssCat}"/>-->
+            <!--                                            <Input value="{draft>/Plant}"/>-->
+            <!--                                            <Input value="{draft>/Plant}"/>-->
+            <!--                                        </cells>-->
+            <!--                                    </ColumnListItem>-->
+            <!--                                </items>-->
+            <!--                            </Table>-->
+            <!--                        </uxap:blocks>-->
+            <!--                    </uxap:ObjectPageSubSection>-->
+            <!--                </uxap:subSections>-->
+            <!--            </uxap:ObjectPageSection>-->
         </uxap:sections>
         <uxap:footer>
             <OverflowToolbar>

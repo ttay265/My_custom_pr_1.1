@@ -18,6 +18,7 @@ sap.ui.define([
                 hasItemSelected: false    // By default, no items have been selected yet.
             });
             this.setModel(this.UIModel, "ui");
+            this.table_PRList = this.byId("table_PRList");
         },
         onSearchPRList: function () {
 
@@ -26,7 +27,7 @@ sap.ui.define([
             var o = e.getSource().getBindingContext().getObject();
             var PreqNo = o.PreqNo;
             var router = this.getRouter();
-            router.navTo("PRDetail",{
+            router.navTo("PRDetail", {
                 PreqNo: PreqNo
             }, false);
         },
@@ -38,21 +39,18 @@ sap.ui.define([
         onNavCopyPR: function (o) {
             // var router = this.getRouter();
             //get selected PR
-            var table = o.getSource();
-            var selectedPR = [];
-            var selectedItems = table.getSelectedItems();
-            var ob = selectedItems.getBindingContext().getObject();
-            console.log(ob);
-            for (var i =0; i < selectedItems.length; i++) {
-                selectedPR.push({
-                    PreqNo: selectedItems[i].PreqNo,
-                    PreqItem
-                })
-            }
-            // this.setCopyPR();
-            // router.navTo("newPR", {
-            //     copy: true
-            // }, false)
+            var copyingPR = [];
+            var selectedItems = this.table_PRList.getSelectedItems();
+            selectedItems.forEach(function (e) {
+                var ob = e.getBindingContext().getObject();
+                copyingPR.push(ob);
+            });
+            var model = this.getModel("copyPR") || new JSONModel();
+            model.setProperty("/", copyingPR);
+            this.setModel(model, "copyPR", true);
+            this.getRouter().navTo("newPR", {
+                copy: true
+            }, false);
         }
         /**
          * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

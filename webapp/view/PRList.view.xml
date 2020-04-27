@@ -139,18 +139,21 @@
                 <smartTable:customToolbar width="20%">
                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent" height="60px">
                         <ToolbarSpacer/>
-                        <Link enabled="{ui>/hasItemSelected}" press="onNavCopyPR" text="{i18n>copyPR}"/>
-                        <Link class="sapUiTinyMarginBegin sapUiTinyMarginEnd" enabled="{ui>/hasItemSelected}"
-                              press="onPressDeletePR"
-                              text="{i18n>deletePR}"/>
+                        <Button type="Transparent" enabled="{ui>/hasItemSelected}" press="onNavCopyPR"
+                                text="{i18n>copyPR}"/>
+                        <Button type="Transparent" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"
+                                enabled="{ui>/hasItemSelected}"
+                                press="onPressDeletePR"
+                                text="{i18n>deletePR}"/>
                         <!--<Link enabled="false" id="EditReqLinkId" press="fnNavigateEditItemList" text="{i18n>edit}"/>-->
-                        <Link enabled="true" id="ConfirmGRLinkId" press="onCreatePR" text="{i18n>createPR}"/>
+                        <Button type="Transparent" enabled="true" id="ConfirmGRLinkId" press="onCreatePR"
+                                text="{i18n>createPR}"/>
                     </Toolbar>
                 </smartTable:customToolbar>
                 <Table class="sapUiMediumMarginBegin sapUiMediumMarginEnd" enableBusyIndicator="true" growing="true"
                        growingScrollToLoad="true"
                        inset="false"
-
+                        id="table_PRList"
                        mode="MultiSelect" selectionChange="onPressRow" visible="true"
                        width="auto">
                     <columns>
