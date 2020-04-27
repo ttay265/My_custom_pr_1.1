@@ -65,7 +65,7 @@ sap.ui.define([
 
             //check if newPR is created as copy PR
             let isCopy = o.getParameter("arguments").copy;
-            if (isCopy) {
+            if (isCopy === true) {
                 //Read Copy PR data
                 let copyModel = this.getModel("copyPR");
                 if (!copyModel) {

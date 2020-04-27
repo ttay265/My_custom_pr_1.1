@@ -36,6 +36,11 @@ sap.ui.define([
             var hasItemSelected = table.getSelectedItems().length > 0 ? true : false;
             this.getModel("ui").setProperty("/hasItemSelected", hasItemSelected);
         },
+        onCreatePR: function () {
+            this.getRouter().navTo("newPR", {
+                copy: false
+            }, false);
+        },
         onNavCopyPR: function (o) {
             // var router = this.getRouter();
             //get selected PR
