@@ -37,8 +37,8 @@ sap.ui.define([
             this.getModel("ui").setProperty("/hasItemSelected", hasItemSelected);
         },
         onCreatePR: function () {
-            this.getRouter().navTo("newPR", {
-                copy: false
+            this.getRouter().navTo("PRDetail", {
+                PreqNo: "new"
             }, false);
         },
         onNavCopyPR: function (o) {
@@ -53,8 +53,8 @@ sap.ui.define([
             var model = this.getModel("copyPR") || new JSONModel();
             model.setProperty("/", copyingPR);
             this.setModel(model, "copyPR", true);
-            this.getRouter().navTo("newPR", {
-                copy: true
+            this.getRouter().navTo("PRDetail", {
+                PreqNo: "copy"
             }, false);
         }
         /**

@@ -9,24 +9,25 @@ sap.ui.define([
 
     return BaseController.extend("com.tw.mypr.My_custom_pr.controller.PRDetail", {
         formatter: formatter,
+
         /**
          * Called when a controller is instantiated and its View controls (if available) are already created.
          * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
          * @memberOf com.tw.mypr.My_custom_pr.view.PRList
          */
         onInit: function () {
-            let viewModel = new JSONModel({
-                editting: false
+            var viewModel = new JSONModel({
+                editing: false,
+                createMode: true
             }, true);
             this.setModel(viewModel, "ui");
-            this.setModel(new JSONModel({}, true), "draft");
+            this.setModel(new JSONModel({}, true), "draft", true);
 
         },
         initDraft: function () {
-            let draftPRObject = this.createJSONObjectFromOData(this.getModel(), "/PR_HeaderSet");
+            var draftPRObject = this.createJSONObjectFromOData("/PR_HeaderSet");
             draftPRObject.To_PRItems = [];
-            draftPRObject.PreqNo = "New Purchase Requisition";
-            let draftModel = this.getModel("draft");
+            var draftModel = this.getModel("draft");
             draftModel.setProperty("/", draftPRObject);
             return draftModel;
         },
@@ -35,81 +36,85 @@ sap.ui.define([
         },
         onAfterRendering: function () {
             this.getRouter().getRoute("PRDetail").attachPatternMatched(this._onObjectMatched, this);
-            this.getRouter().getRoute("newPR").attachPatternMatched(this._onNewPRMatch, this);
         },
-        onPressAddItem: function () {
-            let items = this.getModel("draft").getProperty("/items");
-            if (!items) {
-                items = new Array();
-            }
-            items.push();
-            this.getModel("draft").refresh();
-            this.getModel("draft").updateBindings(true);
+        onPressAddItem: function (e) {
+            var actionSheet = e.getSource().getDependents()[0];
+            actionSheet.openBy(e.getSource());
         },
-        onPressAddLimitItem: function () {
-            let items = this.getModel("draft").getProperty("/limitItems");
-            if (!items) {
-                items = new Array();
-            }
-            items.push();
-            this.getModel("draft").updateBindings();
-        },
-        _onNewPRMatch: function (o) {
-            let that = this;
-            //Default mode is EDIT
-            this.getModel("ui").setProperty("/editting", true);
-            let draftModel = this.initDraft();
-            let draftPR_Items = draftModel.getProperty("/To_PRItems");
+        // onPressAddLimitItem: function () {
+        //     var items = this.getModel("draft").getProperty("/limitItems");
+        //     if (!items) {
+        //         items = new Array();
+        //     }
+        //     items.push();
+        //     this.getModel("draft").updateBindings();
+        // },
 
-            let oDataModel = this.getModel();
-
-            //check if newPR is created as copy PR
-            let isCopy = o.getParameter("arguments").copy;
-            if (isCopy === true) {
-                //Read Copy PR data
-                let copyModel = this.getModel("copyPR");
-                if (!copyModel) {
-                    MessageToast.show(this.getI18N("CANNOT_READ_COPYPR"));
-                    return;
-                }
-                let copyPRList = copyModel.getProperty("/");
-                if (Array.isArray(copyPRList) && copyPRList.length > 0) {
-                    copyPRList.forEach(function (e) {
-                        let key = oDataModel.createKey("/PR_ItemSet", {
-                            PreqNo: e.PreqNo,
-                            PreqItem: e.PreqItem
-                        });
-                        oDataModel.read(key, {
-                            urlParameters: {
-                                "$expand": "to_accounts"
-                            },
-                            success: function (d, r) {
-
-                                d.to_accounts = d.to_accounts.results;
-                                delete d.to_accounts.results;
-                                delete d.__metadata;
-                                d.PreqNo = "";
-                                d.PreqItem = formatter.formatNUMC((draftPR_Items.length + 1) * 10, 5);
-                                draftPR_Items.push(d);
-                                draftModel.setProperty("/To_PRItems", draftPR_Items);
-                            },
-                            error: function (e) {
-                                console.log(e);
-                            }
-                        })
-                    });
-                }
-            }
-        },
         _onObjectMatched: function (o) {
-            let oDataModel = this.getModel();
-            let that = this;
-            this.PreqNo = o.getParameter("arguments").PreqNo;
-            let key = this.getModel().createKey("/PR_HeaderSet", {
-                PreqNo: this.PreqNo
+            var that = this;
+            var oDataModel = this.getModel();
+            var PreqNo = o.getParameter("arguments").PreqNo;
+            if (PreqNo === "new" || PreqNo === "copy") {
+                //Default mode is EDIT
+                this.getModel("ui").setProperty("/", {
+                    editing: true,
+                    createMode: true
+                });
+                var draftModel = this.initDraft();
+
+                //check if newPR is created as copy PR
+                if (PreqNo === "copy") {
+                    //Read Copy PR data
+                    var copyModel = this.getModel("copyPR");
+                    if (!copyModel) {
+                        MessageToast.show(this.getI18N("CANNOT_READ_COPYPR"));
+                        return;
+                    }
+                    var copyPRList = copyModel.getProperty("/");
+                    if (Array.isArray(copyPRList) && copyPRList.length > 0) {
+                        copyPRList.forEach(function (e) {
+                            var key = oDataModel.createKey("/PR_ItemSet", {
+                                PreqNo: e.PreqNo,
+                                PreqItem: e.PreqItem
+                            });
+                            oDataModel.read(key, {
+                                urlParameters: {
+                                    "$expand": "to_accounts"
+                                },
+                                success: function (d, r) {
+                                    d.to_accounts = d.to_accounts.results;
+                                    delete d.__metadata;
+                                    d.PreqNo = "";
+                                    var draftPR_Items = draftModel.getProperty("/To_PRItems");
+                                    d.PreqItem = formatter.formatNUMC((draftPR_Items.length + 1) * 10, 5);
+                                    draftPR_Items.push(d);
+                                    draftModel.setProperty("/To_PRItems", draftPR_Items);
+                                },
+                                error: function (e) {
+                                    console.log(e);
+                                }
+                            })
+                        });
+                    }
+                }
+            } else {
+                this.PreqNo = PreqNo;
+                this.loadODataPRItem(this.PreqNo);
+                this.getModel("ui").setProperty("/", {
+                    editing: false,
+                    createMode: false
+                });
+            }
+        },
+        loadODataPRItem: function (PreqNo) {
+            var oDataModel = this.getModel();
+            var that = this;
+            var key = this.getModel().createKey("/PR_HeaderSet", {
+                PreqNo: PreqNo
             });
-            let onSuccess = function (d, r) {
+            var onSuccess = function (d, r) {
                 //Bind data in response with display oData
+                d.To_PRItems = d.To_PRItems.results;
                 that.setModel(new JSONModel(d), "display");
             }, onError = function (e) {
                 console.log(e);
@@ -119,32 +124,57 @@ sap.ui.define([
                 success: onSuccess,
                 error: onError
             });
-            // this.getView().setBindingContext(key);
         },
         onEditPress: function (e) {
-            this.getModel("ui").setProperty("/editting", true);
+            this.getModel("ui").setProperty("/editing", true);
             //copy display data to edit model
-            let prData = this.getModel("display").getProperty("/");
+            var prData = this.getModel("display").getProperty("/");
             this.getModel("draft").setProperty("/", prData);
         },
         onCancelEditPR: function (e) {
-            this.getModel("ui").setProperty("/editting", false);
+            if (this.getModel("ui").getProperty("/createMode") === true) {
+                this.back();
+                return;
+            }
+            this.loadODataPRItem(this.PreqNo);
+            this.getModel("ui").setProperty("/editing", false);
+        },
+        onMaterialAdd: function (e) {
+            var draftModel = this.getModel("draft");
+            var draftPR = draftModel.getProperty("/");
+            var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet");
+            newPRItem.Preqno = draftPR.PreqNo;
+            newPRItem.PreqItem = formatter.formatNUMC((draftPR.To_PRItems.length + 1) * 10, 5);
+            delete newPRItem.__metadata;
+            draftPR.To_PRItems.push(newPRItem);
+            draftModel.setProperty("/To_PRItems", draftPR.To_PRItems);
+            this.getRouter().navTo("itemDetail", {
+                PreqItem: newPRItem.PreqItem,
+                edit: true
+            }, false);
+        },
+        onItemPress: function (e) {
+            var PRItem = e.getSource().getBindingContext("draft").getObject();
+            var edit = this.getModel("ui").getProperty("/editing");
+            this.getRouter().navTo("itemDetail", {
+                PreqItem: PRItem.PreqItem,
+                edit: edit
+            }, false);
         },
         onPressDeletePR: function (e) {
-            let bindingObj = e.getSource().getBindingContext();
+            var bindingObj = e.getSource().getBindingContext();
             try {
-                let PreqNo = bindingObj.PreqNo;
-                let Desc = bindingObj.Desc;
+                var PreqNo = bindingObj.PreqNo;
+                var Desc = bindingObj.Desc;
             } catch (ex) {
 
             }
-            ;
-            let close = function (e) {
+            var close = function (e) {
                 if (e === MessageBox.Action.OK) {
-                    let key = this.getModel().createKey("/PR_HeaderSet", {
+                    var key = this.getModel().createKey("/PR_HeaderSet", {
                         PreqNo: this.PreqNo
                     });
-                    let onSuccess = function () {
+                    var onSuccess = function () {
                             console.log("Deleted" + this.PreqNo);
                         },
                         onError = function (e) {
@@ -157,7 +187,6 @@ sap.ui.define([
                     });
                 } else if (e === sap.m.MessageBox.Action.Cancel) {
                 }
-                ;
             };
             MessageBox.show(
                 this.getDeletePRConfirmMsg(PreqNo, Desc), {

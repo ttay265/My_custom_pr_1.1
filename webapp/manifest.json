@@ -113,10 +113,10 @@
           ]
         },
         {
-          "name": "newPR",
-          "pattern": "newPR/:copy:",
+          "name": "itemDetail",
+          "pattern": "itemDetail/{PreqItem}/:edit:",
           "target": [
-            "PRDetail"
+            "ItemDetail"
           ]
         }
       ],
@@ -128,6 +128,10 @@
         "PRDetail": {
           "viewType": "XML",
           "viewName": "PRDetail"
+        },
+        "ItemDetail": {
+          "viewType": "XML",
+          "viewName": "ItemDetail"
         }
       }
     }

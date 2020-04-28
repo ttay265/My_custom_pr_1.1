@@ -1,0 +1,15 @@
+{
+  "Material": {
+    "path": "/MaterialTextSet",
+    "cols": [
+      {
+        "label": "Material",
+        "template": "Material"
+      },
+      {
+        "label": "Material Description",
+        "template": "ItemDescription"
+      }
+    ]
+  }
+}

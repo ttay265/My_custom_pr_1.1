@@ -2,12 +2,12 @@
           controllerName="com.tw.mypr.My_custom_pr.controller.PRDetail"
           xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
           xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout">
-    <uxap:ObjectPageLayout showFooter="{= ${ui>/editting} }" upperCaseAnchorBar="false"
+    <uxap:ObjectPageLayout showFooter="{= ${ui>/editing} }" upperCaseAnchorBar="false"
                            showTitleInHeaderContent="false"
-                           showHeaderContent="{= !${ui>/editting} }">
+                           showHeaderContent="{= !${ui>/editing} }">
         <uxap:headerTitle>
             <uxap:ObjectPageHeader headerDesign="Light"
-                                   objectTitle="{= ${ui>/editting} ? ${draft>/PreqNo} : ${PreqNo} }"
+                                   objectTitle="{= ${ui>/createMode} === true ? 'New Purchase Requisition' : ${display>/PreqNo} }"
                                    objectImageShape="Square"
                                    objectImageURI="./images/PurchaseReqn.jpg"
                                    isObjectIconAlwaysVisible="false"
@@ -16,15 +16,15 @@
                                    isActionAreaAlwaysVisible="true">
                 <uxap:actions>
                     <uxap:ObjectPageHeaderActionButton type="Emphasized" hideText="false" hideIcon="false"
-                                                       visible="{= !${ui>/editting} }"
+                                                       visible="{= !${ui>/editing} }"
                                                        press="onEditPress"
                                                        importance="High" text="{i18n>editPR}"/>
                     <uxap:ObjectPageHeaderActionButton type="Transparent" hideText="false" hideIcon="false"
-                                                       visible="{= !${ui>/editting} }"
+                                                       visible="{= !${ui>/editing} }"
                                                        press="onPressDeletePR"
                                                        importance="Medium" text="{i18n>deletePR}"/>
                     <uxap:ObjectPageHeaderActionButton type="Transparent" hideText="false" hideIcon="false"
-                                                       visible="{= !${ui>/editting} }"
+                                                       visible="{= !${ui>/editing} }"
                                                        importance="Medium" text="{i18n>copyPR}"/>
                     <uxap:ObjectPageHeaderActionButton type="Transparent" hideText="false" hideIcon="false"
                                                        importance="High" icon="sap-icon://action"/>
@@ -51,7 +51,7 @@
         </uxap:headerContent>
         <uxap:sections>
             <uxap:ObjectPageSection titleLevel="Auto" showTitle="true" titleUppercase="false"
-                                    title="{i18n>GeneralInfo}">
+                                    title="{= ${i18n>GeneralInfo} }">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
@@ -67,19 +67,14 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <Table items="display>/To_PRItems/results" visible="{= !${ui>/editting} }">
+                            <Table items="{display>/To_PRItems}" visible="{= !${ui>/editing} }">
                                 <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
                                         <ToolbarSpacer/>
-                                        <Button visible="{ui>/editting}" enabled="false" press="onPressCopyItem"
+                                        <Button visible="{ui>/editing}" enabled="false" press="onPressCopyItem"
                                                 text="{i18n>copyItem}"/>
                                         <Button enabled="false" press="onUpdatePriceItem" text="{i18n>UpdatePrice}"/>
-                                        <Button visible="{ui>/editting}" enabled="false"
-                                                press="onPressDeleteItem"
-                                                text="{i18n>deleteItem}"/>
-                                        <Button visible="{ui>/editting}" enabled="true" icon="sap-icon://add"
-                                                press="onPressAddItem"/>
                                     </Toolbar>
                                 </headerToolbar>
                                 <columns>
@@ -128,29 +123,34 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                            <Table items="{draft>/To_PRItems}" visible="{ui>/editting}">
+                            <Table  items="{draft>/To_PRItems}"
+                                   visible="{ui>/editing}">
                                 <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
                                         <ToolbarSpacer/>
-                                        <Button visible="{ui>/editting}" enabled="false" press="onPressCopyItem"
+                                        <Button visible="{ui>/editing}" enabled="false" press="onPressCopyItem"
                                                 text="{i18n>copyItem}"/>
                                         <Button enabled="false" press="onUpdatePriceItem" text="{i18n>UpdatePrice}"/>
-                                        <Button visible="{ui>/editting}" enabled="false"
+                                        <Button visible="{ui>/editing}" enabled="false"
                                                 press="onPressDeleteItem"
                                                 text="{i18n>deleteItem}"/>
-                                        <Button visible="{ui>/editting}" enabled="true" icon="sap-icon://add"
-                                                press="onPressAddItem"/>
-                                        <!--<Popover -->
-                                        <!--placement="Bottom">-->
-                                        <!--<footer>-->
-                                        <!--<OverflowToolbar>-->
-                                        <!--<Button text="{i18n>Material}"-->
-                                        <!--press="handleAddMaterial"/>-->
-                                        <!--</OverflowToolbar>-->
-                                        <!--</footer>-->
-                                        <!--<Image src="{ProductPicUrl}" width="15em" densityAware="false"/>-->
-                                        <!--</Popover>-->
+                                        <Button visible="{ui>/editing}" enabled="true" icon="sap-icon://add"
+                                                press="onPressAddItem">
+                                            <dependents>
+                                                <ActionSheet placement="Bottom">
+                                                    <Button
+                                                            text="{i18n>Material}"
+                                                            press="onMaterialAdd"/>
+                                                    <Button
+                                                            text="{i18n>Service}"/>
+                                                    <Button
+                                                            text="{i18n>itemsFromCrossCatalogSearch}"/>
+                                                    <Button
+                                                            text="{i18n>itemsFromExternalCatalog}"/>
+                                                </ActionSheet>
+                                            </dependents>
+                                        </Button>
                                     </Toolbar>
                                 </headerToolbar>
                                 <columns>
@@ -183,7 +183,7 @@
                                     </Column>
                                 </columns>
                                 <items>
-                                    <ColumnListItem>
+                                    <ColumnListItem type="Active" press="onItemPress">
                                         <cells>
                                             <Text text="{draft>PreqItem}"/>
                                             <Input value="{draft>ProdTypGrp}"/>
@@ -204,7 +204,7 @@
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
-            <!--            <uxap:ObjectPageSection title="{i18n>LimitItems}" visible="{ui>/editting}">-->
+            <!--            <uxap:ObjectPageSection title="{i18n>LimitItems}" visible="{ui>/editing}">-->
             <!--                <uxap:subSections>-->
             <!--                    <uxap:ObjectPageSubSection>-->
             <!--                        <uxap:blocks>-->
