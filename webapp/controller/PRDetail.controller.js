@@ -22,7 +22,8 @@ sap.ui.define([
             }, true);
             this.setModel(viewModel, "ui");
             this.setModel(new JSONModel({}, true), "draft", true);
-
+            this.setModel(new JSONModel({}, true), "display", true);
+            this.getRouter().getRoute("PRDetail").attachPatternMatched(this._onObjectMatched, this);
         },
         initDraft: function () {
             var draftPRObject = this.createJSONObjectFromOData("/PR_HeaderSet");
@@ -35,7 +36,7 @@ sap.ui.define([
 
         },
         onAfterRendering: function () {
-            this.getRouter().getRoute("PRDetail").attachPatternMatched(this._onObjectMatched, this);
+
         },
         onPressAddItem: function (e) {
             var actionSheet = e.getSource().getDependents()[0];
@@ -115,7 +116,8 @@ sap.ui.define([
             var onSuccess = function (d, r) {
                 //Bind data in response with display oData
                 d.To_PRItems = d.To_PRItems.results;
-                that.setModel(new JSONModel(d), "display");
+                that.getModel("display").setProperty("/", d);
+
             }, onError = function (e) {
                 console.log(e);
             };
@@ -154,8 +156,12 @@ sap.ui.define([
             }, false);
         },
         onItemPress: function (e) {
-            var PRItem = e.getSource().getBindingContext("draft").getObject();
             var edit = this.getModel("ui").getProperty("/editing");
+            if (edit === true) {
+                var PRItem = e.getSource().getBindingContext("draft").getObject();
+            } else {
+                var PRItem = e.getSource().getBindingContext("display").getObject();
+            }
             this.getRouter().navTo("itemDetail", {
                 PreqItem: PRItem.PreqItem,
                 edit: edit

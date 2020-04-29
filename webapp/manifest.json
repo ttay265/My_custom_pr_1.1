@@ -21,6 +21,10 @@
           "odataVersion": "2.0",
           "localUri": "/test/service/metadata.xml"
         }
+      },
+      "ValueHelpColumns": {
+        "uri": "model/ValueHelpColumns.json",
+        "type": "JSON"
       }
     }
   },
@@ -78,6 +82,10 @@
             "sap-documentation": "heading,quickinfo"
           }
         }
+      },
+      "VHCols": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "ValueHelpColumns"
       }
     },
     "resources": {

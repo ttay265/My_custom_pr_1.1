@@ -42,46 +42,11 @@ sap.ui.define([
                 return d;
             }
         },
-        valueHelpOpen: function (sName, sPath, oModel) {
-            var VHColModel = this.getModel("VHCols");
-            if (!VHColModel) {
-                VHColModel = new JSONModel("com.tw.mypr.My_custom_pr.model.ValueHelpColumns");
-                this.setModel(VHColModel, "VHCols", true);
-            }
-            var VHData = VHColModel.getProperty("/" + sName);
+        getVHColsModel: function () {
+            return this.getModel("VHCols");
+        },
 
-            this._oValueHelpDialog = sap.ui.xmlfragment("com.tw.mypr.My_custom_pr.fragment.")
-            this.getView().addDependent(this._oValueHelpDialog);
-            this._oValueHelpDialog.getTableAsync().then(function (oTable) {
-                oTable.setModel(VHColModel, "columns");
-
-                if (oTable.bindRows) {
-                    oTable.bindAggregation("rows", VHData.path);
-                }
-                if (oTable.bindItems) {
-                    oTable.bindAggregation("items", VHData.path, function () {
-                        return new ColumnListItem({
-                            cells: VHData.cols.map(function (column) {
-                                return new Label({text: "{" + column.template + "}"});
-                            })
-                        });
-                    });
-                }
-                this._oValueHelpDialog.update();
-            }.bind(this));
-            this.currentVHPath = sPath;
-            this.currentVHModel = oModel;
-            this._oValueHelpDialog.open();
-        },
-        onValueHelpOkPress: function (oEvent) {
-            console.log(oEvent);
-            // this.currentVHModel.setProperty(this.currentVHPath);
-            this._oValueHelpDialog.close();
-        },
-        onValueHelpCancelPress: function () {
-            this._oValueHelpDialog.close();
-        },
-        back: function() {
+        back: function () {
             window.history.back();
         },
         onValueHelpAfterClose: function () {

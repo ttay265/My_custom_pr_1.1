@@ -93,6 +93,34 @@
                                 <Input value="{PRItem>/OrderedQuantity}"/>
                                 <Label text="{i18n>OpenQuantity}"/>
                                 <Input value="{PRItem>/OpenQuantity}"/>
+                                <Label text="{i18n>PRItemIsClosed}"/>
+                                <Input value="{PRItem>/PRItemIsClosed}"/>
+                                <Label text="{i18n>PRItemIsFixed}"/>
+                                <Checkbox checked="{PRItem>/PRItemIsFixed}"/>
+                                <Label text="{i18n>PRItemIsFixed}"/>
+                                <Checkbox checked="{PRItem>/PRItemIsFixed}"/>
+                                <Label required="true" text="{i18n>DelivDate}"/>
+                                <DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/DelivDate}"/>
+                                <Label text="{i18n>PreqDate}"/>
+                                <DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PreqDate}"/>
+                                <Label required="true" text="{i18n>ReleaseDate}"/>
+                                <DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/ReleaseDate}"/>
+                                <Label required="true" text="{i18n>PlannedDelivDays}"/>
+                                <DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PlannedDelivDays}"/>
+                                <Label required="true" text="{i18n>GRProcessDays}"/>
+                                <DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/GRProcessDays}"/>
+                            </f:SimpleForm>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>Valuation}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <f:SimpleForm>
+                                <Label text="{i18n>ValuationPrice}"/>
+                                <Input value="{PRItem>/PreqPrice}"/>
                             </f:SimpleForm>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>

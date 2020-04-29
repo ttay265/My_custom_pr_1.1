@@ -107,7 +107,7 @@
                                     </Column>
                                 </columns>
                                 <items>
-                                    <ColumnListItem>
+                                    <ColumnListItem type="Active" press="onItemPress">
                                         <cells>
                                             <Text text="{display>PreqItem}"/>
                                             <Text text="{display>ProdTypGrp}"/>
@@ -123,7 +123,7 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                            <Table  items="{draft>/To_PRItems}"
+                            <Table items="{draft>/To_PRItems}"
                                    visible="{ui>/editing}">
                                 <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"

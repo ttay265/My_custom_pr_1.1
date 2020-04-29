@@ -3,11 +3,10 @@
         xmlns:core="sap.ui.core">
     <ValueHelpDialog
             ok=".onValueHelpOkPress"
-            cancel=".onValueHelpCancelPress"
-            afterClose=".onValueHelpAfterClose"
+            cancel="onValueHelpCancelPress"
+            afterClose="onValueHelpAfterClose"
             supportMultiselect="false"
-            key="ProductId"
-            descriptionKey="Name"
-    >
+            key="Material"
+            descriptionKey="MaterialDescription">
     </ValueHelpDialog>
 </core:FragmentDefinition>
