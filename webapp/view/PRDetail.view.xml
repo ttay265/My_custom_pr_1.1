@@ -1,5 +1,6 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
           controllerName="com.tw.mypr.My_custom_pr.controller.PRDetail"
+          xmlns:cust="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
           xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
           xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout">
     <uxap:ObjectPageLayout showFooter="{= ${ui>/editing} }" upperCaseAnchorBar="false"
@@ -107,7 +108,7 @@
                                     </Column>
                                 </columns>
                                 <items>
-                                    <ColumnListItem type="Active" press="onItemPress">
+                                    <ColumnListItem type="Navigation" press="onItemPress">
                                         <cells>
                                             <Text text="{display>PreqItem}"/>
                                             <Text text="{display>ProdTypGrp}"/>
@@ -183,11 +184,13 @@
                                     </Column>
                                 </columns>
                                 <items>
-                                    <ColumnListItem type="Active" press="onItemPress">
+                                    <ColumnListItem type="Navigation" press="onItemPress">
                                         <cells>
                                             <Text text="{draft>PreqItem}"/>
                                             <Input value="{draft>ProdTypGrp}"/>
-                                            <Input value="{draft>Material}"/>
+                                            <Input cust:VHKey="Material"
+                                                   showValueHelp="true"
+                                                   valueHelpRequest="onValHelpReq" value="{draft>Material}"/>
                                             <Input value="{draft>MatGroup}"/>
                                             <Input value="{draft>Plant}"/>
                                             <Input value="{draft>Quanity}" fieldWidth="50%"

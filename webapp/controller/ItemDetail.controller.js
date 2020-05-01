@@ -39,45 +39,8 @@ sap.ui.define([
             });
             this.getModel("PRItem").setProperty("/", PRItem);
         },
-        onValHelpReq: function (e) {
-            var bindingPath = e.getSource().getBinding("value").getPath();
-            var bindingModel = this.getModel("PRItem");
-            this.valueHelpOpen("Material", bindingPath, bindingModel);
-        },
-        valueHelpOpen: function (sName, sPath, oModel) {
-            var VHData = this.getVHColsModel().getProperty("/" + sName)
-            if (!this._oValueHelpDialog) {
-                this._oValueHelpDialog = sap.ui.xmlfragment("com.tw.mypr.My_custom_pr.fragment.ValueHelpDialog");
-                this.getView().addDependent(this._oValueHelpDialog);
-            }
-            this._oValueHelpDialog.getTableAsync().then(function (oTable) {
-                oTable.setModel(new JSONModel(VHData), "columns");
-                if (oTable.bindRows) {
-                    oTable.bindAggregation("rows", VHData.path);
-                }
-                if (oTable.bindItems) {
-                    oTable.bindAggregation("items", VHData.path, function () {
-                        return new sap.m.ColumnListItem({
-                            cells: VHData.cols.map(function (column) {
-                                return new Label({text: "{" + column.template + "}"});
-                            })
-                        });
-                    });
-                }
-                this._oValueHelpDialog.update();
-            }.bind(this));
-            this.currentVHPath = sPath;
-            this.currentVHModel = oModel;
-            this._oValueHelpDialog.open();
-        },
-        onValueHelpOkPress: function (oEvent) {
-            console.log(oEvent);
-            // this.currentVHModel.setProperty(this.currentVHPath);
-            this._oValueHelpDialog.close();
-        },
-        onValueHelpCancelPress: function (e) {
-            this._oValueHelpDialog.close();
-        },
+
+
 
         /**
          * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

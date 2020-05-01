@@ -46,6 +46,66 @@ sap.ui.define([
             return this.getModel("VHCols");
         },
 
+        onValHelpReq: function (e) {
+            //Initialize binding infos
+            let src = e.getSource();
+            var binding = src.getBinding("value");
+            let inputData = src.getCustomData();
+            if (!inputData) {
+                return;
+            }
+            var VHKey = inputData.find(function (e) {
+                return e.getKey() === "VHKey";
+            }).getValue();
+            var text = inputData.find(function (e) {
+                return e.getKey() === "text";
+            });
+            if (text) {
+                var textBinding = text.getBinding("value");
+            }
+
+
+            //Initialize VHD
+            var VHData = this.getVHColsModel().getProperty("/" + VHKey)
+            // if (!this._oValueHelpDialog) {
+            this._oValueHelpDialog = sap.ui.xmlfragment("com.tw.mypr.My_custom_pr.fragment.ValueHelpDialog", this);
+            this.getView().addDependent(this._oValueHelpDialog);
+            // }
+            this._oValueHelpDialog.getTableAsync().then(function (oTable) {
+                oTable.setModel(new JSONModel(VHData), "columns");
+                if (oTable.bindRows) {
+                    oTable.bindAggregation("rows", VHData.path);
+                }
+                if (oTable.bindItems) {
+                    oTable.bindAggregation("items", VHData.path, function () {
+                        return new sap.m.ColumnListItem({
+                            cells: VHData.cols.map(function (column) {
+                                return new Label({text: "{" + column.template + "}"});
+                            })
+                        });
+                    });
+                }
+                this._oValueHelpDialog.update();
+            }.bind(this));
+            //Set current Binding Context
+            this.currentVHBinding = binding;
+            this.currentVHTextBinding = textBinding;
+            this._oValueHelpDialog.open();
+        },
+        onValueHelpOkPress: function (oEvent) {
+            let token = oEvent.getParameter("tokens")[0];
+            let key = token.getKey();
+            let text = token.getText();
+            this.currentVHBinding.setValue(key);
+            if (this.currentVHTextBinding) {
+                this.currentVHTextBinding.setValue(text);
+            }
+            this._oValueHelpDialog.close();
+        },
+        onValueHelpCancelPress: function (e) {
+            this._oValueHelpDialog.close();
+        },
+
         back: function () {
             window.history.back();
         },
