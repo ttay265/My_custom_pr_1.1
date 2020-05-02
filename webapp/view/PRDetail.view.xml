@@ -188,7 +188,7 @@
                                         <cells>
                                             <Text text="{draft>PreqItem}"/>
                                             <Input value="{draft>ProdTypGrp}"/>
-                                            <Input cust:VHKey="Material"
+                                            <Input cust:VHKey="Material" cust:text="{draft>ItemDescription}"
                                                    showValueHelp="true"
                                                    valueHelpRequest="onValHelpReq" value="{draft>Material}"/>
                                             <Input value="{draft>MatGroup}"/>

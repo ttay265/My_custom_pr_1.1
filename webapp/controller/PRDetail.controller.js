@@ -18,7 +18,7 @@ sap.ui.define([
         onInit: function () {
             var viewModel = new JSONModel({
                 editing: false,
-                createMode: true
+                createMode: false
             }, true);
             this.setModel(viewModel, "ui");
             this.setModel(new JSONModel({}, true), "draft", true);
@@ -56,7 +56,7 @@ sap.ui.define([
             var oDataModel = this.getModel();
             var PreqNo = o.getParameter("arguments").PreqNo;
             if (PreqNo === "new" || PreqNo === "copy") {
-                //Default mode is EDIT
+                //Default mode is EDIT & CREATE MODE
                 this.getModel("ui").setProperty("/", {
                     editing: true,
                     createMode: true
@@ -101,10 +101,6 @@ sap.ui.define([
             } else {
                 this.PreqNo = PreqNo;
                 this.loadODataPRItem(this.PreqNo);
-                this.getModel("ui").setProperty("/", {
-                    editing: false,
-                    createMode: false
-                });
             }
         },
         loadODataPRItem: function (PreqNo) {

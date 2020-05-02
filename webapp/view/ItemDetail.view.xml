@@ -33,40 +33,62 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm layout="ResponsiveGridLayout"
-                                          labelSpanXL="4"
-                                          labelSpanL="4"
-                                          labelSpanM="4"
-                                          labelSpanS="12"
-                                          adjustLabelSpan="false"
-                                          emptySpanXL="0"
-                                          emptySpanL="0"
-                                          emptySpanM="0"
-                                          emptySpanS="0"
+                            <f:SimpleForm id="edit_generalinfo"
+                                          layout="ColumnLayout"
+                                          editable="{ui>/editing}"
+                                          visible="{ui>/editing}"
+                                          labelSpanL="12"
                                           columnsXL="4"
-                                          columnsL="4"
-                                          columnsM="3"
-                                          columnsS="1"
-                                          singleContainerFullSize="false">
-                                <Label text="{i18n>PRType}"/>
-                                <Input value="{PRItem>/PrType}"/>
-                                <Label text="{i18n>ItemCategory}"/>
-                                <Input value="{PRItem>/PrType}"/>
-                                <Label text="{i18n>AccAssCat}"/>
-                                <Input value="{PRItem>/AccAssCat}"/>
-                                <Label text="{i18n>ItemDescription}"/>
-                                <Input value="{PRItem>/ItemDescription}"/>
-                                <Label text="{i18n>Material}"/>
-                                <Input cust:VHKey="Material" cust:text="{PRItem>/ItemDescription}"
-                                       showValueHelp="true"
-                                       valueHelpRequest="onValHelpReq" value="{PRItem>/Material}">
-                                </Input>
-                                <Label text="{i18n>MatGroup}"/>
-                                <Input value="{PRItem>/MatGroup}"/>
-                                <Label text="{i18n>SuppMatNum}"/>
-                                <Input value="{PRItem>/SuppMatNum}"/>
-                                <Label text="{i18n>desiredVendor}"/>
-                                <Input value="{PRItem>/desiredVendor}"/>
+                                          columnsL="3"
+                                          columnsM="2">
+                                <f:content>
+                                    <Label text="{i18n>PRType}"/>
+                                    <Input value="{PRItem>/PrType}"/>
+                                    <Label text="{i18n>ItemCategory}"/>
+                                    <Input value="{PRItem>/PrType}"/>
+                                    <Label text="{i18n>AccAssCat}"/>
+                                    <Input value="{PRItem>/AccAssCat}"/>
+                                    <Label text="{i18n>ItemDescription}"/>
+                                    <Input value="{PRItem>/ItemDescription}"/>
+                                    <Label text="{i18n>Material}"/>
+                                    <Input cust:VHKey="Material" cust:text="{PRItem>/ItemDescription}"
+                                           showValueHelp="true"
+                                           valueHelpRequest="onValHelpReq" value="{PRItem>/Material}">
+                                    </Input>
+                                    <Label text="{i18n>MatGroup}"/>
+                                    <Input value="{PRItem>/MatGroup}"/>
+                                    <Label text="{i18n>SuppMatNum}"/>
+                                    <Input value="{PRItem>/SuppMatNum}"/>
+                                    <Label text="{i18n>desiredVendor}"/>
+                                    <Input value="{PRItem>/desiredVendor}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                            <f:SimpleForm id="display_generalinfo"
+                                          layout="ColumnLayout"
+                                          editable="{ui>/editing}"
+                                          visible="{= !${ui>/editing} }"
+                                          labelSpanL="12"
+                                          columnsXL="4"
+                                          columnsL="3"
+                                          columnsM="2">
+                                <f:content>
+                                    <Label text="{i18n>PRType}"/>
+                                    <Text text="{PRItem>/PrType}"/>
+                                    <Label text="{i18n>ItemCategory}"/>
+                                    <Text text="{PRItem>/PrType}"/>
+                                    <Label text="{i18n>AccAssCat}"/>
+                                    <Text text="{PRItem>/AccAssCat}"/>
+                                    <Label text="{i18n>ItemDescription}"/>
+                                    <Text text="{PRItem>/ItemDescription}"/>
+                                    <Label text="{i18n>Material}"/>
+                                    <Text text="{PRItem>/Material}"/>
+                                    <Label text="{i18n>MatGroup}"/>
+                                    <Text text="{PRItem>/MatGroup}"/>
+                                    <Label text="{i18n>SuppMatNum}"/>
+                                    <Text text="{PRItem>/SuppMatNum}"/>
+                                    <Label text="{i18n>desiredVendor}"/>
+                                    <Text text="{PRItem>/desiredVendor}"/>
+                                </f:content>
                             </f:SimpleForm>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
@@ -77,43 +99,36 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm layout="ResponsiveGridLayout"
-                                          labelSpanXL="4"
-                                          labelSpanL="4"
-                                          labelSpanM="4"
-                                          labelSpanS="12"
-                                          adjustLabelSpan="false"
-                                          emptySpanXL="0"
-                                          emptySpanL="0"
-                                          emptySpanM="0"
-                                          emptySpanS="0"
+                            <f:SimpleForm layout="ColumnLayout"
+                                          editable="{ui>/editing}"
+                                          labelSpanL="12"
                                           columnsXL="4"
-                                          columnsL="4"
-                                          columnsM="3"
-                                          columnsS="1"
-                                          singleContainerFullSize="false">
-                                <Label required="true" text="{i18n>Quantity}"/>
-                                <Input value="{PRItem>/Quantity}"/>
-                                <Label text="{i18n>OrderedQuantity}"/>
-                                <Input value="{PRItem>/OrderedQuantity}"/>
-                                <Label text="{i18n>OpenQuantity}"/>
-                                <Input value="{PRItem>/OpenQuantity}"/>
-                                <Label text="{i18n>PRItemIsClosed}"/>
-                                <Input value="{PRItem>/PRItemIsClosed}"/>
-                                <Label text="{i18n>PRItemIsFixed}"/>
-                                <CheckBox checked="{PRItem>/PRItemIsFixed}"/>
-                                <Label text="{i18n>PRItemIsFixed}"/>
-                                <CheckBox checked="{PRItem>/PRItemIsFixed}"/>
-                                <Label required="true" text="{i18n>DelivDate}"/>
-                                <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/DelivDate}"/>-->
-                                <!--<Label text="{i18n>PreqDate}"/>-->
-                                <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PreqDate}"/>-->
-                                <!--<Label required="true" text="{i18n>ReleaseDate}"/>-->
-                                <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/ReleaseDate}"/>-->
-                                <!--<Label required="true" text="{i18n>PlannedDelivDays}"/>-->
-                                <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PlannedDelivDays}"/>-->
-                                <!--<Label required="true" text="{i18n>GRProcessDays}"/>-->
-                                <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/GRProcessDays}"/>-->
+                                          columnsL="3"
+                                          columnsM="2">
+                                <f:content>
+                                    <Label required="true" text="{i18n>Quantity}"/>
+                                    <Input value="{PRItem>/Quantity}"/>
+                                    <Label text="{i18n>OrderedQuantity}"/>
+                                    <Input value="{PRItem>/OrderedQuantity}"/>
+                                    <Label text="{i18n>OpenQuantity}"/>
+                                    <Input value="{PRItem>/OpenQuantity}"/>
+                                    <Label text="{i18n>PRItemIsClosed}"/>
+                                    <Input value="{PRItem>/PRItemIsClosed}"/>
+                                    <Label text="{i18n>PRItemIsFixed}"/>
+                                    <CheckBox checked="{PRItem>/PRItemIsFixed}"/>
+                                    <Label text="{i18n>PRItemIsFixed}"/>
+                                    <CheckBox checked="{PRItem>/PRItemIsFixed}"/>
+                                    <Label required="true" text="{i18n>DelivDate}"/>
+                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/DelivDate}"/>-->
+                                    <!--<Label text="{i18n>PreqDate}"/>-->
+                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PreqDate}"/>-->
+                                    <!--<Label required="true" text="{i18n>ReleaseDate}"/>-->
+                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/ReleaseDate}"/>-->
+                                    <!--<Label required="true" text="{i18n>PlannedDelivDays}"/>-->
+                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PlannedDelivDays}"/>-->
+                                    <!--<Label required="true" text="{i18n>GRProcessDays}"/>-->
+                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/GRProcessDays}"/>-->
+                                </f:content>
                             </f:SimpleForm>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
@@ -123,9 +138,16 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm>
-                                <Label text="{i18n>ValuationPrice}"/>
-                                <Input value="{PRItem>/PreqPrice}"/>
+                            <f:SimpleForm layout="ColumnLayout"
+                                          editable="{ui>/editing}"
+                                          labelSpanL="12"
+                                          columnsXL="4"
+                                          columnsL="3"
+                                          columnsM="2">
+                                <f:content>
+                                    <Label text="{i18n>ValuationPrice}"/>
+                                    <Input value="{PRItem>/PreqPrice}"/>
+                                </f:content>
                             </f:SimpleForm>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
@@ -135,9 +157,17 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm>
-                                <Label text="{i18n>PRType}"/>
-                                <Input value="{/PrType}"/>
+                            <f:SimpleForm layout="ColumnLayout"
+                                          editable="{ui>/editing}"
+                                          labelSpanL="12"
+                                          columnsXL="4"
+                                          columnsL="3"
+                                          columnsM="2">
+                                <f:content>
+
+                                    <Label text="{i18n>PRType}"/>
+                                    <Input value="{/PrType}"/>
+                                </f:content>
                             </f:SimpleForm>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>

@@ -94,11 +94,15 @@ sap.ui.define([
         },
         onValueHelpOkPress: function (oEvent) {
             let token = oEvent.getParameter("tokens")[0];
+            //Get selected key & text
             let key = token.getKey();
             let text = token.getText();
+            //update to input binding
             this.currentVHBinding.setValue(key);
+            this.currentVHBinding.getModel().refresh(true);
             if (this.currentVHTextBinding) {
                 this.currentVHTextBinding.setValue(text);
+                this.currentVHTextBinding.getModel().refresh(true);
             }
             this._oValueHelpDialog.close();
         },
