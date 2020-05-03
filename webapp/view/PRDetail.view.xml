@@ -2,7 +2,9 @@
           controllerName="com.tw.mypr.My_custom_pr.controller.PRDetail"
           xmlns:cust="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
           xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
-          xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout">
+          xmlns:vhd="sap.ui.comp.valuehelpdialog"
+          xmlns:fb="sap.ui.comp.filterbar"
+          xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:l="sap.ui.layout">
     <uxap:ObjectPageLayout showFooter="{= ${ui>/editing} }" upperCaseAnchorBar="false"
                            showTitleInHeaderContent="false"
                            showHeaderContent="{= !${ui>/editing} }">
@@ -73,8 +75,6 @@
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
                                         <ToolbarSpacer/>
-                                        <Button visible="{ui>/editing}" enabled="false" press="onPressCopyItem"
-                                                text="{i18n>copyItem}"/>
                                         <Button enabled="false" press="onUpdatePriceItem" text="{i18n>UpdatePrice}"/>
                                     </Toolbar>
                                 </headerToolbar>
@@ -83,7 +83,7 @@
                                         <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
+                                        <Text wrapping="true" maxLines="2" text="{i18n>ProdTypGrp}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>Material}"/>
@@ -124,16 +124,16 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                            <Table items="{draft>/To_PRItems}"
+                            <Table id="_table_PRItem_draft" mode="MultiSelect" items="{draft>/To_PRItems}" selectionChange="onSelectionChange"
                                    visible="{ui>/editing}">
                                 <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
                                         <ToolbarSpacer/>
-                                        <Button visible="{ui>/editing}" enabled="false" press="onPressCopyItem"
-                                                text="{i18n>copyItem}"/>
+                                        <!--<Button visible="{ui>/editing}" enabled="false" press="onPressCopyItem"-->
+                                                <!--text="{i18n>copyItem}"/>-->
                                         <Button enabled="false" press="onUpdatePriceItem" text="{i18n>UpdatePrice}"/>
-                                        <Button visible="{ui>/editing}" enabled="false"
+                                        <Button visible="{ui>/editing}" enabled="{ui>/itemSelected}"
                                                 press="onPressDeleteItem"
                                                 text="{i18n>deleteItem}"/>
                                         <Button visible="{ui>/editing}" enabled="true" icon="sap-icon://add"
@@ -159,7 +159,7 @@
                                         <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>MatTypGrp}"/>
+                                        <Text wrapping="true" maxLines="2" text="{i18n>ProdTypGrp}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>Material}"/>
@@ -170,10 +170,10 @@
                                     <Column demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>Plant}"/>
                                     </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                    <Column hAlign="End" demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>Quantity}"/>
                                     </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                    <Column hAlign="End" demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>ValuationPrice}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
@@ -187,18 +187,40 @@
                                     <ColumnListItem type="Navigation" press="onItemPress">
                                         <cells>
                                             <Text text="{draft>PreqItem}"/>
-                                            <Input value="{draft>ProdTypGrp}"/>
+                                            <Text text="{draft>ProdTypGrp}"/>
+                                            <Input cust:VHKey="ProdTypGrp" cust:text="{draft>ItemDescription}"
+                                                   showValueHelp="true"
+                                                   valueHelpRequest="onValHelpReq" value="{draft>Material}">
+                                                <!--<dependents>-->
+                                                <!--<vhd:ValueHelpDialog-->
+                                                <!--ok=".onValueHelpOkPress"-->
+                                                <!--cancel="onValueHelpCancelPress"-->
+                                                <!--afterClose="onValueHelpAfterClose"-->
+                                                <!--supportMultiselect="false"-->
+                                                <!--key="Material"-->
+                                                <!--descriptionKey="MaterialDescription">-->
+                                                <!--</vhd:ValueHelpDialog>-->
+                                                <!--</dependents>-->
+                                            </Input>
+                                            <Text text="{draft>MatGroup}"/>
                                             <Input cust:VHKey="Material" cust:text="{draft>ItemDescription}"
                                                    showValueHelp="true"
-                                                   valueHelpRequest="onValHelpReq" value="{draft>Material}"/>
-                                            <Input value="{draft>MatGroup}"/>
-                                            <Input value="{draft>Plant}"/>
+                                                   valueHelpRequest="onValHelpReq" value="{draft>Plant}"/>
                                             <Input value="{draft>Quanity}" fieldWidth="50%"
                                                    description="{draft>Unit}"/>
-                                            <u:Currency useSymbol="false" stringValue="{draft>PreqPrice}"
-                                                        currency="{draft>Currency}"/>
-                                            <Text text="{draft>Requisitioner}"/>
-                                            <Text text="{draft>FixedVend}"/>
+                                            <!--<u:Currency useSymbol="false" stringValue="{draft>PreqPrice}"-->
+                                            <!--currency="{draft>Currency}"/>-->
+                                            <HBox width="auto" justifyContent="SpaceBetween">
+                                                <Input width="auto" textAlign="End"
+                                                       value="{ parts: [{path: 'draft>PreqPrice'}, {path: 'draft>/Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false } }"/>
+                                                <Input class="sapUiTinyMarginBegin" width="4.8rem" cust:VHKey="Currency"
+                                                       showValueHelp="true"
+                                                       valueHelpRequest="onValHelpReq" value="{draft>Currency}"/>
+                                            </HBox>
+                                            <Input value="{draft>Requisitioner}"/>
+                                            <Input cust:VHKey="Material" cust:text="{draft>ItemDescription}"
+                                                   showValueHelp="true"
+                                                   valueHelpRequest="onValHelpReq" value="{draft>FixedVend}"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>

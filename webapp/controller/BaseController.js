@@ -67,8 +67,10 @@ sap.ui.define([
 
             //Initialize VHD
             var VHData = this.getVHColsModel().getProperty("/" + VHKey)
+
             // if (!this._oValueHelpDialog) {
             this._oValueHelpDialog = sap.ui.xmlfragment("com.tw.mypr.My_custom_pr.fragment.ValueHelpDialog", this);
+            // this._oValueHelpDialog = src.getDependents()[0];
             this.getView().addDependent(this._oValueHelpDialog);
             // }
             this._oValueHelpDialog.getTableAsync().then(function (oTable) {

@@ -8,6 +8,44 @@
       },
       {
         "label": "Material Description",
+        "template": "MaterialDescription"
+      }
+    ]
+  },
+  "ProdTypGrp": {
+    "path": "/MaterialTextSet",
+    "cols": [
+      {
+        "label": "Material",
+        "template": "Material"
+      },
+      {
+        "label": "Material Description",
+        "template": "MaterialDescription"
+      }
+    ]
+  },
+  "Currency": {
+    "path": "/CurrencySet",
+    "cols": [
+      {
+        "label": "Currency",
+        "template": "Currency"
+      },
+      {
+        "label": "Description",
+        "template": "Description" },
+      {
+        "label": "Decimal Places",
+        "template": "ItemDescription" },
+      {
+        "label": "ISO Code",
+        "template": "ItemDescription" },
+      {
+        "label": "Alternative Key",
+        "template": "ItemDescription" },
+      {
+        "label": "Primary",
         "template": "ItemDescription"
       }
     ]

@@ -16,9 +16,11 @@ sap.ui.define([
          * @memberOf com.tw.mypr.My_custom_pr.view.PRList
          */
         onInit: function () {
+            this.table_PRItem_draft = this.byId("_table_PRItem_draft");
             var viewModel = new JSONModel({
                 editing: false,
-                createMode: false
+                createMode: false,
+                itemSelected: false
             }, true);
             this.setModel(viewModel, "ui");
             this.setModel(new JSONModel({}, true), "draft", true);
@@ -32,8 +34,25 @@ sap.ui.define([
             draftModel.setProperty("/", draftPRObject);
             return draftModel;
         },
-        onPressDeleteItem: function () {
-
+        onPressDeleteItem: function (o) {
+            var table = o.getSource().getParent().getParent();
+            var deletingItems = [];
+            table.getSelectedItems().forEach(function(e) {
+                let PreqItem = e.getBindingContext("draft").getObject().PreqItem;
+                deletingItems.push(PreqItem);
+            });
+            var To_PRItems = this.getModel("draft").getProperty("/To_PRItems");
+            deletingItems.forEach(function(e) {
+                var idx = To_PRItems.findIndex(function(p) {
+                    return p.PreqItem == e;
+                });
+                To_PRItems.splice(idx, 1);
+            });
+            this.getModel("draft").refresh();
+            this.table_PRItem_draft.fireSelectionChange();
+        },
+        onSelectionChange: function (o) {
+            this.getModel("ui").setProperty("/itemSelected", o.getSource().getSelectedItems().length > 0);
         },
         onAfterRendering: function () {
 
@@ -55,6 +74,7 @@ sap.ui.define([
             var that = this;
             var oDataModel = this.getModel();
             var PreqNo = o.getParameter("arguments").PreqNo;
+            var isEdit = this.getModel("ui").getProperty("/editing");
             if (PreqNo === "new" || PreqNo === "copy") {
                 //Default mode is EDIT & CREATE MODE
                 this.getModel("ui").setProperty("/", {
@@ -98,11 +118,12 @@ sap.ui.define([
                         });
                     }
                 }
-            } else {
+            } else if (!isEdit) {
                 this.PreqNo = PreqNo;
                 this.loadODataPRItem(this.PreqNo);
             }
         },
+
         loadODataPRItem: function (PreqNo) {
             var oDataModel = this.getModel();
             var that = this;
@@ -128,6 +149,7 @@ sap.ui.define([
             //copy display data to edit model
             var prData = this.getModel("display").getProperty("/");
             this.getModel("draft").setProperty("/", prData);
+            this.table_PRItem_draft.removeSelections(true);
         },
         onCancelEditPR: function (e) {
             if (this.getModel("ui").getProperty("/createMode") === true) {
@@ -141,11 +163,10 @@ sap.ui.define([
             var draftModel = this.getModel("draft");
             var draftPR = draftModel.getProperty("/");
             var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet");
-            newPRItem.Preqno = draftPR.PreqNo;
+            newPRItem.PreqNo = draftPR.PreqNo;
             newPRItem.PreqItem = formatter.formatNUMC((draftPR.To_PRItems.length + 1) * 10, 5);
-            delete newPRItem.__metadata;
             draftPR.To_PRItems.push(newPRItem);
-            draftModel.setProperty("/To_PRItems", draftPR.To_PRItems);
+            draftModel.refresh();
             this.getRouter().navTo("itemDetail", {
                 PreqItem: newPRItem.PreqItem,
                 edit: true

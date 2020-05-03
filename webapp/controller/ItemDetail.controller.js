@@ -34,12 +34,12 @@ sap.ui.define([
                 var PRItemModel = this.getModel("display");
             }
             this.getModel("ui").setProperty("/editing", editing);
-            var PRItem = PRItemModel.getProperty("/To_PRItems").find(function (a) {
-                return a.PreqItem = PreqItem;
+            var To_PRItems = PRItemModel.getProperty("/To_PRItems");
+            var currentPRItem = To_PRItems.find(function (a) {
+                return a.PreqItem == PreqItem;
             });
-            this.getModel("PRItem").setProperty("/", PRItem);
+            this.getModel("PRItem").setProperty("/", currentPRItem);
         },
-
 
 
         /**
