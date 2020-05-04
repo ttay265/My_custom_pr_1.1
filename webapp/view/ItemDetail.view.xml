@@ -42,12 +42,23 @@
                                           columnsL="3"
                                           columnsM="2">
                                 <f:content>
-                                    <Label text="{i18n>PRType}"/>
-                                    <Input value="{PRItem>/PrType}"/>
                                     <Label text="{i18n>ItemCategory}"/>
-                                    <Input value="{PRItem>/PrType}"/>
+                                    <ComboBox value="{PRItem>/PrType}">
+                                        <items>
+                                            <core:Item key="1" text="Standard"/>
+                                            <core:Item key="2" text="Third-party"/>
+                                        </items>
+                                    </ComboBox>
+                                    <Label text="{i18n>Plant}"/>
+                                    <Input cust:VHKey="Plant" cust:text="{PRItem>/Plant}"
+                                           showValueHelp="true"
+                                           valueHelpRequest="onValHelpReq"
+                                           value="{PRItem>/Plant}"/>
                                     <Label text="{i18n>AccAssCat}"/>
-                                    <Input value="{PRItem>/AccAssCat}"/>
+                                    <Input cust:VHKey="AccAssCat" cust:text="{PRItem>/AccAssCat}"
+                                           showValueHelp="true"
+                                           valueHelpRequest="onValHelpReq"
+                                           value="{PRItem>/AccAssCat}"/>
                                     <Label text="{i18n>ItemDescription}"/>
                                     <Input value="{PRItem>/ItemDescription}"/>
                                     <Label text="{i18n>Material}"/>
@@ -119,15 +130,20 @@
                                     <Label text="{i18n>PRItemIsFixed}"/>
                                     <CheckBox checked="{PRItem>/PRItemIsFixed}"/>
                                     <Label required="true" text="{i18n>DelivDate}"/>
-                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/DelivDate}"/>-->
-                                    <!--<Label text="{i18n>PreqDate}"/>-->
-                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PreqDate}"/>-->
-                                    <!--<Label required="true" text="{i18n>ReleaseDate}"/>-->
-                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/ReleaseDate}"/>-->
-                                    <!--<Label required="true" text="{i18n>PlannedDelivDays}"/>-->
-                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/PlannedDelivDays}"/>-->
-                                    <!--<Label required="true" text="{i18n>GRProcessDays}"/>-->
-                                    <!--<DatePicker displayFormatType="dd/MM/yyyy" checked="{PRItem>/GRProcessDays}"/>-->
+                                    <DatePicker displayFormat="dd/MM/yyyy"
+                                                dateValue="{PRItem>/DelivDate}"/>
+                                    <Label text="{i18n>PreqDate}"/>
+                                    <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
+                                                value="{PRItem>/PreqDate}"/>
+                                    <Label required="true" text="{i18n>ReleaseDate}"/>
+                                    <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
+                                                value="{PRItem>/ReleaseDate}"/>
+                                    <Label required="true" text="{i18n>PlannedDelivDays}"/>
+                                    <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
+                                                value="{PRItem>/PlannedDelivDays}"/>
+                                    <Label required="true" text="{i18n>GRProcessDays}"/>
+                                    <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
+                                                value="{PRItem>/GRProcessDays}"/>
                                 </f:content>
                             </f:SimpleForm>
                         </uxap:blocks>

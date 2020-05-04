@@ -3,503 +3,1433 @@
     "results": [
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000020',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000020',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM129',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM129',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1508112000000)\/",
-        "LastChangeDate": "\/Date(1508112000000)\/",
-        "PreqNo": "10000020",
-        "PreqItem": "00010",
-        "Material": "",
-        "ItemDescription": "Requisition 1",
-        "Quantity": "1.000",
-        "Unit": "PC",
-        "PreqPrice": "3000.000000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1508371200000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "",
-        "StatusID": "B",
-        "MatlGroup": "YBFA07"
+        "Material": "RM129",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW129,PD"
       },
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000010',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000010',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM129',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM129',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1507507200000)\/",
-        "LastChangeDate": "\/Date(1507507200000)\/",
-        "PreqNo": "10000010",
-        "PreqItem": "00010",
-        "Material": "",
-        "ItemDescription": "Office supply",
-        "Quantity": "600.000",
-        "Unit": "ea",
-        "PreqPrice": "100.000000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1510185600000)\/",
-        "PurGroup": "003",
+        "Material": "RM129",
+        "Language": "",
+        "MaterialGroup": "L002",
         "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "",
-        "StatusID": "B",
-        "MatlGroup": "YBMM00"
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW129,PD"
       },
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000011',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000011',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RP001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RP001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1507507200000)\/",
-        "LastChangeDate": "\/Date(1507507200000)\/",
-        "PreqNo": "10000011",
-        "PreqItem": "00010",
-        "Material": "",
-        "ItemDescription": "Office",
-        "Quantity": "100.000",
-        "Unit": "ea",
-        "PreqPrice": "650.000000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1507507200000)\/",
-        "PurGroup": "003",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "",
-        "StatusID": "B",
-        "MatlGroup": "YBMM00"
+        "Material": "RP001",
+        "Language": "",
+        "MaterialGroup": "L006",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Empties,ND"
       },
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000021',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000021',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RP001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RP001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1508112000000)\/",
-        "LastChangeDate": "\/Date(1508112000000)\/",
-        "PreqNo": "10000021",
-        "PreqItem": "00010",
-        "Material": "TG10",
-        "ItemDescription": "Trad.Good 10,PD,Third Party",
-        "Quantity": "3.000",
-        "Unit": "PC",
-        "PreqPrice": "12.350000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1508112000000)\/",
-        "PurGroup": "001",
+        "Material": "RP001",
+        "Language": "",
+        "MaterialGroup": "L006",
         "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "B",
-        "MatlGroup": "L001"
+        "BaseUnit": "PC",
+        "MaterialDescription": "Empties,ND"
       },
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000000',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000000',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='NL001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='NL001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1507248000000)\/",
-        "LastChangeDate": "\/Date(1508112000000)\/",
-        "PreqNo": "10000000",
-        "PreqItem": "00010",
-        "Material": "TG10",
-        "ItemDescription": "Trad.Good 10,PD,Third Party",
-        "Quantity": "30.000",
-        "Unit": "PC",
-        "PreqPrice": "12.350000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1507248000000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "B",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000022',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000022',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1508112000000)\/",
-        "LastChangeDate": "\/Date(1508198400000)\/",
-        "PreqNo": "10000022",
-        "PreqItem": "00010",
-        "Material": "TG10",
-        "ItemDescription": "Trad.Good 10,PD,Third Party",
-        "Quantity": "4.000",
-        "Unit": "PC",
-        "PreqPrice": "13.650000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1508112000000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300002",
-        "StatusID": "B",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000022',PreqItem='00020')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000022',PreqItem='00020')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1508198400000)\/",
-        "LastChangeDate": "\/Date(1508198400000)\/",
-        "PreqNo": "10000022",
-        "PreqItem": "00020",
-        "Material": "TG10",
-        "ItemDescription": "Trad.Good 10,PD,Third Party",
-        "Quantity": "1.000",
-        "Unit": "PC",
-        "PreqPrice": "13.650000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1508112000000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300002",
-        "StatusID": "B",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000023',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000023',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1508198400000)\/",
-        "LastChangeDate": "\/Date(1508198400000)\/",
-        "PreqNo": "10000023",
-        "PreqItem": "00010",
-        "Material": "TG13",
-        "ItemDescription": "Trad.Good 13,Reorder Point,Thrd Party",
-        "Quantity": "2.000",
-        "Unit": "PC",
-        "PreqPrice": "12.350000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1508198400000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "B",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000023',PreqItem='00020')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000023',PreqItem='00020')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1508198400000)\/",
-        "LastChangeDate": "\/Date(1508198400000)\/",
-        "PreqNo": "10000023",
-        "PreqItem": "00020",
-        "Material": "TG13",
-        "ItemDescription": "Trad.Good 13,Reorder Point,Thrd Party",
-        "Quantity": "1.000",
-        "Unit": "PC",
-        "PreqPrice": "12.350000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1508198400000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "B",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000535',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000535',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1540425600000)\/",
-        "LastChangeDate": "\/Date(1540425600000)\/",
-        "PreqNo": "10000535",
-        "PreqItem": "00010",
-        "Material": "TG13",
-        "ItemDescription": "Dummy Text",
-        "Quantity": "1210.000",
-        "Unit": "PC",
-        "PreqPrice": "13.000000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1540425600000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "",
-        "FixedVend": "",
-        "StatusID": "05",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000781',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000781',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1571011200000)\/",
-        "LastChangeDate": "\/Date(1571097600000)\/",
-        "PreqNo": "10000781",
-        "PreqItem": "00010",
-        "Material": "TG10",
-        "ItemDescription": "Trad.Good 10,PD,Third Party",
-        "Quantity": "50.000",
-        "Unit": "PC",
-        "PreqPrice": "12.460000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1571097600000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "",
-        "FixedVend": "17300001",
-        "StatusID": "02",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000822',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000822',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1571702400000)\/",
-        "LastChangeDate": "\/Date(1571702400000)\/",
-        "PreqNo": "10000822",
-        "PreqItem": "00010",
-        "Material": "TG13",
-        "ItemDescription": "Trad.Good 13,Reorder Point,Thrd Party",
-        "Quantity": "10.000",
-        "Unit": "PC",
-        "PreqPrice": "12.760000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1571702400000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "B",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000781',PreqItem='00020')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000781',PreqItem='00020')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1571011200000)\/",
-        "LastChangeDate": "\/Date(1571097600000)\/",
-        "PreqNo": "10000781",
-        "PreqItem": "00020",
-        "Material": "TG11",
-        "ItemDescription": "Trad.Good 11,PD,Reg.Trading",
-        "Quantity": "10.000",
-        "Unit": "PC",
-        "PreqPrice": "13.780000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1571097600000)\/",
-        "PurGroup": "002",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "02",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000609',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000609',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1541462400000)\/",
-        "LastChangeDate": "\/Date(1541462400000)\/",
-        "PreqNo": "10000609",
-        "PreqItem": "00010",
-        "Material": "TG10",
-        "ItemDescription": "Dummy Text",
-        "Quantity": "10.000",
-        "Unit": "PC",
-        "PreqPrice": "12.460000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1541462400000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "",
-        "FixedVend": "",
-        "StatusID": "05",
-        "MatlGroup": "L001"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10001422',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10001422',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1581033600000)\/",
-        "LastChangeDate": "\/Date(1581033600000)\/",
-        "PreqNo": "10001422",
-        "PreqItem": "00010",
-        "Material": "EWMS4-503L",
-        "ItemDescription": "RAW503,Fast Moving",
-        "Quantity": "80000.000",
-        "Unit": "PC",
-        "PreqPrice": "5.000000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1585267200000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "EWM17-SU01",
-        "StatusID": "B",
-        "MatlGroup": "L002"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10001425',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10001425',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1581033600000)\/",
-        "LastChangeDate": "\/Date(1581033600000)\/",
-        "PreqNo": "10001425",
-        "PreqItem": "00010",
-        "Material": "MZ-RM-C990-04",
-        "ItemDescription": "",
-        "Quantity": "42.000",
-        "Unit": "PC",
-        "PreqPrice": "14.450000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1581465600000)\/",
-        "PurGroup": "Z90",
-        "Plant": "1710",
-        "PurchOrg": "",
-        "FixedVend": "",
-        "StatusID": "02",
-        "MatlGroup": "ZWHEEL"
-      },
-      {
-        "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000508',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000508',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
-        },
-        "CreationDate": "\/Date(1539907200000)\/",
-        "LastChangeDate": "\/Date(1540339200000)\/",
-        "PreqNo": "10000508",
-        "PreqItem": "00010",
         "Material": "NL001",
-        "ItemDescription": "Screw",
-        "Quantity": "1.000",
-        "Unit": "PC",
-        "PreqPrice": "0.000000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1539907200000)\/",
-        "PurGroup": "Z90",
+        "Language": "",
+        "MaterialGroup": "YBMM01",
         "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "B",
-        "MatlGroup": "YBMM01"
+        "BaseUnit": "PC",
+        "MaterialDescription": "Screw"
       },
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000024',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000024',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='NL001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='NL001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1508198400000)\/",
-        "LastChangeDate": "\/Date(1540512000000)\/",
-        "PreqNo": "10000024",
-        "PreqItem": "00010",
-        "Material": "",
-        "ItemDescription": "Packaging",
-        "Quantity": "100.000",
-        "Unit": "PC",
-        "PreqPrice": "35.000000000",
-        "UnitPrice": "100",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1508716800000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "1710",
-        "FixedVend": "17300001",
-        "StatusID": "B",
-        "MatlGroup": "L004"
+        "Material": "NL001",
+        "Language": "",
+        "MaterialGroup": "YBMM01",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Screw"
       },
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000741',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000741',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1569542400000)\/",
-        "LastChangeDate": "\/Date(1569542400000)\/",
-        "PreqNo": "10000741",
-        "PreqItem": "00010",
-        "Material": "TG10",
-        "ItemDescription": "Trad.Good 10,PD,Third Party",
-        "Quantity": "10.000",
-        "Unit": "PC",
-        "PreqPrice": "12.460000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1553040000000)\/",
-        "PurGroup": "001",
-        "Plant": "1710",
-        "PurchOrg": "",
-        "FixedVend": "",
-        "StatusID": "05",
-        "MatlGroup": "L001"
+        "Material": "SP001",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Bearing"
       },
       {
         "__metadata": {
-          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000751',PreqItem='00010')",
-          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000751',PreqItem='00010')",
-          "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
         },
-        "CreationDate": "\/Date(1569974400000)\/",
-        "LastChangeDate": "\/Date(1569974400000)\/",
-        "PreqNo": "10000751",
-        "PreqItem": "00010",
-        "Material": "RM12",
-        "ItemDescription": "RAW12,PD,RepetitiveManuf.",
-        "Quantity": "5.000",
-        "Unit": "PC",
-        "PreqPrice": "1.000000000",
-        "UnitPrice": "1",
-        "Currency": "USD",
-        "DelivDate": "\/Date(1552867200000)\/",
-        "PurGroup": "001",
+        "Material": "SP001",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
         "Plant": "1710",
-        "PurchOrg": "",
-        "FixedVend": "",
-        "StatusID": "02",
-        "MatlGroup": "L002"
+        "BaseUnit": "PC",
+        "MaterialDescription": "Bearing"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP002',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP002',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP002",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Coupling"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP002',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP002',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP002",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Coupling"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP003',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP003',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP003",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Shaft"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP003',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP003',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP003",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Shaft"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP004',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP004',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP004",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Gaskets 1mm"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP004',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP004',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP004",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Gaskets 1mm"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP005',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP005',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP005",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Mechanical Seal"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP005',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP005',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP005",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Mechanical Seal"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP006',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP006',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP006",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Spur gear IS651"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP006',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SP006',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SP006",
+        "Language": "",
+        "MaterialGroup": "YBPM01",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Spur gear IS651"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-1',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-1',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM233-1",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW233-1, PD, KANBAN Stock Transfer"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-1',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-1',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM233-1",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW233-1, PD, KANBAN Stock Transfer"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-2',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-2',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM233-2",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW233-2,ND,KANBAN,sched. agreements"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-2',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-2',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM233-2",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW233-2,ND,KANBAN,sched. agreements"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-4',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-4',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM233-4",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW233-4,ND,KANBAN,sched. agreements"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-4',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM233-4',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM233-4",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW233-4,ND,KANBAN,sched. agreements"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM234',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM234',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM234",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW234,VB,Repetitive Manuf."
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM234',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='RM234',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "RM234",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW234,VB,Repetitive Manuf."
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG233',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG233',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SG233",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI233,PD,KANBAN, REM"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG233',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG233',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SG233",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI233,PD,KANBAN, REM"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG233',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG233',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "FG233",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "FERT 233, PD, Repetitive Manuf."
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG233',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG233',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "FG233",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "FERT 233, PD, Repetitive Manuf."
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG29',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG29',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SG29",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEM29,PD,QM"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG29',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG29',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SG29",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEM29,PD,QM"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG129',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG129',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "FG129",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "FIN129,MTS-DI,PD,QM"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG129',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG129',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "FG129",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "FIN129,MTS-DI,PD,QM"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM001",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Regular"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM001',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM001',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM001",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Regular"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM002',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM002',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM002",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Q-Info-Record"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM002',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM002',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM002",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Q-Info-Record"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM003',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM003',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM003",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Dynamic Modification"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM003',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM003',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM003",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Dynamic Modification"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM004',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM004',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM004",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Sampling Scheme"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM004',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='QM004',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "QM004",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "QM Sampling Scheme"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG23',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG23',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SG23",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI23,PD,Subcontracting"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG23',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SG23',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SG23",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI23,PD,Subcontracting"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "CM-FL-V01",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "CM-FL-V01",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-COMB',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-COMB',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-COMB",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Base Combustion Model"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-COMB',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-COMB',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-COMB",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Base Combustion Model"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-ELECTRIC',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-ELECTRIC',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-ELECTRIC",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Base Electrical Model"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-ELECTRIC',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-ELECTRIC',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-ELECTRIC",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Base Electrical Model"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-CWEIGHT',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-CWEIGHT',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-CWEIGHT",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Counterweight Â Plate"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-CWEIGHT',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-CWEIGHT',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-CWEIGHT",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Counterweight Â Plate"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-S',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-S',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-FORK-S",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Small Fork"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-S',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-S',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-FORK-S",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Small Fork"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-M',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-M',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-FORK-M",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Medium Fork"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-M',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-M',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-FORK-M",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Medium Fork"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-L',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-L',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-FORK-L",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Large Fork"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-L',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-FORK-L',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-FORK-L",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Large Fork"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-CUSH',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-CUSH',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-TIRE-CUSH",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Cushion Tire"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-CUSH',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-CUSH',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-TIRE-CUSH",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Cushion Tire"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-PNEU',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-PNEU',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-TIRE-PNEU",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Pneumatic Tire"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-PNEU',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='SF-FL-TIRE-PNEU',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "SF-FL-TIRE-PNEU",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift Pneumatic Tire"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V00',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V00',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "CM-FL-V00",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V00',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='CM-FL-V00',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "CM-FL-V00",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG-FL-MV-V00',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG-FL-MV-V00',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "FG-FL-MV-V00",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift - Material variant"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG-FL-MV-V00',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='FG-FL-MV-V00',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "FG-FL-MV-V00",
+        "Language": "",
+        "MaterialGroup": "L004",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forklift - Material variant"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-01",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Small Part, Slow-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-01",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Small Part, Slow-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-02',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-02',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-02",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Small Part, Fast-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-02',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-02',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-02",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Small Part, Fast-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-10',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-10',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-10",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Large Part, Slow-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-10',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-10',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-10",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Large Part, Slow-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-11',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-11',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-11",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Large Part, Fast-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-11',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='EWMS4-11',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "EWMS4-11",
+        "Language": "",
+        "MaterialGroup": "L001",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Large Part, Fast-Moving Item"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-202',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-202',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "S-202",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI202,MTS,D1"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-202',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-202',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "S-202",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI202,MTS,D1"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-301',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-301',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "S-301",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI301,MTS,PD,Subassembly"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-301',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='S-301',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "S-301",
+        "Language": "",
+        "MaterialGroup": "L003",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "SEMI301,MTS,PD,Subassembly"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-302',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-302',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "R-302",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW302,PD"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-302',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-302',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "R-302",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW302,PD"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-401',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-401',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "R-401",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW401,D1"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-401',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='R-401',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "R-401",
+        "Language": "",
+        "MaterialGroup": "L002",
+        "Plant": "1010",
+        "BaseUnit": "PC",
+        "MaterialDescription": "RAW401,D1"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C900-01",
+        "Language": "",
+        "MaterialGroup": "ZFRAME",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Frame 900"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-02',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-02',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C900-02",
+        "Language": "",
+        "MaterialGroup": "ZHANDLE",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Handle Bars-900"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-03',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-03',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C900-03",
+        "Language": "",
+        "MaterialGroup": "ZSEAT",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Seat - 900"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-07',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-07',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C900-07",
+        "Language": "",
+        "MaterialGroup": "ZTRAIN",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Drive Train-900"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-04',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-04',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C900-04",
+        "Language": "",
+        "MaterialGroup": "ZWHEEL",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Wheels-900"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-06',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-06',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C900-06",
+        "Language": "",
+        "MaterialGroup": "ZBRAKES",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Brakes-900"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-05',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C900-05',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C900-05",
+        "Language": "",
+        "MaterialGroup": "ZFORK",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forks-900"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C950-01",
+        "Language": "",
+        "MaterialGroup": "ZFRAME",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Frame-950"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-05',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-05',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C950-05",
+        "Language": "",
+        "MaterialGroup": "ZFORK",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forks-950"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-02',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-02',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C990-02",
+        "Language": "",
+        "MaterialGroup": "ZHANDLE",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-990 Handle Bars"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-05',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-05',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C990-05",
+        "Language": "",
+        "MaterialGroup": "ZFORK",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-990 Forks"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-04',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-04',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C950-04",
+        "Language": "",
+        "MaterialGroup": "ZWHEEL",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-950 Wheels"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-04',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-04',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C990-04",
+        "Language": "",
+        "MaterialGroup": "ZWHEEL",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-990 Wheels"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-02',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-02',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C950-02",
+        "Language": "",
+        "MaterialGroup": "ZHANDLE",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Handle Bars-950"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-06',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-06',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C950-06",
+        "Language": "",
+        "MaterialGroup": "ZBRAKES",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Brakes-950"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-06',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-06',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C990-06",
+        "Language": "",
+        "MaterialGroup": "ZBRAKES",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-990 Brakes"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-03',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-03',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C950-03",
+        "Language": "",
+        "MaterialGroup": "ZSEAT",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Seat - 950"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-07',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C950-07',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C950-07",
+        "Language": "",
+        "MaterialGroup": "ZTRAIN",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Drive Train-950"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C990-01",
+        "Language": "",
+        "MaterialGroup": "ZFRAME",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-990 Frame"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-03',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-03',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C990-03",
+        "Language": "",
+        "MaterialGroup": "ZSEAT",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-990 Seat"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-09',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-C990-09',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-C990-09",
+        "Language": "",
+        "MaterialGroup": "ZTRAIN",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "BKC-990 Drive Train"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-01',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-01',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-M500-01",
+        "Language": "",
+        "MaterialGroup": "ZFRAME",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Frame-500"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-02',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-02',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-M500-02",
+        "Language": "",
+        "MaterialGroup": "ZHANDLE",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Handle Bars-500"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-03',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-03',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-M500-03",
+        "Language": "",
+        "MaterialGroup": "ZSEAT",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Seat - 500"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-04',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-04',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-M500-04",
+        "Language": "",
+        "MaterialGroup": "ZWHEEL",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Wheels-500"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-05',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-05',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-M500-05",
+        "Language": "",
+        "MaterialGroup": "ZFORK",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Forks-500"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-06',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-06',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-M500-06",
+        "Language": "",
+        "MaterialGroup": "ZBRAKES",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Brakes-500"
+      },
+      {
+        "__metadata": {
+          "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-09',Language='')",
+          "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/MaterialTextSet(Material='MZ-RM-M500-09',Language='')",
+          "type": "Z_PURREQUISITION_EXT_SRV.MaterialTextType"
+        },
+        "Material": "MZ-RM-M500-09",
+        "Language": "",
+        "MaterialGroup": "ZTRAIN",
+        "Plant": "1710",
+        "BaseUnit": "PC",
+        "MaterialDescription": "Drive Train-500"
       }
     ]
   }

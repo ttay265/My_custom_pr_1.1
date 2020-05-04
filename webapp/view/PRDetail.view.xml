@@ -4,7 +4,7 @@
           xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
           xmlns:vhd="sap.ui.comp.valuehelpdialog"
           xmlns:fb="sap.ui.comp.filterbar"
-          xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:l="sap.ui.layout">
+          xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
     <uxap:ObjectPageLayout showFooter="{= ${ui>/editing} }" upperCaseAnchorBar="false"
                            showTitleInHeaderContent="false"
                            showHeaderContent="{= !${ui>/editing} }">
@@ -58,9 +58,18 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm>
+                            <f:SimpleForm visible="{= !${ui>/editing} || !${ui>/createMode} }">
                                 <Label text="{i18n>PRType}"/>
-                                <Text text="{/PrType}"/>
+                                <Text text="{path: 'display>/PrType', formatter:'.formatter.docTypeText'}"/>
+                            </f:SimpleForm>
+                            <f:SimpleForm editable="true" visible="{= ${ui>/editing} &amp;&amp; ${ui>/createMode} }">
+                                <Label text="{i18n>PRType}"/>
+                                <ComboBox items="{PurcDocType>/}" selectedKey="{draft>/PrType}"
+                                          value="{path: 'draft>/PrType', formatter:'.formatter.docTypeText'}">
+                                    <items>
+                                        <core:Item key="{PurcDocType>DocType}" text="{PurcDocType>Description}"/>
+                                    </items>
+                                </ComboBox>
                             </f:SimpleForm>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
@@ -82,9 +91,9 @@
                                     <Column demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
                                     </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>ProdTypGrp}"/>
-                                    </Column>
+                                    <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+                                    <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>ProdTypGrp}"/>-->
+                                    <!--                                    </Column>-->
                                     <Column demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>Material}"/>
                                     </Column>
@@ -111,7 +120,7 @@
                                     <ColumnListItem type="Navigation" press="onItemPress">
                                         <cells>
                                             <Text text="{display>PreqItem}"/>
-                                            <Text text="{display>ProdTypGrp}"/>
+                                            <!--                                            <Text text="{display>ProdTypGrp}"/>-->
                                             <Text text="{display>Material}"/>
                                             <Text text="{display>MatGroup}"/>
                                             <Text text="{display>Plant}"/>
@@ -124,14 +133,15 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                            <Table id="_table_PRItem_draft" mode="MultiSelect" items="{draft>/To_PRItems}" selectionChange="onSelectionChange"
+                            <Table id="_table_PRItem_draft" mode="MultiSelect" items="{draft>/To_PRItems}"
+                                   selectionChange="onSelectionChange"
                                    visible="{ui>/editing}">
                                 <headerToolbar>
                                     <Toolbar class="sapUiMediumMarginBegin sapUiMediumMarginEnd" design="Transparent"
                                              height="60px">
                                         <ToolbarSpacer/>
                                         <!--<Button visible="{ui>/editing}" enabled="false" press="onPressCopyItem"-->
-                                                <!--text="{i18n>copyItem}"/>-->
+                                        <!--text="{i18n>copyItem}"/>-->
                                         <Button enabled="false" press="onUpdatePriceItem" text="{i18n>UpdatePrice}"/>
                                         <Button visible="{ui>/editing}" enabled="{ui>/itemSelected}"
                                                 press="onPressDeleteItem"
@@ -140,14 +150,14 @@
                                                 press="onPressAddItem">
                                             <dependents>
                                                 <ActionSheet placement="Bottom">
-                                                    <Button
+                                                    <Button enabled="true"
                                                             text="{i18n>Material}"
                                                             press="onMaterialAdd"/>
-                                                    <Button
+                                                    <Button enabled="false"
                                                             text="{i18n>Service}"/>
-                                                    <Button
+                                                    <Button enabled="false"
                                                             text="{i18n>itemsFromCrossCatalogSearch}"/>
-                                                    <Button
+                                                    <Button enabled="false"
                                                             text="{i18n>itemsFromExternalCatalog}"/>
                                                 </ActionSheet>
                                             </dependents>
@@ -158,9 +168,9 @@
                                     <Column demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>ItemNo}"/>
                                     </Column>
-                                    <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text wrapping="true" maxLines="2" text="{i18n>ProdTypGrp}"/>
-                                    </Column>
+                                    <!--                                    <Column demandPopin="true" minScreenWidth="Phone">-->
+                                    <!--                                        <Text wrapping="true" maxLines="2" text="{i18n>ProdTypGrp}"/>-->
+                                    <!--                                    </Column>-->
                                     <Column demandPopin="true" minScreenWidth="Phone">
                                         <Text wrapping="true" maxLines="2" text="{i18n>Material}"/>
                                     </Column>
@@ -187,8 +197,12 @@
                                     <ColumnListItem type="Navigation" press="onItemPress">
                                         <cells>
                                             <Text text="{draft>PreqItem}"/>
-                                            <Text text="{draft>ProdTypGrp}"/>
-                                            <Input cust:VHKey="ProdTypGrp" cust:text="{draft>ItemDescription}"
+                                            <!--                                            <Text text="{draft>ProdTypGrp}"/>-->
+                                            <Input cust:VHKey="Material"
+                                                   cust:MaterialDescription="{draft>ItemDescription}"
+                                                   cust:MaterialGroup="{draft>MatGroup}"
+                                                   cust:Plant="{draft>Plant}"
+                                                   cust:BaseUnit="{draft>Unit}"
                                                    showValueHelp="true"
                                                    valueHelpRequest="onValHelpReq" value="{draft>Material}">
                                                 <!--<dependents>-->
@@ -203,7 +217,7 @@
                                                 <!--</dependents>-->
                                             </Input>
                                             <Text text="{draft>MatGroup}"/>
-                                            <Input cust:VHKey="Material" cust:text="{draft>ItemDescription}"
+                                            <Input cust:VHKey="Plant"
                                                    showValueHelp="true"
                                                    valueHelpRequest="onValHelpReq" value="{draft>Plant}"/>
                                             <Input value="{draft>Quanity}" fieldWidth="50%"
@@ -218,7 +232,8 @@
                                                        valueHelpRequest="onValHelpReq" value="{draft>Currency}"/>
                                             </HBox>
                                             <Input value="{draft>Requisitioner}"/>
-                                            <Input cust:VHKey="Material" cust:text="{draft>ItemDescription}"
+                                            <Input cust:VHKey="Material"
+                                                   cust:ItemDescription="{draft>ItemDescription}"
                                                    showValueHelp="true"
                                                    valueHelpRequest="onValHelpReq" value="{draft>FixedVend}"/>
                                         </cells>

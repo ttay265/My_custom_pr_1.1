@@ -232,8 +232,8 @@
                                         press="onPressNavPRDetail" type="Navigation">
                             <cells>
                                 <Text text="{PreqNo}"/>
-                                <Text text="{ path: 'CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', UTC: true } }"/> <!--	Creation Date -->
-                                <Text text="{ path: 'LastChangeDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', UTC: true } }"/> <!--	Last Modification Date -->
+                                <Text text="{ path: 'CreationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true } }"/> <!--	Creation Date -->
+                                <Text text="{ path: 'LastChangeDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true } }"/> <!--	Last Modification Date -->
                                 <Text text="{PreqItem}"/> <!--	Item number -->
                                 <Text text="{Material}"/> <!--	Material number -->
                                 <Text text="{ItemDescription}"/> <!--	Description -->
@@ -241,7 +241,7 @@
                                               unit="{Unit}"/>                                                                <!--Quantity + Unit-->
                                 <u:Currency useSymbol="false" stringValue="{PreqPrice}"
                                             currency="{Currency}"/>                                             <!-- Price + Ccy -->
-                                <Text text="{ path: 'DelivDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy', UTC: true } }"/> <!-- 	Delivery date -->
+                                <Text text="{ path: 'DelivDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy', UTC: true } }"/> <!-- 	Delivery date -->
                                 <Text text="{PurGroup}"/> <!-- 	Purchasing group  -->
                                 <Text text="{Plant}"/> <!--	Plant  -->
                                 <Text text="{PurchOrg}"/> <!--	Purchasing organization  -->

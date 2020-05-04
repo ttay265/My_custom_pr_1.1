@@ -7,8 +7,6 @@
             ok=".onValueHelpOkPress"
             cancel="onValueHelpCancelPress"
             afterClose="onValueHelpAfterClose"
-            supportMultiselect="false"
-            key="Material"
-            descriptionKey="MaterialDescription">
+            supportMultiselect="false">
     </ValueHelpDialog>
 </core:FragmentDefinition>

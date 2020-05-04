@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/m/Label"
-], function (Controller, JSONModel, Label) {
+    "sap/m/Label",
+    "sap/m/Token"
+], function (Controller, JSONModel, Label, Token) {
     "use strict";
 
     return Controller.extend("com.tw.mypr.My_custom_pr.controller.BaseController", {
@@ -45,29 +46,34 @@ sap.ui.define([
         getVHColsModel: function () {
             return this.getModel("VHCols");
         },
-
         onValHelpReq: function (e) {
             //Initialize binding infos
+            var that = this;
             let src = e.getSource();
             var binding = src.getBinding("value");
             let inputData = src.getCustomData();
             if (!inputData) {
                 return;
             }
+            this.aggregatedReturnProperties = [];
             var VHKey = inputData.find(function (e) {
                 return e.getKey() === "VHKey";
             }).getValue();
-            var text = inputData.find(function (e) {
-                return e.getKey() === "text";
+            this.aggregatedReturnProperties.push({
+                key: VHKey,
+                binding: binding
             });
-            if (text) {
-                var textBinding = text.getBinding("value");
-            }
-
-
+            inputData.forEach(function (e) {
+                var addBinding = e.getBinding("value");
+                if (addBinding) {
+                    that.aggregatedReturnProperties.push({
+                        key: e.getKey(),
+                        binding: addBinding
+                    });
+                }
+            });
             //Initialize VHD
-            var VHData = this.getVHColsModel().getProperty("/" + VHKey)
-
+            var VHData = this.getVHColsModel().getProperty("/" + VHKey);
             // if (!this._oValueHelpDialog) {
             this._oValueHelpDialog = sap.ui.xmlfragment("com.tw.mypr.My_custom_pr.fragment.ValueHelpDialog", this);
             // this._oValueHelpDialog = src.getDependents()[0];
@@ -90,22 +96,34 @@ sap.ui.define([
                 this._oValueHelpDialog.update();
             }.bind(this));
             //Set current Binding Context
-            this.currentVHBinding = binding;
-            this.currentVHTextBinding = textBinding;
+            // this.currentVHBinding = binding;
+            // this.currentVHTextBinding = textBinding;
+            this._oValueHelpDialog.setKey(VHKey);
+            this._oValueHelpDialog.setTokens([new Token({
+                key: binding.getValue()
+            })]);
             this._oValueHelpDialog.open();
         },
         onValueHelpOkPress: function (oEvent) {
-            let token = oEvent.getParameter("tokens")[0];
             //Get selected key & text
-            let key = token.getKey();
-            let text = token.getText();
+            var table = this._oValueHelpDialog.getTable();
+            var a = table.getContextByIndex(table.getSelectedIndex()).getObject();
+            delete a.__metadata;
+            var b = Object.keys(a);
+            this.aggregatedReturnProperties.forEach(function (e) {
+                e.binding.setValue(a[e.key]);
+                e.binding.refresh(true);
+            });
+//             let key = token.getKey();
+//             let text = token.getText();
             //update to input binding
-            this.currentVHBinding.setValue(key);
-            this.currentVHBinding.getModel().refresh(true);
-            if (this.currentVHTextBinding) {
-                this.currentVHTextBinding.setValue(text);
-                this.currentVHTextBinding.getModel().refresh(true);
-            }
+//             this.currentVHBinding.setValue(key);
+//             this.currentVHBinding.getModel().refresh(true);
+//             if (this.currentVHTextBinding) {
+//                 this.currentVHTextBinding.setValue(text);
+//                 this.currentVHTextBinding.getModel().refresh(true);
+//             }
+
             this._oValueHelpDialog.close();
         },
         onValueHelpCancelPress: function (e) {

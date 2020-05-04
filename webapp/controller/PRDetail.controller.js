@@ -163,6 +163,7 @@ sap.ui.define([
             var draftModel = this.getModel("draft");
             var draftPR = draftModel.getProperty("/");
             var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet");
+            newPRItem.ProdTypGrp = 1;  // Material = 1
             newPRItem.PreqNo = draftPR.PreqNo;
             newPRItem.PreqItem = formatter.formatNUMC((draftPR.To_PRItems.length + 1) * 10, 5);
             draftPR.To_PRItems.push(newPRItem);

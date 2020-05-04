@@ -2,8 +2,10 @@ sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/Device",
     "com/tw/mypr/My_custom_pr/model/models",
-    "sap/ui/model/json/JSONModel"
-], function (UIComponent, Device, models, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageToast",
+    "sap/ui/model/Filter"
+], function (UIComponent, Device, models, JSONModel, MessageToast, Filter) {
     "use strict";
 
     return UIComponent.extend("com.tw.mypr.My_custom_pr.Component", {
@@ -27,6 +29,7 @@ sap.ui.define([
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
             this.loadStatusTextTypeSet();
+            this.loadPurcDocTypeSet();
         }, createContent: function () {
             var r = UIComponent.prototype.createContent.apply(this, arguments);
             r.addStyleClass(this.getContentDensityClass());
@@ -53,6 +56,26 @@ sap.ui.define([
                 success: onSuccess,
                 error: onError
             });
+        },
+        loadPurcDocTypeSet: function () {
+            var that = this;
+            var onSuccess = function (d, r) {
+                that.setModel(new JSONModel(d.results), "PurcDocType");
+            }, onError = function (e) {
+                MessageToast.show(e.toString());
+            };
+            var filter = new Filter({
+                path: "DocCategory",
+                operator: "EQ",
+                value1: "B",
+                value2: ''
+            });
+            this.getModel().read("/PurcDocTypeSet", {
+                filters: [filter],
+                success: onSuccess,
+                error: onError
+            });
         }
+
     });
 });

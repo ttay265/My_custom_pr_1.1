@@ -37,6 +37,24 @@ sap.ui.define([
                 }
 
             },
+            docTypeText: function (s) {
+                var that = this;
+                var statusModel = this.getModel("PurcDocType");
+                if (statusModel) {
+                    var statusList = statusModel.getProperty("/");
+                    if (statusList.length > 0) {
+                        var statusCondtion = function (c) {
+
+                            return c.DocType === s;
+                        };
+                        var result = statusList.find(statusCondtion);
+                        if (result) {
+                            return result.Description + " (" + s + ")";
+                        }
+                    }
+                }
+
+            },
             formatNUMC: function (d, n) {
                 try {
                     return d.toString().padStart(n, "0");
