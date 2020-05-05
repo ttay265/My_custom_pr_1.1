@@ -25,6 +25,7 @@ sap.ui.define([
         onAfterRendering: function () {
 
         },
+
         _onObjectMatched: function (o) {
             var PreqItem = o.getParameter("arguments").PreqItem;
             var editing = o.getParameter("arguments").edit === "true";
@@ -40,7 +41,9 @@ sap.ui.define([
             });
             this.getModel("PRItem").setProperty("/", currentPRItem);
         },
+        onAddAccAssPress: function (e) {
 
+        }
 
         /**
          * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

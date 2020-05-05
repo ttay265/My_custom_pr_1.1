@@ -1,9 +1,10 @@
 sap.ui.define([
         "sap/ui/core/format/DateFormat",
+        "sap/ui/core/format/NumberFormat",
         "sap/m/MessageToast",
         "com/tw/mypr/My_custom_pr/controller/BaseController",
         "sap/ui/model/json/JSONModel"],
-    function (DateFormat, BaseController, MessageToast, JSONModel) {
+    function (DateFormat, NumberFormat, BaseController, MessageToast, JSONModel) {
         "use strict";
         return {
             date: function (v) {
@@ -16,9 +17,10 @@ sap.ui.define([
                     return v;
                 }
             },
-            formatCurrency: function (v, a) {
-                var n = sap.ui.core.format.NumberFormat.getCurrencyInstance();
-                return n.format(v);
+            formatCurrency: function (v, ISOCode) {
+                var oCurrencyFormat = NumberFormat.getCurrencyInstance();
+
+                return oCurrencyFormat.format(v, ISOCode);
             },
             prStatusText: function (s) {
                 var that = this;

@@ -32,6 +32,7 @@ sap.ui.define([
         },
         createJSONObjectFromOData: function (sPath, oModel) {
             let model;
+            //get ODATA model instance
             if (oModel) {
                 model = this.getModel(oModel);
             } else {

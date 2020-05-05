@@ -43,14 +43,14 @@
                                           columnsM="2">
                                 <f:content>
                                     <Label text="{i18n>ItemCategory}"/>
-                                    <ComboBox value="{PRItem>/PrType}">
+                                    <ComboBox value="{PRItem>/ItemCategory}">
                                         <items>
                                             <core:Item key="1" text="Standard"/>
                                             <core:Item key="2" text="Third-party"/>
                                         </items>
                                     </ComboBox>
                                     <Label text="{i18n>Plant}"/>
-                                    <Input cust:VHKey="Plant" cust:text="{PRItem>/Plant}"
+                                    <Input cust:VHKey="Plant"
                                            showValueHelp="true"
                                            valueHelpRequest="onValHelpReq"
                                            value="{PRItem>/Plant}"/>
@@ -62,12 +62,20 @@
                                     <Label text="{i18n>ItemDescription}"/>
                                     <Input value="{PRItem>/ItemDescription}"/>
                                     <Label text="{i18n>Material}"/>
-                                    <Input cust:VHKey="Material" cust:text="{PRItem>/ItemDescription}"
+                                    <Input cust:VHKey="Material"
+                                           cust:MaterialDescription="{PRItem>/ItemDescription}"
+                                           cust:MaterialGroup="{PRItem>/MatGroup}"
+                                           cust:Plant="{PRItem>/Plant}"
+                                           cust:BaseUnit="{PRItem>/Unit}"
                                            showValueHelp="true"
                                            valueHelpRequest="onValHelpReq" value="{PRItem>/Material}">
                                     </Input>
-                                    <Label text="{i18n>MatGroup}"/>
-                                    <Input value="{PRItem>/MatGroup}"/>
+                                    <Label visible="{= ${PRItem>/Material} !== '' }" text="{i18n>MatGroup}"/>
+                                    <Text visible="{= ${PRItem>/Material} !== '' }" text="{PRItem>/MatGroup}"/>
+                                    <Label visible="{= ${PRItem>/Material} === '' }" text="{i18n>MatGroup}"/>
+                                    <Input visible="{= ${PRItem>/Material} === '' }"
+                                           value="{PRItem>/MatGroup}"/>
+
                                     <Label text="{i18n>SuppMatNum}"/>
                                     <Input value="{PRItem>/SuppMatNum}"/>
                                     <Label text="{i18n>desiredVendor}"/>
@@ -83,10 +91,10 @@
                                           columnsL="3"
                                           columnsM="2">
                                 <f:content>
-                                    <Label text="{i18n>PRType}"/>
-                                    <Text text="{PRItem>/PrType}"/>
                                     <Label text="{i18n>ItemCategory}"/>
-                                    <Text text="{PRItem>/PrType}"/>
+                                    <Text text="{PRItem>/ItemCategory}"/>
+                                    <Label text="{i18n>Plant}"/>
+                                    <Text text="{PRItem>/Plant}"/>
                                     <Label text="{i18n>AccAssCat}"/>
                                     <Text text="{PRItem>/AccAssCat}"/>
                                     <Label text="{i18n>ItemDescription}"/>
@@ -110,40 +118,95 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm layout="ColumnLayout"
+                            <f:SimpleForm id="display_quantityAndDate"
+                                          layout="ColumnLayout"
+                                          visible="{= !${ui>/editing} }"
                                           editable="{ui>/editing}"
                                           labelSpanL="12"
                                           columnsXL="4"
                                           columnsL="3"
                                           columnsM="2">
                                 <f:content>
+                                    <core:Title level="H6" visible="false"/>
                                     <Label required="true" text="{i18n>Quantity}"/>
-                                    <Input value="{PRItem>/Quantity}"/>
+                                    <Text textAlign="End" text="{PRItem>/Quantity} {PRItem>/Unit}"/>
                                     <Label text="{i18n>OrderedQuantity}"/>
-                                    <Input value="{PRItem>/OrderedQuantity}"/>
+                                    <Text text="{PRItem>/OrderedQuantity} {PRItem>/Unit}"/>
                                     <Label text="{i18n>OpenQuantity}"/>
-                                    <Input value="{PRItem>/OpenQuantity}"/>
+                                    <Text text="{PRItem>/OpenQuantity} {PRItem>/Unit}"/>
                                     <Label text="{i18n>PRItemIsClosed}"/>
-                                    <Input value="{PRItem>/PRItemIsClosed}"/>
+                                    <CheckBox enabled="false" checked="{PRItem>/PRItemIsClosed}"/>
+                                    <Label text="{i18n>PRItemIsFixed}"/>
+                                    <CheckBox enabled="false" checked="{PRItem>/PRItemIsFixed}"/>
+                                    <core:Title level="H6" visible="false"/>
+                                    <Label required="true" text="{i18n>DelivDate}"/>
+                                    <Text text="{ path:'PRItem>/DelivDate',
+                                                  type: 'sap.ui.model.type.Date',
+                                                  formatOptions: {
+                                                    pattern: 'dd/MM/yyyy'
+                                                                  }
+                                                }"/>
+                                    <Label required="true" text="{i18n>RequisitionDate}"/>
+                                    <Text text="{ path:'PRItem>/PreqDate',
+                                                  type: 'sap.ui.model.type.Date',
+                                                  formatOptions: {
+                                                    pattern: 'dd/MM/yyyy'
+                                                                  }
+                                                }"/>
+                                    <Label required="true" text="{i18n>ReleaseDate}"/>
+                                    <Text text="{ path:'PRItem>/ReleaseDate',
+                                                  type: 'sap.ui.model.type.Date',
+                                                  formatOptions: {
+                                                    pattern: 'dd/MM/yyyy'
+                                                                  }
+                                                }"/>
+                                    <Label text="{i18n>PlannedDelivDays}"/>
+                                    <Text text="{PRItem>/PlannedDelivDays}"/>
+                                    <Text text="{ path:'PRItem>/ReleaseDate',
+                                                  type: 'sap.ui.model.type.Date',
+                                                  formatOptions: {
+                                                    pattern: 'dd/MM/yyyy'
+                                                                  }
+                                                }"/>
+                                    <Label text="{i18n>GRProcessDays}"/>
+                                    <Text text="{PRItem>/GRProcessDays}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                            <f:SimpleForm id="edit_quantityAndDate"
+                                          layout="ColumnLayout"
+                                          visible="{= ${ui>/editing} }"
+                                          editable="{ui>/editing}"
+                                          labelSpanL="12"
+                                          columnsXL="4"
+                                          columnsL="3"
+                                          columnsM="2">
+                                <f:content>
+                                    <core:Title level="H6" visible="false"/>
+                                    <Label required="true" text="{i18n>Quantity}"/>
+                                    <Input textAlign="End" value="{PRItem>/Quantity}" fieldWidth="80%"
+                                           description="{PRItem>/Unit}"/>
+                                    <Label text="{i18n>OrderedQuantity}"/>
+                                    <Text text="{PRItem>/OrderedQuantity} {PRItem>/Unit}"/>
+                                    <Label text="{i18n>OpenQuantity}"/>
+                                    <Text text="{PRItem>/OpenQuantity} {PRItem>/Unit}"/>
+                                    <Label text="{i18n>PRItemIsClosed}"/>
+                                    <CheckBox checked="{PRItem>/PRItemIsClosed}"/>
                                     <Label text="{i18n>PRItemIsFixed}"/>
                                     <CheckBox checked="{PRItem>/PRItemIsFixed}"/>
-                                    <Label text="{i18n>PRItemIsFixed}"/>
-                                    <CheckBox checked="{PRItem>/PRItemIsFixed}"/>
+                                    <core:Title level="H6" visible="false"/>
                                     <Label required="true" text="{i18n>DelivDate}"/>
                                     <DatePicker displayFormat="dd/MM/yyyy"
                                                 dateValue="{PRItem>/DelivDate}"/>
-                                    <Label text="{i18n>PreqDate}"/>
+                                    <Label required="true" text="{i18n>RequisitionDate}"/>
                                     <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
                                                 value="{PRItem>/PreqDate}"/>
                                     <Label required="true" text="{i18n>ReleaseDate}"/>
                                     <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
                                                 value="{PRItem>/ReleaseDate}"/>
-                                    <Label required="true" text="{i18n>PlannedDelivDays}"/>
-                                    <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
-                                                value="{PRItem>/PlannedDelivDays}"/>
-                                    <Label required="true" text="{i18n>GRProcessDays}"/>
-                                    <DatePicker displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy"
-                                                value="{PRItem>/GRProcessDays}"/>
+                                    <Label text="{i18n>PlannedDelivDays}"/>
+                                    <Input value="{PRItem>/PlannedDelivDays}"/>
+                                    <Label text="{i18n>GRProcessDays}"/>
+                                    <Input value="{PRItem>/GRProcessDays}"/>
                                 </f:content>
                             </f:SimpleForm>
                         </uxap:blocks>
@@ -154,15 +217,78 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm layout="ColumnLayout"
+                            <f:SimpleForm id="edit_valuation"
+                                          layout="ColumnLayout"
                                           editable="{ui>/editing}"
+                                          visible="{= ${ui>/editing} }"
                                           labelSpanL="12"
                                           columnsXL="4"
                                           columnsL="3"
                                           columnsM="2">
                                 <f:content>
                                     <Label text="{i18n>ValuationPrice}"/>
-                                    <Input value="{PRItem>/PreqPrice}"/>
+                                    <Input textAlign="End"
+                                           value="{ parts: [{path: 'PRItem>/PreqPrice'}, {path: 'PRItem>/Currency'}],
+                                                    type: 'sap.ui.model.type.Currency',
+                                                    formatOptions: {showMeasure: false } }"/>
+                                    <Input cust:VHKey="Currency"
+                                           showValueHelp="true"
+                                           valueHelpRequest="onValHelpReq" value="{PRItem>/Currency}">
+                                        <layoutData>
+                                            <f:ColumnElementData cellsSmall="3" cellsLarge="2"/>
+                                        </layoutData>
+                                    </Input>
+                                    <Label required="true" text="{i18n>PriceUnit}"/>
+                                    <Input value="{PRItem>/PriceUnit}"/>
+                                    <Label required="true" text="{i18n>UoM}"/>
+                                    <Input value="{PRItem>/Unit}"/>
+                                    <Label text="{i18n>TotalValue}"/>
+                                    <Input value="{PRItem>/TotalValue} {PRItem>/Currency}"/>
+                                    <Label text="{i18n>POPriceType}"/>
+                                    <ComboBox value="{PRItem>/POPriceType}">
+                                        <items>
+                                            <core:Item key="1" text="{i18n>DoNotApply}"/>
+                                            <core:Item key="2" text="{i18n>AsNetPrice}"/>
+                                            <core:Item key="3" text="{i18n>AsGroPrice}"/>
+                                        </items>
+                                    </ComboBox>
+                                    <Label text="{i18n>GRisExpected}"/>
+                                    <Text text="{PRItem>/GRisExpected}"/>
+                                    <Label text="{i18n>InvReceiptisExpected}"/>
+                                    <CheckBox checked="{PRItem>/InvReceiptisExpected}"/>
+                                    <Label text="{i18n>NonValuatedGRisExpected}"/>
+                                    <Text text="{PRItem>/NonValuatedGRisExpected}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                            <f:SimpleForm id="display_valuation"
+                                          layout="ColumnLayout"
+                                          editable="{ui>/editing}"
+                                          visible="{= !${ui>/editing} }"
+                                          labelSpanL="12"
+                                          columnsXL="4"
+                                          columnsL="3"
+                                          columnsM="2">
+                                <f:content>
+                                    <Label text="{i18n>ValuationPrice}"/>
+                                    <Text text="{ parts: [{path:'PRItem>/PreqPrice'},
+                                                          {path:'PRItem>/Currency'}],
+                                                  formatter:'.formatter.formatCurrency' }"/>
+                                    <Label required="true" text="{i18n>PriceUnit}"/>
+                                    <Text text="{PRItem>/PriceUnit}"/>
+                                    <Label required="true" text="{i18n>UoM}"/>
+                                    <Text text="{PRItem>/Unit}"/>
+                                    <Label text="{i18n>TotalValue}"/>
+                                    <Text text="{ parts: [{path:'PRItem>/TotalValue'},
+                                                          {path:'PRItem>/Currency'}],
+                                                  formatter:'.formatter.formatCurrency' }"/>
+                                    <Label text="{i18n>POPriceType}"/>
+                                    <Text text="{PRItem>/POPriceType}"/>
+                                    <Label text="{i18n>GRisExpected}"/>
+                                    <Text text="{PRItem>/GRisExpected}"/>
+                                    <Label text="{i18n>InvReceiptisExpected}"/>
+                                    <CheckBox enabled="false" checked="{PRItem>/InvReceiptisExpected}"/>
+                                    <Label text="{i18n>NonValuatedGRisExpected}"/>
+                                    <Text text="{PRItem>/NonValuatedGRisExpected}"/>
                                 </f:content>
                             </f:SimpleForm>
                         </uxap:blocks>
@@ -173,18 +299,275 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <f:SimpleForm layout="ColumnLayout"
-                                          editable="{ui>/editing}"
-                                          labelSpanL="12"
-                                          columnsXL="4"
-                                          columnsL="3"
-                                          columnsM="2">
-                                <f:content>
-
-                                    <Label text="{i18n>PRType}"/>
-                                    <Input value="{/PrType}"/>
-                                </f:content>
-                            </f:SimpleForm>
+                            <Table items="{PRItem>/to_accounts}">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                            <Title text="{i18n>AcctAss} ({= ${PRItem>/to_accounts}.length} })"/>
+                                            <ToolbarSpacer/>
+                                            <Button icon="sap-icon://add" press="onAddAccAssPress"/>
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>SerialNo}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>GlAccount}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>Quantity}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>DistributionPercent}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{PRItem>SerialNo}"/>
+                                            <Text text="{PRItem>GlAccount}"/>
+                                            <Text text="{PRItem>Quantity}"/>
+                                            <Text text="{PRItem>DistributionPercent}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>SrcOfSupply}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <Table>
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                            <Button text="{i18n>AssSrcOfSupply}" press="onAddAccAssPress"/>
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>srcDoc}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>SrcTyp}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>FixedVendor}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>Plant}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{PRItem>PurOrg}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem type="Navigation">
+                                        <cells>
+                                            <Text text="{PRItem>}"/>
+                                            <Text text="{PRItem>}"/>
+                                            <Text text="{PRItem>}"/>
+                                            <Text text="{PRItem>}"/>
+                                            <Text text="{PRItem>}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>ContactInfo}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <f:Form visible="{ui>/editing}" editable="true">
+                                <f:layout>
+                                    <f:ColumnLayout
+                                            labelSpanL="12"
+                                            columnsM="2"
+                                            columnsL="3"
+                                            columnsXL="4"/>
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>createdBy}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/usname}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>changeOn}">
+                                                <f:fields>
+                                                    <Text text="PRItem>/changeOn"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>CreationIndicator}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/CreationIndicator}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>Requisitioner}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>MRPController}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>ReqTrackNumber}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>PurOrg}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/PurOrg}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement required="true" label="{i18n>PurGrp}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>Tel}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/Tel}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>Fax}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/Fax}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>ContactInfo}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <f:Form visible="{ui>/editing}" editable="true">
+                                <f:layout>
+                                    <f:ColumnLayout
+                                            labelSpanL="12"
+                                            columnsM="2"
+                                            columnsL="3"
+                                            columnsXL="4"/>
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>createdBy}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/usname}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>changeOn}">
+                                                <f:fields>
+                                                    <Text text="PRItem>/changeOn"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>CreationIndicator}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/CreationIndicator}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>Requisitioner}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>MRPController}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>ReqTrackNumber}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>PurOrg}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/PurOrg}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement required="true" label="{i18n>PurGrp}">
+                                                <f:fields>
+                                                    <Input value="{PRItem>/Requisitioner}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>Tel}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/Tel}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>Fax}">
+                                                <f:fields>
+                                                    <Text text="{PRItem>/Fax}"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>Attachment}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <VBox width="100%">
+                                <items>
+                            <UploadCollection
+                                    width="100%"
+                                    id="UploadCollection"
+                                    maximumFilenameLength="55"
+                                    maximumFileSize="10"
+                                    multiple="true"
+                                    sameFilenameAllowed="true"
+                                    instantUpload="false"
+                                    change="onChange"
+                                    fileDeleted="onFileDeleted"
+                                    filenameLengthExceed="onFilenameLengthExceed"
+                                    fileSizeExceed="onFileSizeExceed"
+                                    typeMissmatch="onTypeMissmatch"
+                                    uploadComplete="onUploadComplete"
+                                    beforeUploadStarts="onBeforeUploadStarts"/>
+                                </items>
+                            </VBox>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
