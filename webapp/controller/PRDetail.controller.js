@@ -37,13 +37,13 @@ sap.ui.define([
         onPressDeleteItem: function (o) {
             var table = o.getSource().getParent().getParent();
             var deletingItems = [];
-            table.getSelectedItems().forEach(function(e) {
+            table.getSelectedItems().forEach(function (e) {
                 let PreqItem = e.getBindingContext("draft").getObject().PreqItem;
                 deletingItems.push(PreqItem);
             });
             var To_PRItems = this.getModel("draft").getProperty("/To_PRItems");
-            deletingItems.forEach(function(e) {
-                var idx = To_PRItems.findIndex(function(p) {
+            deletingItems.forEach(function (e) {
+                var idx = To_PRItems.findIndex(function (p) {
                     return p.PreqItem == e;
                 });
                 To_PRItems.splice(idx, 1);
@@ -222,6 +222,15 @@ sap.ui.define([
                     onClose: close
                 }
             );
+        },
+        onSavePR: function (e) {
+            var draftPR = this.getModel("draft").getProperty("/");
+            var onSuccess = function (d, r) {
+                debugger;
+            }, onError = function (e) {
+                debugger;
+            };
+            this.getModel().create("/PRHeader", draftPR, onSuccess, onError);
         }
 
         /**

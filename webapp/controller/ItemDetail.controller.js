@@ -27,7 +27,7 @@ sap.ui.define([
         },
 
         _onObjectMatched: function (o) {
-            var PreqItem = o.getParameter("arguments").PreqItem;
+            this.PreqItem = o.getParameter("arguments").PreqItem;
             var editing = o.getParameter("arguments").edit === "true";
             if (editing === true) {
                 var PRItemModel = this.getModel("draft");
@@ -37,10 +37,23 @@ sap.ui.define([
             this.getModel("ui").setProperty("/editing", editing);
             var To_PRItems = PRItemModel.getProperty("/To_PRItems");
             var currentPRItem = To_PRItems.find(function (a) {
-                return a.PreqItem == PreqItem;
+                return a.PreqItem == this.PreqItem;
             });
             this.getModel("PRItem").setProperty("/", currentPRItem);
+
         },
+        onSavePR: function (e) {
+            var Draft_To_PRItems = PRItemModel.getProperty("/To_PRItems");
+            var idx = Draft_To_PRItems.findIndex(function (a) {
+                return a.PreqItem == this.PreqItem;
+            });
+            var savingPRItem = this.getModel("PRItem").getProperty("/");
+            Draft_To_PRItems[idx] = savingPRItem;
+            this.back();
+        },
+        onCancel: function () {
+            this.back();
+        }
         onAddAccAssPress: function (e) {
 
         }

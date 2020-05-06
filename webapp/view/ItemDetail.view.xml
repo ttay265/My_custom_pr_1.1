@@ -578,7 +578,7 @@
                 <content>
                     <ToolbarSpacer/>
                     <Button text="{i18n>save}" type="Emphasized" press="onSavePR"/>
-                    <Button text="{i18n>cancel}" type="Transparent" press="onCancelEditPR"/>
+                    <Button text="{i18n>cancel}" type="Transparent" press="back"/>
                 </content>
             </OverflowToolbar>
         </uxap:footer>
