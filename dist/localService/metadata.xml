@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="Z_PURREQUISITION_EXT_SRV" xml:lang="vi" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:heading="Subscription ID" sap:quickinfo="Subscription ID" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false" sap:label="Tên người s.dụng" sap:heading="Ng.s.dụng" sap:quickinfo="Tên người sử dụng" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Dạng n.tháng" sap:heading="Dạng ngắn dấu th.gian" sap:quickinfo="Định dạng thời gian UTC dạng ngắn (YYYYMMDDhhmmss)" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title" sap:quickinfo="Subscription Title" sap:filterable="false"/>
+                <Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:quickinfo="Subscription Delivery Address" sap:filterable="false"/>
+                <Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:heading="Flag: persist notifications at SAP GW" sap:quickinfo="Flag for Persisting Notifications at SAP Gateway" sap:filterable="false"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:quickinfo="Collection of Subscription" sap:filterable="false"/>
+                <Property Name="filter" Type="Edm.String" sap:label="Filter" sap:heading="Subscription Filter" sap:quickinfo="Subscription Filter" sap:filterable="false"/>
+                <Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:quickinfo="Notification Content" sap:filterable="false"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type" sap:quickinfo="Subscription: Entity Change Type"/>
+            </EntityType>
+            <EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:quickinfo="Collection of Subscription"/>
+                <Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text" sap:heading="Notification Text" sap:quickinfo="Notification Text"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Dạng n.tháng" sap:heading="Dạng ngắn dấu th.gian" sap:quickinfo="Định dạng thời gian UTC dạng ngắn (YYYYMMDDhhmmss)"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type" sap:heading="Notification Change Type" sap:quickinfo="Notification Change Type"/>
+                <Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries" sap:heading="Entries of Interest" sap:quickinfo="Notification Entries of Interest"/>
+                <Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:quickinfo="Target Recipient of Notifications" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="PR_ItemType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PreqNo"/>
+                    <PropertyRef Name="PreqItem"/>
+                </Key>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:heading="Ng y.c" sap:quickinfo="Ngày (yêu cầu) yêu cầu"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:heading="TĐ vào" sap:quickinfo="Ngày của thay đổi cuối"/>
+                <Property Name="PreqNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:heading="Yc m.hàng" sap:quickinfo="Số yêu cầu mua hàng"/>
+                <Property Name="PreqItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:heading="Mục" sap:quickinfo="Mã mục yêu cầu mua hàng"/>
+                <Property Name="DeleteInd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:heading="D" sap:quickinfo="Chỉ thị xóa trong chứng từ mua hàng"/>
+                <Property Name="AcctAssCat" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:heading="A" sap:quickinfo="Danh mục Gán Tài khoản"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:heading="Vật tư" sap:quickinfo="Mã vật tư (18 ký tự)"/>
+                <Property Name="ItemDescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:heading="Văn bản ngắn" sap:quickinfo="Văn bản ngắn"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:heading="S.lượng yêu cầu" sap:quickinfo="Số lượng yêu cầu mua hàng"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:heading="Đv" sap:quickinfo="Đơn vị tính của yêu cầu mua hàng" sap:semantics="unit-of-measure"/>
+                <Property Name="PreqPrice" Type="Edm.Decimal" Precision="28" Scale="9" sap:unicode="false" sap:heading="Lượng tiền tệ trong g.diện BAPI" sap:quickinfo="Số tiền cho BAPIS (với 9 số thập phân)"/>
+                <Property Name="UnitPrice" Type="Edm.Decimal" Precision="5" Scale="0" sap:unicode="false" sap:heading="Kỳ" sap:quickinfo="Đ.vị tính giá"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:heading="T.tệ" sap:quickinfo="Mã tiền tệ" sap:semantics="currency-code"/>
+                <Property Name="DelivDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:heading="Ng. g.hàng" sap:quickinfo="Ngày giao hàng theo khoản mục"/>
+                <Property Name="PurGroup" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:heading="NMH" sap:quickinfo="Nhóm mua hàng"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:heading="Nh.m" sap:quickinfo="Nhà máy"/>
+                <Property Name="PurchOrg" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:heading="TCTM" sap:quickinfo="Tổ chức thu mua"/>
+                <Property Name="FixedVend" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:heading="Nh.c.c c.đ" sap:quickinfo="Nhà cung cấp cố định"/>
+                <Property Name="StatusID" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:quickinfo="Giá trị đơn"/>
+                <Property Name="MatlGroup" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:heading="Nhóm v.tư" sap:quickinfo="Nhóm vật tư"/>
+                <Property Name="PONumber" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:heading="Ct m.hàng" sap:quickinfo="Số chứng từ mua hàng"/>
+                <Property Name="POItem" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:heading="Mục" sap:quickinfo="Mục số Chứng từ mua hàng"/>
+                <Property Name="POSupplier" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:heading="Nhà c.c" sap:quickinfo="Nhà cung cấp cần cung cấp/người sẽ nhận giao hàng"/>
+                <Property Name="POCreationDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:heading="Ngày tạo" sap:quickinfo="Ngày tạo chứng từ mua"/>
+                <NavigationProperty Name="to_accounts" Relationship="Z_PURREQUISITION_EXT_SRV.assc_item_accounts" FromRole="FromRole_assc_item_accounts" ToRole="ToRole_assc_item_accounts"/>
+            </EntityType>
+            <EntityType Name="PR_HeaderType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PreqNo"/>
+                </Key>
+                <Property Name="PurReqnDescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Văn bản ngắn" sap:filterable="false"/>
+                <Property Name="PreqNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false"/>
+                <Property Name="PrType" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:heading="K đt" sap:quickinfo="Loại Đơn Hàng (Mua hàng)"/>
+                <Property Name="StatusID" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="TotalValue" Type="Edm.Decimal" Precision="13" Scale="2" sap:unicode="false" sap:label="Tổng giá trị" sap:heading="Gtr tổng" sap:quickinfo="Tổng giá trị của mục"/>
+                <Property Name="AutoSource" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:heading="S" sap:quickinfo="Xác định nguồn tự động"/>
+                <Property Name="Memory" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:heading="S" sap:quickinfo="Yêu cầu mua hàng vẫn chưa hoàn tất"/>
+                <Property Name="HoldComplete" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
+                <Property Name="HoldUncomplete" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
+                <Property Name="MemoryType" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="DM chưa hchỉnh" sap:heading="Danh mục chưa hoàn chỉnh" sap:quickinfo="Danh mục chưa hoàn chỉnh"/>
+                <Property Name="TestRun" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
+                <NavigationProperty Name="To_PRItems" Relationship="Z_PURREQUISITION_EXT_SRV.assc_PR_Header_Items" FromRole="FromRole_assc_PR_Header_Items" ToRole="ToRole_assc_PR_Header_Items"/>
+            </EntityType>
+            <EntityType Name="MaterialTextType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:heading="Ngôn ngữ" sap:quickinfo="Mã ngôn ngữ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:heading="Nhóm v.tư" sap:quickinfo="Nhóm vật tư" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:heading="Nh.m" sap:quickinfo="Nhà máy" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BaseUnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:heading="BUn" sap:quickinfo="Đơn vị đo lường cơ bản" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="MaterialGroupType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialGroup"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="Nhóm vật tư" sap:heading="Nhóm v.tư" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Ngôn ngữ" sap:quickinfo="Mã ngôn ngữ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Mô tả nhóm vt" sap:heading="Mô tả nhóm vật tư" sap:quickinfo="Mô tả nhóm vật tư" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PurcDocTypeType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocCategory"/>
+                    <PropertyRef Name="DocType"/>
+                </Key>
+                <Property Name="DocCategory" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:heading="Dm" sap:quickinfo="Loại Chứng từ Mua hàng" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:heading="K" sap:quickinfo="Loại chứng từ mua hàng" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:heading="Mô tả Loại Ch.từ" sap:quickinfo="Mô tả Ngắn gọn Loại Chứng từ Mua hàng" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AccAssignmentType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PreqNo"/>
+                    <PropertyRef Name="PreqItem"/>
+                    <PropertyRef Name="SerialNo"/>
+                </Key>
+                <Property Name="PreqNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Y/c Mua hàng" sap:heading="Yc m.hàng" sap:quickinfo="Số yêu cầu mua hàng" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PreqItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SerialNo" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DeletionIndicator" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:heading="D" sap:quickinfo="Chỉ thị xóa trong chứng từ mua hàng" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DistributionPercent" Type="Edm.Decimal" Precision="3" Scale="1" sap:unicode="false" sap:heading="Ptrăm" sap:quickinfo="Phần trăm phân bổ theo trường hợp gán nhiều t.khoản" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="GlAccount" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Costcenter" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:heading="COAr" sap:quickinfo="Khu vực kiểm soát" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderID" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:heading="Lệnh" sap:quickinfo="Số đơn hàng" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:heading="Tt lnhuận" sap:quickinfo="Trung tâm Lợi nhuận" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:heading="FA" sap:quickinfo="Phạm vi chức năng" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="SupplierInvoiceType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PoNumber"/>
+                    <PropertyRef Name="PoItem"/>
+                </Key>
+                <Property Name="PoNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:heading="Ct m.hàng" sap:quickinfo="Số chứng từ mua hàng" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PoItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SerialNo" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatDoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatdocItm" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PstngDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:heading="Ngày GhiSổ" sap:quickinfo="Ngày ghi sổ trên chứng từ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValueLoccur" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValueForcur" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InvoiceValLoc" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InvoiceValForcur" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="GoodsReceiptType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PoNumber"/>
+                    <PropertyRef Name="PoItem"/>
+                </Key>
+                <Property Name="PoNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="C.từ mua hàng" sap:heading="Ct m.hàng" sap:quickinfo="Số chứng từ mua hàng" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PoItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SerialNo" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatDoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MatdocItm" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PstngDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:heading="Ngày GhiSổ" sap:quickinfo="Ngày ghi sổ trên chứng từ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValLoccur" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValForcur" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="StatusTextType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="StatusID"/>
+                </Key>
+                <Property Name="StatusID" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Giá trị đơn" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusText" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Mô tả ngắn" sap:quickinfo="Văn bản ngắn cho giá trị cố định" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PlantType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:heading="Nh.m" sap:quickinfo="Nhà máy" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sort2" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:heading="Th.ngữ tìm kiếm 2" sap:quickinfo="Thuật ngữ tìm kiếm 2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sort1" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:heading="Th.ngữ tìm kiếm 1" sap:quickinfo="Thuật ngữ tìm kiếm 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PostCode1" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:heading="Mã bđiện" sap:quickinfo="Mã bưu điện thành phố" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="City1" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:heading="Thành phố" sap:quickinfo="Thành phố" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name2" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:heading="Tên 2" sap:quickinfo="Tên 2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:heading="Tên" sap:quickinfo="Tên 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nation" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:heading="Phiên bản" sap:quickinfo="ID phiên bản địa chỉ quốc tế" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CurrencyType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:heading="T.tệ" sap:quickinfo="Mã tiền tệ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Ltext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:heading="Văn bản dài" sap:quickinfo="Văn bản dài" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="assc_PR_Header_Items" sap:content-version="1">
+                <End Type="Z_PURREQUISITION_EXT_SRV.PR_HeaderType" Multiplicity="1" Role="FromRole_assc_PR_Header_Items"/>
+                <End Type="Z_PURREQUISITION_EXT_SRV.PR_ItemType" Multiplicity="*" Role="ToRole_assc_PR_Header_Items"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assc_PR_Header_Items">
+                        <PropertyRef Name="PreqNo"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assc_PR_Header_Items">
+                        <PropertyRef Name="PreqNo"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assc_item_accounts" sap:content-version="1">
+                <End Type="Z_PURREQUISITION_EXT_SRV.PR_ItemType" Multiplicity="1" Role="FromRole_assc_item_accounts"/>
+                <End Type="Z_PURREQUISITION_EXT_SRV.AccAssignmentType" Multiplicity="*" Role="ToRole_assc_item_accounts"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assc_item_accounts">
+                        <PropertyRef Name="PreqItem"/>
+                        <PropertyRef Name="PreqNo"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assc_item_accounts">
+                        <PropertyRef Name="PreqItem"/>
+                        <PropertyRef Name="PreqNo"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="Z_PURREQUISITION_EXT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SubscriptionCollection" EntityType="Z_PURREQUISITION_EXT_SRV.Subscription" sap:content-version="1"/>
+                <EntitySet Name="NotificationCollection" EntityType="Z_PURREQUISITION_EXT_SRV.Notification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PR_ItemSet" EntityType="Z_PURREQUISITION_EXT_SRV.PR_ItemType" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="PR_HeaderSet" EntityType="Z_PURREQUISITION_EXT_SRV.PR_HeaderType" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="MaterialTextSet" EntityType="Z_PURREQUISITION_EXT_SRV.MaterialTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialGroupTypeSet" EntityType="Z_PURREQUISITION_EXT_SRV.MaterialGroupType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PurcDocTypeSet" EntityType="Z_PURREQUISITION_EXT_SRV.PurcDocTypeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AccAssignmentSet" EntityType="Z_PURREQUISITION_EXT_SRV.AccAssignmentType" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="SupplierInvoiceSet" EntityType="Z_PURREQUISITION_EXT_SRV.SupplierInvoiceType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="GoodsReceiptSet" EntityType="Z_PURREQUISITION_EXT_SRV.GoodsReceiptType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="StatusTextTypeSet" EntityType="Z_PURREQUISITION_EXT_SRV.StatusTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PlantSet" EntityType="Z_PURREQUISITION_EXT_SRV.PlantType" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="CurrencySet" EntityType="Z_PURREQUISITION_EXT_SRV.CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="assc_PR_Header_ItemsSet" Association="Z_PURREQUISITION_EXT_SRV.assc_PR_Header_Items" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PR_HeaderSet" Role="FromRole_assc_PR_Header_Items"/>
+                    <End EntitySet="PR_ItemSet" Role="ToRole_assc_PR_Header_Items"/>
+                </AssociationSet>
+                <AssociationSet Name="assc_item_accountsSet" Association="Z_PURREQUISITION_EXT_SRV.assc_item_accounts" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PR_ItemSet" Role="FromRole_assc_item_accounts"/>
+                    <End EntitySet="AccAssignmentSet" Role="ToRole_assc_item_accounts"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

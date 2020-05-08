@@ -75,54 +75,52 @@ sap.ui.define([
             var oDataModel = this.getModel();
             var PreqNo = o.getParameter("arguments").PreqNo;
             var isEdit = this.getModel("ui").getProperty("/editing");
-            if (!isEdit) {
-                if (PreqNo === "new" || PreqNo === "copy") {
-                    //Default mode is EDIT & CREATE MODE
-                    this.getModel("ui").setProperty("/", {
-                        editing: true,
-                        createMode: true
-                    });
-                    var draftModel = this.initDraft();
+            if (PreqNo === "new" || PreqNo === "copy") {
+                //Default mode is EDIT & CREATE MODE
+                this.getModel("ui").setProperty("/", {
+                    editing: true,
+                    createMode: true
+                });
+                var draftModel = this.initDraft();
 
-                    //check if newPR is created as copy PR
-                    if (PreqNo === "copy") {
-                        //Read Copy PR data
-                        var copyModel = this.getModel("copyPR");
-                        if (!copyModel) {
-                            MessageToast.show(this.getI18N("CANNOT_READ_COPYPR"));
-                            return;
-                        }
-                        var copyPRList = copyModel.getProperty("/");
-                        if (Array.isArray(copyPRList) && copyPRList.length > 0) {
-                            copyPRList.forEach(function (e) {
-                                var key = oDataModel.createKey("/PR_ItemSet", {
-                                    PreqNo: e.PreqNo,
-                                    PreqItem: e.PreqItem
-                                });
-                                oDataModel.read(key, {
-                                    urlParameters: {
-                                        "$expand": "to_accounts"
-                                    },
-                                    success: function (d, r) {
-                                        d.to_accounts = d.to_accounts.results;
-                                        delete d.__metadata;
-                                        d.PreqNo = "";
-                                        var draftPR_Items = draftModel.getProperty("/To_PRItems");
-                                        d.PreqItem = formatter.formatNUMC((draftPR_Items.length + 1) * 10, 5);
-                                        draftPR_Items.push(d);
-                                        draftModel.setProperty("/To_PRItems", draftPR_Items);
-                                    },
-                                    error: function (e) {
-                                        console.log(e);
-                                    }
-                                })
-                            });
-                        }
+                //check if newPR is created as copy PR
+                if (PreqNo === "copy") {
+                    //Read Copy PR data
+                    var copyModel = this.getModel("copyPR");
+                    if (!copyModel) {
+                        MessageToast.show(this.getI18N("CANNOT_READ_COPYPR"));
+                        return;
                     }
-                } else {
-                    this.PreqNo = PreqNo;
-                    this.loadODataPRItem(this.PreqNo);
+                    var copyPRList = copyModel.getProperty("/");
+                    if (Array.isArray(copyPRList) && copyPRList.length > 0) {
+                        copyPRList.forEach(function (e) {
+                            var key = oDataModel.createKey("/PR_ItemSet", {
+                                PreqNo: e.PreqNo,
+                                PreqItem: e.PreqItem
+                            });
+                            oDataModel.read(key, {
+                                urlParameters: {
+                                    "$expand": "to_accounts"
+                                },
+                                success: function (d, r) {
+                                    d.to_accounts = d.to_accounts.results;
+                                    delete d.__metadata;
+                                    d.PreqNo = "";
+                                    var draftPR_Items = draftModel.getProperty("/To_PRItems");
+                                    d.PreqItem = formatter.formatNUMC((draftPR_Items.length + 1) * 10, 5);
+                                    draftPR_Items.push(d);
+                                    draftModel.setProperty("/To_PRItems", draftPR_Items);
+                                },
+                                error: function (e) {
+                                    console.log(e);
+                                }
+                            })
+                        });
+                    }
                 }
+            } else if (!isEdit) {
+                this.PreqNo = PreqNo;
+                this.loadODataPRItem(this.PreqNo);
             }
         },
 
@@ -148,30 +146,26 @@ sap.ui.define([
                 success: onSuccess,
                 error: onError
             });
-        }
-        ,
+        },
         onEditPress: function (e) {
             this.getModel("ui").setProperty("/editing", true);
             //copy display data to edit model
             var prData = this.getModel("display").getProperty("/");
             this.getModel("draft").setProperty("/", prData);
             this.table_PRItem_draft.removeSelections(true);
-        }
-        ,
+        },
         onCancelEditPR: function (e) {
-            this.getModel("ui").setProperty("/editing", false);
             if (this.getModel("ui").getProperty("/createMode") === true) {
                 this.back();
                 return;
             }
             this.loadODataPRItem(this.PreqNo);
-
-        }
-        ,
+            this.getModel("ui").setProperty("/editing", false);
+        },
         onMaterialAdd: function (e) {
             var draftModel = this.getModel("draft");
             var draftPR = draftModel.getProperty("/");
-            var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet?$expand=to_accounts");
+            var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet");
             newPRItem.ProdTypGrp = 1;  // Material = 1
             newPRItem.PreqNo = draftPR.PreqNo;
             newPRItem.PreqItem = formatter.formatNUMC((draftPR.To_PRItems.length + 1) * 10, 5);
@@ -181,8 +175,7 @@ sap.ui.define([
                 PreqItem: newPRItem.PreqItem,
                 edit: true
             }, false);
-        }
-        ,
+        },
         onItemPress: function (e) {
             var edit = this.getModel("ui").getProperty("/editing");
             if (edit === true) {
@@ -194,8 +187,7 @@ sap.ui.define([
                 PreqItem: PRItem.PreqItem,
                 edit: edit
             }, false);
-        }
-        ,
+        },
         onPressDeletePR: function (e) {
             var bindingObj = e.getSource().getBindingContext();
             try {
@@ -233,8 +225,7 @@ sap.ui.define([
                     onClose: close
                 }
             );
-        }
-        ,
+        },
         onSavePR: function (e) {
             var that = this;
 
@@ -256,41 +247,25 @@ sap.ui.define([
                 this.onUpdatePR(onSuccess, onError);
             }
 
-        }
-        ,
+        },
         onUpdatePR: function (success, error) {
             var that = this;
             var draftPR = this.getModel("draft").getProperty("/");
             draftPR.To_PRItems.forEach(function (item) {
                 item.to_accounts.forEach(function (acctAss) {
-                    var key = that.getModel().createKey("/AccAssignmentSet", {
-                        PreqNo: acctAss.PreqNo,
-                        PreqItem: acctAss.PreqItem,
-                        SerialNo: acctAss.SerialNo
+                    that.getModel().update("/AccAssignmentSet", acctAss, {
+                        changeSetId: "update",
+                        groupId: "update"
                     });
-                    if (key) {
-                        that.getModel().update(key, acctAss, {
-                            method: 'PUT',
-                            groupId: "update"
-                        });
-                    }
                 });
-                var key = that.getModel().createKey("/PR_ItemSet", {
-                    PreqNo: item.PreqNo,
-                    PreqItem: item.PreqItem
-                });
-                delete item.to_accounts;
-                that.getModel().update(key, item, {
-                    method: 'PUT',
+                that.getModel().update("/PR_ItemSet", item, {
+                    changeSetId: "update",
                     groupId: "update"
                 })
             });
             delete draftPR.To_PRItems;
-            var key = that.getModel().createKey("/PR_HeaderSet", {
-                PreqNo: draftPR.PreqNo
-            });
-            this.getModel().update(key, draftPR, {
-                method: 'PUT',
+            this.getModel().update("/PR_HeaderSet", draftPR, {
+                changeSetId: "update",
                 groupId: "update"
             });
             this.getModel().submitChanges({
@@ -299,8 +274,7 @@ sap.ui.define([
                 error: error
             });
 
-        }
-        ,
+        },
         onCreatePR: function (success, error) {
             var that = this;
             var draftPR = this.getModel("draft").getProperty("/");

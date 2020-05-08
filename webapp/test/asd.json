@@ -1,0 +1,43 @@
+{
+  "error": {
+    "code": "/IWBEP/CM_MGW_RT/022",
+    "message": {
+      "lang": "en",
+      "value": "Exception raised without specific error"
+    },
+    "innererror": {
+      "application": {
+        "component_id": "",
+        "service_namespace": "/SAP/",
+        "service_id": "Z_PURREQUISITION_EXT_SRV",
+        "service_version": "0001"
+      },
+      "transactionid": "481A5C65E40C0060E005E87187885576",
+      "timestamp": "20200508104519.2163730",
+      "Error_Resolution": {
+        "SAP_Transaction": "For backend administrators: use ADT feed reader \"SAP Gateway Error Log\" or run transaction /IWFND/ERROR_LOG on SAP Gateway hub system and search for entries with the timestamp above for more details",
+        "SAP_Note": "See SAP Note 1797736 for error analysis (https://service.sap.com/sap/support/notes/1797736)",
+        "Batch_SAP_Note": "See SAP Note 1869434 for details about working with $batch (https://service.sap.com/sap/support/notes/1869434)"
+      },
+      "errordetails": [
+        {
+          "code": "FI/011",
+          "message": "Company code 1710 is not assigned to an FM area",
+          "longtext_url": "/sap/opu/odata/iwbep/message_text;o=LOCAL/T100_longtexts(MSGID='FI',MSGNO='011',MESSAGE_V1='1710',MESSAGE_V2='',MESSAGE_V3='',MESSAGE_V4='')/$value",
+          "propertyref": "",
+          "severity": "error",
+          "transition": false,
+          "target": ""
+        },
+        {
+          "code": "/IWBEP/CX_MGW_BUSI_EXCEPTION",
+          "message": "Exception raised without specific error",
+          "propertyref": "",
+          "severity": "error",
+          "transition": false,
+          "target": ""
+        }
+      ]
+    }
+  }
+}

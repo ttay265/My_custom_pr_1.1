@@ -1,18 +1,32 @@
 {
   "name": "My_custom_pr",
   "version": "0.0.1",
-  "description": "",
   "devDependencies": {
     "@ui5/cli": "1.13.0",
-    "@sap/ui5-builder-webide-extension": "1.0.x"
+    "ui5-task-nwabap-deployer": "^1.0.12"
   },
   "scripts": {
     "build": "ui5 build --clean-dest --include-task=generateManifestBundle generateCachebusterInfo"
   },
   "ui5": {
     "dependencies": [
-      "@sap/ui5-builder-webide-extension"
+      "ui5-task-nwabap-deployer"
     ]
   },
-  "private": "true"
+  "private": "true",
+  "main": "index.html",
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttay265/My_custom_pr_1.1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ttay265/My_custom_pr_1.1/issues"
+  },
+  "homepage": "https://github.com/ttay265/My_custom_pr_1.1#readme",
+  "description": ""
 }

@@ -1,0 +1,1 @@
+sap.ui.define(["com/tw/mypr/My_custom_pr/controller/Init.controller"],function(t){"use strict";QUnit.module("Init Controller");QUnit.test("I should test the Init controller",function(n){var o=new t;o.onInit();n.ok(o)})});

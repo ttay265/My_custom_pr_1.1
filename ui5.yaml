@@ -2,29 +2,31 @@ specVersion: '1.0'
 metadata:
   name: My_custom_pr
 type: application
-resources:
-  configuration:
-    propertiesFileSourceEncoding: UTF-8
+framework:
+  name: SAPUI5
+  version: "1.77.2"
+  libraries:
+    - name: sap.f
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ui.layout
+    - name: sap.uxap
 builder:
   customTasks:
-    - name: webide-extension-task-updateNeoApp
+    - name: ui5-task-nwabap-deployer
       afterTask: generateVersionInfo
       configuration:
-        destDir: dist
-        appFolder: webapp
-        nameSpace: com/tw/mypr
-    - name: webide-extension-task-updateManifestJson
-      afterTask: webide-extension-task-updateNeoApp
-      configuration:
-        appFolder: webapp
-        destDir: dist
-    - name: webide-extension-task-lint
-      afterTask: webide-extension-task-updateManifestJson
-      configuration:
-        destDir: dist
-        appFolder: webapp
-        nameSpace: com/tw/mypr
-    - name: webide-extension-task-resources
-      afterTask: webide-extension-task-lint
-      configuration:
-        nameSpace: com/tw/mypr
+        resources:
+          pattern: "**/*.*"
+        connection:
+          server: https://lhanayb001p.sap.twm.ch:44300
+        authentication:
+          user: QTNGO
+          password: Dangerfi0
+        ui5:
+          language: EN
+          package: ZZ_UI5_REPO
+          bspContainer: Z_CUSTOM_PR
+          bspContainerText: Custom Purchase Requisition Management
+          transportNo: S4HK901285
+          calculateApplicationIndex: true
