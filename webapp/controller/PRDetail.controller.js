@@ -20,9 +20,11 @@ sap.ui.define([
             var viewModel = new JSONModel({
                 editing: false,
                 createMode: false,
-                itemSelected: false
+                itemSelected: false,
+                busy: false
             }, true);
-            this.setModel(viewModel, "ui");
+            this.setViewModel(viewModel);
+            this.setModel(new JSONModel(), "message");
             this.setModel(new JSONModel({}, true), "draft", true);
             this.setModel(new JSONModel({}, true), "display", true);
             this.getRouter().getRoute("PRDetail").attachPatternMatched(this._onObjectMatched, this);
@@ -156,8 +158,7 @@ sap.ui.define([
             var prData = this.getModel("display").getProperty("/");
             this.getModel("draft").setProperty("/", prData);
             this.table_PRItem_draft.removeSelections(true);
-        }
-        ,
+        },
         onCancelEditPR: function (e) {
             this.getModel("ui").setProperty("/editing", false);
             if (this.getModel("ui").getProperty("/createMode") === true) {
@@ -166,14 +167,14 @@ sap.ui.define([
             }
             this.loadODataPRItem(this.PreqNo);
 
-        }
-        ,
+        },
         onMaterialAdd: function (e) {
             var draftModel = this.getModel("draft");
             var draftPR = draftModel.getProperty("/");
-            var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet?$expand=to_accounts");
+            var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet");
             newPRItem.ProdTypGrp = 1;  // Material = 1
             newPRItem.PreqNo = draftPR.PreqNo;
+            newPRItem.to_accounts = [];
             newPRItem.PreqItem = formatter.formatNUMC((draftPR.To_PRItems.length + 1) * 10, 5);
             draftPR.To_PRItems.push(newPRItem);
             draftModel.refresh();
@@ -181,10 +182,9 @@ sap.ui.define([
                 PreqItem: newPRItem.PreqItem,
                 edit: true
             }, false);
-        }
-        ,
+        },
         onItemPress: function (e) {
-            var edit = this.getModel("ui").getProperty("/editing");
+            var edit = this.getViewProperty("editing");
             if (edit === true) {
                 var PRItem = e.getSource().getBindingContext("draft").getObject();
             } else {
@@ -233,21 +233,70 @@ sap.ui.define([
                     onClose: close
                 }
             );
-        }
-        ,
+        },
+        handleMessagePopoverPress: function (e) {
+            var messagePopover = e.getSource().getDependents()[0];
+            messagePopover.openBy(e.getSource());
+        },
         onSavePR: function (e) {
             var that = this;
-
+            // this.setViewProperty("busy", true);
+            var btnMessagesStrip = this.byId("__btnMessagesStrip");
             var onSuccess = function (d, r) {
-                console.log(r);
-                that.getModel("ui").setProperty("/", {
-                    editing: false,
-                    createMode: false,
-                    itemSelected: false
-                });
-                that.back();
+                // case success
+                var errorResponse = d.__batchResponses[0].response;
+                var postResponse = d.__batchResponses[0].__changeResponses;
+                if (errorResponse) {
+                    //Process error response
+                    try {
+                        var errorsBodyMessages = JSON.parse(errorResponse.body);
+                        var busiExceptionList = errorsBodyMessages.error.innererror.errordetails;
+                        if (busiExceptionList.length === 0) {
+                            busiExceptionList.push({
+                                code: errorsBodyMessages.error.code,
+                                message: errorsBodyMessages.error.message.value,
+                                description: errorsBodyMessages.error.message.value,
+                                severity: "error"
+                            });
+                        }
+                        that.getModel("message").setProperty("/", busiExceptionList, null, false);
+                        // btnMessagesStrip.addEventDelegate({
+                        //     "onAfterRendering": function (e) {
+                        //         if (e.getSource().getVisible()) {
+                        //             var messagePopover = btnMessagesStrip.getDependents()[0];
+                        //             messagePopover.openBy(btnMessagesStrip);
+                        //         }
+                        //     }
+                        // }, this);
+                        var messagePopover = btnMessagesStrip.getDependents()[0];
+                        messagePopover.openBy(btnMessagesStrip);
+                    } catch (e) {
+                        MessageToast.show("Cannot parse Error Messages");
+                    } finally {
+                        that.setViewProperty("busy", false);
+                        return;
+                    }
+                }
+                if (postResponse.find(e => e.statusCode.startsWith("20"))) {
+                    //Post-Processing
+                    var message = postResponse[0].headers['sap-message'];
+                    var changeSetMessage = JSON.parse(message);
+                    var oMsgStrip = new sap.m.MessageStrip("msgStrip", {
+                        text: changeSetMessage.code + ' ' + changeSetMessage.message,
+                        type: formatter.serverityFormat(changeSetMessage.severity)
+                    });
+                    that.getView().addContent(oMsgStrip);
+                    that.getModel("ui").setProperty("/", {
+                        editing: false,
+                        createMode: false,
+                        itemSelected: false,
+                        busy: false
+                    });
+                }
+
             }, onError = function (e) {
                 console.log(e);
+                that.setViewProperty("busy", false);
             };
             var mode = this.getModel("ui").getProperty("/createMode");
             if (mode === true) {
@@ -255,14 +304,15 @@ sap.ui.define([
             } else {
                 this.onUpdatePR(onSuccess, onError);
             }
-
-        }
-        ,
+        },
         onUpdatePR: function (success, error) {
             var that = this;
-            var draftPR = this.getModel("draft").getProperty("/");
-            draftPR.To_PRItems.forEach(function (item) {
-                item.to_accounts.forEach(function (acctAss) {
+            this.getModel().setDeferredGroups(["update"]);
+            var draftPR = Object.assign({}, this.getModel("draft").getProperty("/"));
+            draftPR.To_PRItems.forEach(function (i) {
+                var item = Object.assign({}, i);
+                item.to_accounts.forEach(function (a) {
+                    var acctAss = Object.assign({}, a);
                     var key = that.getModel().createKey("/AccAssignmentSet", {
                         PreqNo: acctAss.PreqNo,
                         PreqItem: acctAss.PreqItem,
@@ -271,7 +321,8 @@ sap.ui.define([
                     if (key) {
                         that.getModel().update(key, acctAss, {
                             method: 'PUT',
-                            groupId: "update"
+                            groupId: "update",
+
                         });
                     }
                 });
@@ -279,10 +330,15 @@ sap.ui.define([
                     PreqNo: item.PreqNo,
                     PreqItem: item.PreqItem
                 });
+                //format updating data
+                if (item.PreqPrice.isPrototypeOf(String)) {
+                    item.PreqPrice = Number.parseFloat(item.PreqPrice);
+                }
                 delete item.to_accounts;
                 that.getModel().update(key, item, {
                     method: 'PUT',
-                    groupId: "update"
+                    groupId: "update",
+
                 })
             });
             delete draftPR.To_PRItems;
@@ -303,6 +359,7 @@ sap.ui.define([
         ,
         onCreatePR: function (success, error) {
             var that = this;
+            this.getModel().setDeferredGroups("create");
             var draftPR = this.getModel("draft").getProperty("/");
             draftPR.To_PRItems.forEach(function (item) {
                 item.to_accounts.forEach(function (acctAss) {

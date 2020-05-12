@@ -84,7 +84,7 @@
                 <Property Name="PreqPrice" Type="Edm.Decimal" Precision="28" Scale="9" sap:unicode="false"
                           sap:heading="Lượng tiền tệ trong g.diện BAPI"
                           sap:quickinfo="Số tiền cho BAPIS (với 9 số thập phân)"/>
-                <Property Name="UnitPrice" Type="Edm.Decimal" Precision="5" Scale="0" sap:unicode="false"
+                <Property Name="PriceUnit" Type="Edm.Decimal" Precision="5" Scale="0" sap:unicode="false"
                           sap:heading="Kỳ" sap:quickinfo="Đ.vị tính giá"/>
                 <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:heading="T.tệ"
                           sap:quickinfo="Mã tiền tệ" sap:semantics="currency-code"/>

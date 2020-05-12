@@ -19,7 +19,22 @@ sap.ui.define([
             } else {
                 return this.getView().setModel(m, n);
             }
-
+        },
+        getViewProperty: function (sName) {
+            if (sName) {
+                return this.getView().getModel("ui").getProperty("/" + sName);
+            } else {
+                return this.getView().getModel("ui").getProperty("/");
+            }
+        },
+        setViewProperty: function (sName, oValue) {
+            this.getView().getModel("ui").setProperty("/" + sName, oValue);
+        },
+        getViewModel: function () {
+            return this.getView().getModel("ui");
+        },
+        setViewModel: function (oModel) {
+            this.getView().setModel(oModel, "ui");
         },
         getModel: function (m) {
             return this.getView().getModel(m) || this.getOwnerComponent().getModel(m);
@@ -82,16 +97,38 @@ sap.ui.define([
             // }
             this._oValueHelpDialog.getTableAsync().then(function (oTable) {
                 oTable.setModel(new JSONModel(VHData), "columns");
+                oTable.setBusy(true);
+                oTable.setBusyIndicatorDelay(0);
                 if (oTable.bindRows) {
-                    oTable.bindAggregation("rows", VHData.path);
+                    oTable.unbindAggregation("rows");
+
+                    oTable.bindAggregation("rows",
+                        {
+                            path: VHData.path,
+                            events: {
+                                dataReceived: function () {
+                                    oTable.setBusy(false);
+                                }
+                            }
+                        });
                 }
                 if (oTable.bindItems) {
-                    oTable.bindAggregation("items", VHData.path, function () {
-                        return new sap.m.ColumnListItem({
-                            cells: VHData.cols.map(function (column) {
-                                return new Label({text: "{" + column.template + "}"});
-                            })
-                        });
+                    oTable.unbindAggregation("items");
+                    oTable.bindAggregation("items", {
+                        path: VHData.path,
+                        template: function () {
+                            return new sap.m.ColumnListItem({
+                                cells: VHData.cols.map(function (column) {
+                                    return new Label({text: "{" + column.template + "}"});
+                                })
+                            });
+                        },
+                        events:
+                            {
+                                dataReceived: function () {
+                                    oTable.setBusy(false);
+                                }
+                            }
                     });
                 }
                 this._oValueHelpDialog.update();

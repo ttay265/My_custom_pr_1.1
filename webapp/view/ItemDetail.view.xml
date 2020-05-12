@@ -243,7 +243,10 @@
                                     <Label required="true" text="{i18n>UoM}"/>
                                     <Input value="{PRItem>/Unit}"/>
                                     <Label text="{i18n>TotalValue}"/>
-                                    <Input value="{PRItem>/TotalValue} {PRItem>/Currency}"/>
+                                    <Text text="{ parts: [{path:'PRItem>/TotalValue'},
+                                                          {path:'PRItem>/PriceUnit'},
+                                                          {path:'PRItem>/Currency'}],
+                                                  formatter:'.formatter.calculateTotalValue' }"/>
                                     <Label text="{i18n>POPriceType}"/>
                                     <ComboBox value="{PRItem>/POPriceType}">
                                         <items>
@@ -311,16 +314,16 @@
                                 </headerToolbar>
                                 <columns>
                                     <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text text="{PRItem>SerialNo}"/>
+                                        <Text text="{i18n>SerialNo}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text text="{PRItem>GlAccount}"/>
+                                        <Text text="{i18n>GlAccount}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text text="{PRItem>Quantity}"/>
+                                        <Text text="{i18n>Quantity}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text text="{PRItem>DistributionPercent}"/>
+                                        <Text text="{i18n>DistributionPercent}"/>
                                     </Column>
                                 </columns>
                                 <items>
@@ -379,87 +382,6 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>ContactInfo}">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection>
-                        <uxap:blocks>
-                            <f:Form visible="{ui>/editing}" editable="true">
-                                <f:layout>
-                                    <f:ColumnLayout
-                                            labelSpanL="12"
-                                            columnsM="2"
-                                            columnsL="3"
-                                            columnsXL="4"/>
-                                </f:layout>
-                                <f:formContainers>
-                                    <f:FormContainer>
-                                        <f:formElements>
-                                            <f:FormElement label="{i18n>createdBy}">
-                                                <f:fields>
-                                                    <Text text="{PRItem>/usname}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="{i18n>changeOn}">
-                                                <f:fields>
-                                                    <Text text="PRItem>/changeOn"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="{i18n>CreationIndicator}">
-                                                <f:fields>
-                                                    <Text text="{PRItem>/CreationIndicator}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                        </f:formElements>
-                                    </f:FormContainer>
-                                    <f:FormContainer>
-                                        <f:formElements>
-                                            <f:FormElement label="{i18n>Requisitioner}">
-                                                <f:fields>
-                                                    <Input value="{PRItem>/Requisitioner}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="{i18n>MRPController}">
-                                                <f:fields>
-                                                    <Input value="{PRItem>/Requisitioner}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="{i18n>ReqTrackNumber}">
-                                                <f:fields>
-                                                    <Input value="{PRItem>/Requisitioner}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                        </f:formElements>
-                                    </f:FormContainer>
-                                    <f:FormContainer>
-                                        <f:formElements>
-                                            <f:FormElement label="{i18n>PurOrg}">
-                                                <f:fields>
-                                                    <Input value="{PRItem>/PurOrg}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement required="true" label="{i18n>PurGrp}">
-                                                <f:fields>
-                                                    <Input value="{PRItem>/Requisitioner}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="{i18n>Tel}">
-                                                <f:fields>
-                                                    <Text text="{PRItem>/Tel}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="{i18n>Fax}">
-                                                <f:fields>
-                                                    <Text text="{PRItem>/Fax}"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                        </f:formElements>
-                                    </f:FormContainer>
-                                </f:formContainers>
-                            </f:Form>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>

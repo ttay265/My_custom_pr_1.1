@@ -41,7 +41,6 @@ sap.ui.define([
                 return a.PreqItem == that.PreqItem;
             });
             this.getModel("PRItem").setProperty("/", currentPRItem);
-
         },
         onSavePR: function (e) {
             var that = this;
@@ -58,7 +57,10 @@ sap.ui.define([
             this.back();
         },
         onAddAccAssPress: function (e) {
+            var oDataModel = this.getModel();
+            oDataModel.createEntry("/AccAssignmentSet", {
 
+            })
         }
 
         /**

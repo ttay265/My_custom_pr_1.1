@@ -62,6 +62,19 @@ sap.ui.define([
                     return d.toString().padStart(n, "0");
                 } catch (e) {
                 }
+            },
+            serverityFormat: function (s) {
+                switch (s) {
+                    case "success":
+                        return "Success";
+                    case "info":
+                        return "Information";
+                    case "warning":
+                        return "Warning";
+                    case "error":
+                        return "Error";
+                    default: return "None";
+                }
             }
         };
     });

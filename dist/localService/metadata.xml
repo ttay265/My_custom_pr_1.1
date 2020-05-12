@@ -45,7 +45,7 @@
                 <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:heading="S.lượng yêu cầu" sap:quickinfo="Số lượng yêu cầu mua hàng"/>
                 <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:heading="Đv" sap:quickinfo="Đơn vị tính của yêu cầu mua hàng" sap:semantics="unit-of-measure"/>
                 <Property Name="PreqPrice" Type="Edm.Decimal" Precision="28" Scale="9" sap:unicode="false" sap:heading="Lượng tiền tệ trong g.diện BAPI" sap:quickinfo="Số tiền cho BAPIS (với 9 số thập phân)"/>
-                <Property Name="UnitPrice" Type="Edm.Decimal" Precision="5" Scale="0" sap:unicode="false" sap:heading="Kỳ" sap:quickinfo="Đ.vị tính giá"/>
+                <Property Name="PriceUnit" Type="Edm.Decimal" Precision="5" Scale="0" sap:unicode="false" sap:heading="Kỳ" sap:quickinfo="Đ.vị tính giá"/>
                 <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:heading="T.tệ" sap:quickinfo="Mã tiền tệ" sap:semantics="currency-code"/>
                 <Property Name="DelivDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:heading="Ng. g.hàng" sap:quickinfo="Ngày giao hàng theo khoản mục"/>
                 <Property Name="PurGroup" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:heading="NMH" sap:quickinfo="Nhóm mua hàng"/>

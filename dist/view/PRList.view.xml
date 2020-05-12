@@ -130,7 +130,7 @@
                                    id="idSmartTablePRList"
                                    persistencyKey="RequisitionsTable.customPR.PurReqList" showRowCount="true"
                                    smartFilterId="smartFilterBar" useExportToExcel="false"
-                                   requestAtLeastFields="CreationDate,LastChangeDate,PreqNo,PreqItem,Material,ItemDescription,Quantity,Unit,PreqPrice,UnitPrice,Currency,DelivDate,PurGroup,Plant,PurchOrg,FixedVend,StatusID,MatlGroup">
+                                   requestAtLeastFields="CreationDate,LastChangeDate,PreqNo,PreqItem,Material,ItemDescription,Quantity,Unit,PreqPrice,PriceUnit,Currency,DelivDate,PurGroup,Plant,PurchOrg,FixedVend,StatusID,MatlGroup">
                 <!--            <smartTable:SmartTable entitySet="PR_ItemSet" header="{i18n>PurReqHeader}"-->
                 <!--                                   persistencyKey="RequisitionsTable.customPR.PurReqList"-->
                 <!--                                   tableType="Table" useVariantManagement="true" enableAutoBinding="true"-->
