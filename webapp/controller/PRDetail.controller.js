@@ -118,7 +118,7 @@ sap.ui.define([
                                 })
                             });
                         }
-                    } else { //Create new
+                    } else if (PreqNo === "new") { //Create new
                         this.getModel("ui").setProperty("/", {
                             editing: true,
                             createMode: true
@@ -164,18 +164,17 @@ sap.ui.define([
         },
         onCancelEditPR: function (e) {
             this.getModel("ui").setProperty("/editing", false);
+            this.getModel("ui").setProperty("/createMode", false);
             if (this.getModel("ui").getProperty("/createMode") === true) {
                 this.back();
                 return;
             }
             this.loadODataPRItem(this.PreqNo);
-
         },
         onMaterialAdd: function (e) {
             var draftModel = this.getModel("draft");
             var draftPR = draftModel.getProperty("/");
             var newPRItem = this.createJSONObjectFromOData("/PR_ItemSet");
-            newPRItem.ProdTypGrp = 1;  // Material = 1
             newPRItem.PreqNo = draftPR.PreqNo;
             newPRItem.to_accounts = [];
             newPRItem.PreqItem = formatter.formatNUMC((draftPR.To_PRItems.length + 1) * 10, 5);
@@ -245,10 +244,11 @@ sap.ui.define([
             var that = this;
             // this.setViewProperty("busy", true);
             var btnMessagesStrip = this.byId("__btnMessagesStrip");
-            var onSuccess = function (d, r) {
+
+            const onSuccess = function (d, r) {
                 // case success
-                var errorResponse = d.__batchResponses[0].response;
-                var postResponse = d.__batchResponses[0].__changeResponses;
+                const errorResponse = d.__batchResponses[0].response;
+                const postResponse = d.__batchResponses[0].__changeResponses;
                 if (errorResponse) {
                     //Process error response
                     try {
@@ -271,6 +271,8 @@ sap.ui.define([
                         //         }
                         //     }
                         // }, this);
+                        that.getModel().resetChanges(null, true);
+
                         var messagePopover = btnMessagesStrip.getDependents()[0];
                         messagePopover.openBy(btnMessagesStrip);
                     } catch (e) {
@@ -282,7 +284,7 @@ sap.ui.define([
                 }
                 if (postResponse.find(e => e.statusCode.startsWith("20"))) {
                     //Post-Processing
-                    var message = postResponse[0].headers['sap-message'];
+                    const message = postResponse[0].headers['sap-message'];
                     var changeSetMessage = JSON.parse(message);
                     var oMsgStrip = new sap.m.MessageStrip("msgStrip", {
                         text: changeSetMessage.code + ' ' + changeSetMessage.message,
@@ -297,10 +299,14 @@ sap.ui.define([
                     });
                 }
 
-            }, onError = function (e) {
+            }
+
+            const onError = function (e) {
                 console.log(e);
+                that.getModel().resetChanges(null, true);
                 that.setViewProperty("busy", false);
-            };
+            }
+
             var mode = this.getModel("ui").getProperty("/createMode");
             if (mode === true) {
                 this.onCreatePR(isHold, onSuccess, onError);
@@ -308,7 +314,7 @@ sap.ui.define([
                 this.onUpdatePR(onSuccess, onError);
             }
         },
-        onUpdatePR: function (isHold, success, error) {
+        onUpdatePR: function (success, error) {
             var that = this;
             this.getModel().setDeferredGroups(["update"]);
             var draftPR = Object.assign({}, this.getModel("draft").getProperty("/"));
@@ -364,12 +370,15 @@ sap.ui.define([
         },
         onCreatePR: function (isHold, success, error) {
             var that = this;
-            this.getModel().setDeferredGroups("create");
+            this.getModel().setDeferredGroups(["create"]);
             var draftPR = Object.assign({}, this.getModel("draft").getProperty("/"));
             draftPR.To_PRItems.forEach(function (i) {
                 var item = Object.assign({}, i);
+                delete item.__metadata;
+                item.PreqPrice = item.PreqPrice.toString();
                 item.to_accounts.forEach(function (a) {
                     var acctAss = Object.assign({}, a);
+                    delete acctAss.__metadata;
                     that.getModel().createEntry("/AccAssignmentSet", {
                         properties: acctAss,
                         changeSetId: "create",
@@ -388,7 +397,9 @@ sap.ui.define([
                 draftPR.HoldUncomplete = 'X';
                 draftPR.MemoryType = 'H';
             }
+
             delete draftPR.To_PRItems;
+            delete draftPR.__metadata;
 
             this.getModel().createEntry("/PR_HeaderSet", {
                 properties: draftPR,

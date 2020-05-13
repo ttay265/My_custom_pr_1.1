@@ -54,11 +54,11 @@
                                            showValueHelp="true"
                                            valueHelpRequest="onValHelpReq"
                                            value="{PRItem>/Plant}"/>
-                                    <Label text="{i18n>AccAssCat}"/>
-                                    <Input cust:VHKey="AccAssCat" cust:text="{PRItem>/AccAssCat}"
+                                    <Label text="{i18n>AcctAssCat}"/>
+                                    <Input cust:VHKey="AcctAssCat" cust:text="{PRItem>/AcctAssCat}"
                                            showValueHelp="true"
                                            valueHelpRequest="onValHelpReq"
-                                           value="{PRItem>/AccAssCat}"/>
+                                           value="{PRItem>/AcctAssCat}"/>
                                     <Label text="{i18n>ItemDescription}"/>
                                     <Input value="{PRItem>/ItemDescription}"/>
                                     <Label text="{i18n>Material}"/>
@@ -95,8 +95,8 @@
                                     <Text text="{PRItem>/ItemCategory}"/>
                                     <Label text="{i18n>Plant}"/>
                                     <Text text="{PRItem>/Plant}"/>
-                                    <Label text="{i18n>AccAssCat}"/>
-                                    <Text text="{PRItem>/AccAssCat}"/>
+                                    <Label text="{i18n>AcctAssCat}"/>
+                                    <Text text="{PRItem>/AcctAssCat}"/>
                                     <Label text="{i18n>ItemDescription}"/>
                                     <Text text="{PRItem>/ItemDescription}"/>
                                     <Label text="{i18n>Material}"/>
@@ -276,7 +276,10 @@
                                     <Label text="{i18n>ValuationPrice}"/>
                                     <Text text="{ parts: [{path:'PRItem>/PreqPrice'},
                                                           {path:'PRItem>/Currency'}],
-                                                  formatter:'.formatter.formatCurrency' }"/>
+                                                  type: 'sap.ui.model.type.Currency',
+                                                  formatOptions: {
+                                                  showMeasure: false
+                                                  } }"/>
                                     <Label required="true" text="{i18n>PriceUnit}"/>
                                     <Text text="{PRItem>/PriceUnit}"/>
                                     <Label required="true" text="{i18n>UoM}"/>
