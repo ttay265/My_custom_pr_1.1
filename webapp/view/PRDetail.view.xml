@@ -22,6 +22,7 @@
                                    isObjectSubtitleAlwaysVisible="true"
                                    isActionAreaAlwaysVisible="true">
                 <uxap:actions>
+
                     <uxap:ObjectPageHeaderActionButton type="Emphasized" hideText="false" hideIcon="false"
                                                        visible="{= !${ui>/editing} }"
                                                        press="onEditPress"

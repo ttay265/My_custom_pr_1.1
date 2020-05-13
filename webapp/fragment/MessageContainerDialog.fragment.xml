@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core">
+    <Dialog resizable="true" contentWidth="50%" contentHeight="50%" verticalScrolling="true" title="{i18n>Message}"
+            state="None">
+        <content>
+            <MessageView items="{message>/}">
+                <items>
+                    <MessageItem title="{message>code}" description="{message>message}" text="{message>message}"
+                                 type="{path: 'message>severity', formatter:'.formatter.serverityFormat' }"/>
+                </items>
+            </MessageView>
+        </content>
+        <buttons>
+            <Button text="{i18n>Close}" press="close"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

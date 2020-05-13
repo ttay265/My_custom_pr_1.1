@@ -42,9 +42,7 @@ sap.ui.define([
         getI18N: function (t) {
             return this.getView().getModel("i18n").getResourceBundle().getText(t);
         },
-        getDeletePRConfirmMsg: function (n, d) {
-            return this.getI18N("MSG_CONFIRM_DELETE_PR") + (n || "") + " " + (d || "") + "?";
-        },
+
         createJSONObjectFromOData: function (sPath, oModel) {
             let model;
             //get ODATA model instance
@@ -166,6 +164,9 @@ sap.ui.define([
         },
         onValueHelpCancelPress: function (e) {
             this._oValueHelpDialog.close();
+        },
+        onDialogClose: function (e) {
+            e.getSource().getParent().close();
         },
 
         back: function () {

@@ -162,7 +162,8 @@ sap.ui.define([
             this.getModel("draft").setProperty("/", prData);
             this.table_PRItem_draft.removeSelections(true);
         },
-        onCancelEditPR: function (e) {
+        onCancelEditPR: function () {
+            this.getModel("message").setProperty("/", {});
             this.getModel("ui").setProperty("/editing", false);
             this.getModel("ui").setProperty("/createMode", false);
             if (this.getModel("ui").getProperty("/createMode") === true) {
@@ -186,6 +187,7 @@ sap.ui.define([
             }, false);
         },
         onItemPress: function (e) {
+
             var edit = this.getViewProperty("editing");
             if (edit === true) {
                 var PRItem = e.getSource().getBindingContext("draft").getObject();
@@ -199,26 +201,31 @@ sap.ui.define([
         }
         ,
         onPressDeletePR: function (e) {
-            var bindingObj = e.getSource().getBindingContext();
-            try {
-                var PreqNo = bindingObj.PreqNo;
-                var Desc = bindingObj.Desc;
-            } catch (ex) {
-
-            }
+            var that = this;
+            const msg = this.getView().getModel("i18n").getResourceBundle().getText("MSG_CONFIRM_DELETE_PR", [this.PreqNo]);
             var close = function (e) {
-                if (e === MessageBox.Action.OK) {
-                    var key = this.getModel().createKey("/PR_HeaderSet", {
-                        PreqNo: this.PreqNo
+                if (e === MessageBox.Action.DELETE) {
+                    that.setViewProperty("/busy", true);
+                    var key = that.getModel().createKey("/PR_HeaderSet", {
+                        PreqNo: that.PreqNo
                     });
                     var onSuccess = function () {
-                            console.log("Deleted" + this.PreqNo);
+                            MessageToast.show("Deleted" + that.PreqNo);
+                            that.setViewProperty("/", {
+                                editing: false,
+                                createMode: false,
+                                itemSelected: false,
+                                busy: false
+                            })
+                            that.back();
                         },
                         onError = function (e) {
-                            console.log("Cannot delete" + this.PreqNo + ": " + e);
+                            that.setViewProperty("/busy", false);
+                            const msgJSON = JSON.parse(e.responseText);
+                            MessageBox.error("Cannot delete" + that.PreqNo + ": " + msgJSON.error.message.value);
                         };
 
-                    this.getModel().remove(key, {
+                    that.getModel().remove(key, {
                         success: onSuccess,
                         error: onError
                     });
@@ -226,7 +233,7 @@ sap.ui.define([
                 }
             };
             MessageBox.show(
-                this.getDeletePRConfirmMsg(PreqNo, Desc), {
+                msg, {
                     icon: MessageBox.Icon.WARNING,
                     title: this.getI18N("deletePR"),
                     actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
@@ -242,9 +249,11 @@ sap.ui.define([
         },
         onSavePR: function (oEvent, isHold) {
             var that = this;
-            // this.setViewProperty("busy", true);
+            this.setViewProperty("busy", true);
             var btnMessagesStrip = this.byId("__btnMessagesStrip");
-
+            if (!this.MessageDialog) {
+                this.MessageDialog = sap.ui.xmlfragment("com.tw.mypr.My_custom_pr.fragment.MessageContainerDialog", this);
+            }
             const onSuccess = function (d, r) {
                 // case success
                 const errorResponse = d.__batchResponses[0].response;
@@ -286,19 +295,20 @@ sap.ui.define([
                     //Post-Processing
                     const message = postResponse[0].headers['sap-message'];
                     var changeSetMessage = JSON.parse(message);
-                    var oMsgStrip = new sap.m.MessageStrip("msgStrip", {
-                        text: changeSetMessage.code + ' ' + changeSetMessage.message,
-                        type: formatter.serverityFormat(changeSetMessage.severity)
-                    });
-                    that.getView().addContent(oMsgStrip);
-                    that.getModel("ui").setProperty("/", {
-                        editing: false,
-                        createMode: false,
-                        itemSelected: false,
-                        busy: false
-                    });
-                }
+                    if (changeSetMessage.details.length > 0) {
+                        // that.getModel("message").setProperty("/", changeSetMessage.details, null, false);
+                        that.getView().addDependent(that.MessageDialog);
+                        that.MessageDialog.setModel(new JSONModel(changeSetMessage.details), "message");
+                        that.MessageDialog.open();
+                    }
+                    if (changeSetMessage.severity == "success") {
+                        MessageToast.show(changeSetMessage.message);
+                    }
 
+                    that.onCancelEditPR();
+                    that.setViewProperty("busy", false);
+                    return;
+                }
             }
 
             const onError = function (e) {

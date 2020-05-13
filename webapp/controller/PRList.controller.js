@@ -1,8 +1,10 @@
 sap.ui.define([
     "com/tw/mypr/My_custom_pr/controller/BaseController",
     "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox",
+    "sap/m/MessageToast",
     "com/tw/mypr/My_custom_pr/model/formatter"
-], function (BaseController, JSONModel, formatter) {
+], function (BaseController, JSONModel, MessageBox, MessageToast, formatter) {
     "use strict";
 
     return BaseController.extend("com.tw.mypr.My_custom_pr.controller.PRList", {
@@ -41,6 +43,74 @@ sap.ui.define([
                 PreqNo: "new"
             }, false);
         },
+        onPressDeletePR: function () {
+
+            const that = this;
+            var deletingPR = [];
+            var selectedItems = this.table_PRList.getSelectedItems()
+            if (selectedItems.length <= 0) { // this case should never happen since the button enable logic is handled
+                MessageToast.show(this.getI18N("MSG_SELECT_AT_LEAST_ONE_LINE"));
+                return;
+            }
+            selectedItems.forEach(function (e) {
+                var ob = e.getBindingContext().getPath();
+                deletingPR.push(ob);
+            });
+
+            var close = function (e) {
+                if (e === MessageBox.Action.DELETE) {
+                    that.setViewProperty("/busy", true);
+                    that.getModel().setDeferredGroups(["remove"]);
+                    deletingPR.forEach(function (r) {
+                        that.getModel().remove(r, {
+                            groupId: "remove",
+                            changeSetId: "remove"
+                        });
+                    });
+                    var onSuccess = function (d) {
+                            const errorResponse = d.__batchResponses[0].response;
+                            const postResponse = d.__batchResponses[0].__changeResponses;
+                            if (errorResponse) {
+                                //Process error response
+                                try {
+                                    const errorsBodyMessages = JSON.parse(errorResponse.body);
+                                    MessageBox.error("Cannot delete" + that.PreqNo + ": " + errorsBodyMessages.error.message.value);
+                                } catch (e) {
+                                    MessageToast.show("Cannot parse Error Messages");
+                                } finally {
+                                    that.setViewProperty("busy", false);
+                                    return;
+                                }
+                            }
+                            that.setViewProperty("/busy", false);
+                        },
+                        onError = function (e) {
+                            that.setViewProperty("/busy", false);
+                            const msgJSON = JSON.parse(e.responseText);
+                            MessageBox.error("Cannot delete" + that.PreqNo + ": " + msgJSON.error.message.value);
+                        };
+
+                    that.getModel().submitChanges({
+                        groupId: "remove",
+                        success: onSuccess,
+                        error: onError
+                    });
+                } else if (e === sap.m.MessageBox.Action.Cancel) {
+                }
+            };
+            const msg = this.getView().getModel("i18n").getResourceBundle().getText("MSG_CONFIRM_DELETE_MULTI_PR", [deletingPR.length]);
+            MessageBox.show(msg, {
+                    icon: MessageBox.Icon.WARNING,
+                    title: this.getI18N("deletePR"),
+                    actions: [MessageBox.Action.DELETE, MessageBox.Action.CANCEL],
+                    initialFocus: MessageBox.Action.CANCEL,
+                    emphasizedAction: MessageBox.Action.DELETE,
+                    onClose: close
+                }
+            );
+
+        },
+
         onNavCopyPR: function (o) {
             // var router = this.getRouter();
             //get selected PR
@@ -85,4 +155,5 @@ sap.ui.define([
 
     });
 
-});
+})
+;
