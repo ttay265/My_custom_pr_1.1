@@ -243,10 +243,11 @@
                                     <Label required="true" text="{i18n>UoM}"/>
                                     <Input value="{PRItem>/Unit}"/>
                                     <Label text="{i18n>TotalValue}"/>
-                                    <Text text="{ parts: [{path:'PRItem>/TotalValue'},
+                                    <Text text="{ parts: [{path:'PRItem>/PreqPrice'},
                                                           {path:'PRItem>/PriceUnit'},
+                                                          {path:'PRItem>/Quantity'},
                                                           {path:'PRItem>/Currency'}],
-                                                  formatter:'.formatter.calculateTotalValue' }"/>
+                                                  formatter:'.formatter.calculateTotalValue' } {PRItem>/Currency}"/>
                                     <Label text="{i18n>POPriceType}"/>
                                     <ComboBox value="{PRItem>/POPriceType}">
                                         <items>
@@ -281,9 +282,11 @@
                                     <Label required="true" text="{i18n>UoM}"/>
                                     <Text text="{PRItem>/Unit}"/>
                                     <Label text="{i18n>TotalValue}"/>
-                                    <Text text="{ parts: [{path:'PRItem>/TotalValue'},
+                                    <Text text="{ parts: [{path:'PRItem>/PreqPrice'},
+                                                          {path:'PRItem>/PriceUnit'},
+                                                          {path:'PRItem>/Quantity'},
                                                           {path:'PRItem>/Currency'}],
-                                                  formatter:'.formatter.formatCurrency' }"/>
+                                                  formatter:'.formatter.calculateTotalValue' }"/>
                                     <Label text="{i18n>POPriceType}"/>
                                     <Text text="{PRItem>/POPriceType}"/>
                                     <Label text="{i18n>GRisExpected}"/>

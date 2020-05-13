@@ -51,6 +51,7 @@ sap.ui.define([
             });
             var savingPRItem = this.getModel("PRItem").getProperty("/");
             Draft_To_PRItems[idx] = savingPRItem;
+            PRItemModel.refresh(true);
             this.back();
         },
         onCancel: function () {
@@ -58,9 +59,7 @@ sap.ui.define([
         },
         onAddAccAssPress: function (e) {
             var oDataModel = this.getModel();
-            oDataModel.createEntry("/AccAssignmentSet", {
-
-            })
+            oDataModel.createEntry("/AccAssignmentSet", {})
         }
 
         /**

@@ -73,21 +73,19 @@ sap.ui.define([
         // },
 
         _onObjectMatched: function (o) {
-            var that = this;
-            var oDataModel = this.getModel();
-            var PreqNo = o.getParameter("arguments").PreqNo;
-            var isEdit = this.getModel("ui").getProperty("/editing");
+            const oDataModel = this.getModel(), PreqNo = o.getParameter("arguments").PreqNo,
+                isEdit = this.getModel("ui").getProperty("/editing");
             if (!isEdit) {
                 if (PreqNo === "new" || PreqNo === "copy") {
                     //Default mode is EDIT & CREATE MODE
-                    this.getModel("ui").setProperty("/", {
-                        editing: true,
-                        createMode: true
-                    });
                     var draftModel = this.initDraft();
 
                     //check if newPR is created as copy PR
                     if (PreqNo === "copy") {
+                        this.getModel("ui").setProperty("/", {
+                            editing: true,
+                            createMode: true
+                        });
                         //Read Copy PR data
                         var copyModel = this.getModel("copyPR");
                         if (!copyModel) {
@@ -120,6 +118,11 @@ sap.ui.define([
                                 })
                             });
                         }
+                    } else { //Create new
+                        this.getModel("ui").setProperty("/", {
+                            editing: true,
+                            createMode: true
+                        });
                     }
                 } else {
                     this.PreqNo = PreqNo;
@@ -238,7 +241,7 @@ sap.ui.define([
             var messagePopover = e.getSource().getDependents()[0];
             messagePopover.openBy(e.getSource());
         },
-        onSavePR: function (e) {
+        onSavePR: function (oEvent, isHold) {
             var that = this;
             // this.setViewProperty("busy", true);
             var btnMessagesStrip = this.byId("__btnMessagesStrip");
@@ -300,12 +303,12 @@ sap.ui.define([
             };
             var mode = this.getModel("ui").getProperty("/createMode");
             if (mode === true) {
-                this.onCreatePR(onSuccess, onError);
+                this.onCreatePR(isHold, onSuccess, onError);
             } else {
                 this.onUpdatePR(onSuccess, onError);
             }
         },
-        onUpdatePR: function (success, error) {
+        onUpdatePR: function (isHold, success, error) {
             var that = this;
             this.getModel().setDeferredGroups(["update"]);
             var draftPR = Object.assign({}, this.getModel("draft").getProperty("/"));
@@ -355,14 +358,18 @@ sap.ui.define([
                 error: error
             });
 
-        }
-        ,
-        onCreatePR: function (success, error) {
+        },
+        onHoldPR: function () {
+            this.onSavePR(null, true);
+        },
+        onCreatePR: function (isHold, success, error) {
             var that = this;
             this.getModel().setDeferredGroups("create");
-            var draftPR = this.getModel("draft").getProperty("/");
-            draftPR.To_PRItems.forEach(function (item) {
-                item.to_accounts.forEach(function (acctAss) {
+            var draftPR = Object.assign({}, this.getModel("draft").getProperty("/"));
+            draftPR.To_PRItems.forEach(function (i) {
+                var item = Object.assign({}, i);
+                item.to_accounts.forEach(function (a) {
+                    var acctAss = Object.assign({}, a);
                     that.getModel().createEntry("/AccAssignmentSet", {
                         properties: acctAss,
                         changeSetId: "create",
@@ -375,7 +382,14 @@ sap.ui.define([
                     groupId: "create"
                 })
             });
+            //Transform PR Data
+            if (isHold) {
+                draftPR.HoldComplete = 'X';
+                draftPR.HoldUncomplete = 'X';
+                draftPR.MemoryType = 'H';
+            }
             delete draftPR.To_PRItems;
+
             this.getModel().createEntry("/PR_HeaderSet", {
                 properties: draftPR,
                 changeSetId: "create",

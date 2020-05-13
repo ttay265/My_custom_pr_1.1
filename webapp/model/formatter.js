@@ -2,6 +2,7 @@ sap.ui.define([
         "sap/ui/core/format/DateFormat",
         "sap/ui/core/format/NumberFormat",
         "sap/m/MessageToast",
+        "sap/ui/model/type/Currency",
         "com/tw/mypr/My_custom_pr/controller/BaseController",
         "sap/ui/model/json/JSONModel"],
     function (DateFormat, NumberFormat, BaseController, MessageToast, JSONModel) {
@@ -73,8 +74,25 @@ sap.ui.define([
                         return "Warning";
                     case "error":
                         return "Error";
-                    default: return "None";
+                    default:
+                        return "None";
                 }
+            },
+            calculateTotalValue: function (PreqPrice, PriceUnit, Quantity, Currency) {
+
+                var oCurrency = new sap.ui.model.type.Currency({
+                    showMeasure: false
+                });
+
+                function isNumber(n) {
+                    return typeof n == 'number' && !isNaN(n) && isFinite(n);
+                }
+
+                var totalValue = PreqPrice / PriceUnit * Quantity;
+                if (!isNumber(totalValue)) {
+                    totalValue = 0;
+                }
+                return oCurrency.formatValue([totalValue, Currency], "string");
             }
         };
     });
