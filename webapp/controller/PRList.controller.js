@@ -110,6 +110,8 @@ sap.ui.define([
                                     that.setViewProperty("busy", false);
                                     return;
                                 }
+                            } else {
+                                MessageToast.show(that.getModel("i18n").getResourceBundle().getText("MSG_SUCCESS_DELETE_PR", [deletingPR.length]));
                             }
                             that.setViewProperty("/busy", false);
                         },

@@ -25,6 +25,7 @@ sap.ui.define([
 
         _onObjectMatched: function (o) {
             var that = this;
+            this.PreqNo = o.getParameter("arguments").PreqNo;
             this.PreqItem = o.getParameter("arguments").PreqItem;
             var editing = o.getParameter("arguments").edit === "true";
             if (editing === true) {
@@ -41,7 +42,7 @@ sap.ui.define([
         },
         onSavePR: function (e) {
             var that = this;
-            var PRItemModel = this.getModel("draft");
+            const PRItemModel = this.getModel("draft");
             var Draft_To_PRItems = PRItemModel.getProperty("/To_PRItems");
             var idx = Draft_To_PRItems.findIndex(function (a) {
                 return a.PreqItem == that.PreqItem;
@@ -54,9 +55,44 @@ sap.ui.define([
         onCancel: function () {
             this.back();
         },
+        onDeleteAccAssPress: function (e) {
+            const PRItemModel = this.getModel("PRItem");
+            var accounts = PRItemModel.getProperty("/to_accounts");
+            const table = e.getSource().getParent().getParent();
+            const selectedItems = table.getSelectedItems();
+            const deletingSerialList = [];
+            selectedItems.forEach(function (s) {
+                deletingSerialList.push(s.getBindingContext("PRItem").getObject().SerialNo)
+            });
+            deletingSerialList.forEach(function (i) {
+                let idx = accounts.findIndex(function (a) {
+                    var v = a.SerialNo == i;
+                    return v;
+                });
+                accounts.splice(idx, 1);
+                PRItemModel.refresh(true);
+            });
+
+            table.removeSelections(true);
+        },
         onAddAccAssPress: function (e) {
-            var oDataModel = this.getModel();
-            oDataModel.createEntry("/AccAssignmentSet", {})
+            // var oDataModel = this.getModel();
+            // oDataModel.createEntry("/AccAssignmentSet", {})
+            const PRItemModel = this.getModel("PRItem");
+            let accounts = PRItemModel.getProperty("/to_accounts");
+            let max = 0;
+            accounts.forEach(function (u) {
+                let a = Number.parseInt(u.SerialNo, 0);
+                if (a > max) {
+                    max = a;
+                }
+            });
+            accounts.push({
+                PreqNo: this.PreqNo,
+                PreqItem: this.PreqItem,
+                SerialNo: max + 1
+            });
+            PRItemModel.refresh(true);
         }
 
         /**

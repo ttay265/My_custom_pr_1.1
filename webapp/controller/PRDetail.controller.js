@@ -37,21 +37,25 @@ sap.ui.define([
             return draftModel;
         },
         onPressDeleteItem: function (o) {
-            var table = o.getSource().getParent().getParent();
-            var deletingItems = [];
-            table.getSelectedItems().forEach(function (e) {
-                let PreqItem = e.getBindingContext("draft").getObject().PreqItem;
-                deletingItems.push(PreqItem);
-            });
-            var To_PRItems = this.getModel("draft").getProperty("/To_PRItems");
-            deletingItems.forEach(function (e) {
-                var idx = To_PRItems.findIndex(function (p) {
-                    return p.PreqItem == e;
+            if (this.getModel("ui").getProperty("/createMode")) {
+                var table = o.getSource().getParent().getParent();
+                var deletingItems = [];
+                table.getSelectedItems().forEach(function (e) {
+                    let PreqItem = e.getBindingContext("draft").getObject().PreqItem;
+                    deletingItems.push(PreqItem);
                 });
-                To_PRItems.splice(idx, 1);
-            });
-            this.getModel("draft").refresh();
-            this.table_PRItem_draft.fireSelectionChange();
+                var To_PRItems = this.getModel("draft").getProperty("/To_PRItems");
+                deletingItems.forEach(function (e) {
+                    var idx = To_PRItems.findIndex(function (p) {
+                        return p.PreqItem == e;
+                    });
+                    To_PRItems.splice(idx, 1);
+                });
+                this.getModel("draft").refresh();
+                this.table_PRItem_draft.fireSelectionChange();
+            } else { //
+
+            }
         },
         onSelectionChange: function (o) {
             this.getModel("ui").setProperty("/itemSelected", o.getSource().getSelectedItems().length > 0);
@@ -73,19 +77,21 @@ sap.ui.define([
         // },
 
         _onObjectMatched: function (o) {
+            var that = this;
             const oDataModel = this.getModel(), PreqNo = o.getParameter("arguments").PreqNo,
                 isEdit = this.getModel("ui").getProperty("/editing");
             if (!isEdit) {
                 if (PreqNo === "new" || PreqNo === "copy") {
                     //Default mode is EDIT & CREATE MODE
                     var draftModel = this.initDraft();
-
+                    var draftPR_Items = draftModel.getProperty("/To_PRItems");
+                    this.getModel("ui").setProperty("/", {
+                        editing: true,
+                        createMode: true
+                    });
                     //check if newPR is created as copy PR
                     if (PreqNo === "copy") {
-                        this.getModel("ui").setProperty("/", {
-                            editing: true,
-                            createMode: true
-                        });
+                        this.getModel("ui").setProperty("/busy", true, null, false);
                         //Read Copy PR data
                         var copyModel = this.getModel("copyPR");
                         if (!copyModel) {
@@ -94,6 +100,7 @@ sap.ui.define([
                         }
                         var copyPRList = copyModel.getProperty("/");
                         if (Array.isArray(copyPRList) && copyPRList.length > 0) {
+
                             copyPRList.forEach(function (e) {
                                 var key = oDataModel.createKey("/PR_ItemSet", {
                                     PreqNo: e.PreqNo,
@@ -107,23 +114,23 @@ sap.ui.define([
                                         d.to_accounts = d.to_accounts.results;
                                         delete d.__metadata;
                                         d.PreqNo = "";
-                                        var draftPR_Items = draftModel.getProperty("/To_PRItems");
                                         d.PreqItem = formatter.formatNUMC((draftPR_Items.length + 1) * 10, 5);
                                         draftPR_Items.push(d);
-                                        draftModel.setProperty("/To_PRItems", draftPR_Items);
+                                        if (draftPR_Items.length === copyPRList.length) {
+                                            that.getModel("ui").setProperty("/busy", false);
+                                        }
+                                        draftModel.refresh(true);
                                     },
                                     error: function (e) {
-                                        console.log(e);
+                                        that.getModel("ui").setProperty("/busy", false);
+                                        MessageToast.show(e.toString());
+
                                     }
                                 })
                             });
                         }
-                    } else if (PreqNo === "new") { //Create new
-                        this.getModel("ui").setProperty("/", {
-                            editing: true,
-                            createMode: true
-                        });
                     }
+
                 } else {
                     this.PreqNo = PreqNo;
                     this.loadODataPRItem(this.PreqNo);
@@ -165,10 +172,9 @@ sap.ui.define([
         onCancelEditPR: function () {
             this.getModel("message").setProperty("/", {});
             this.getModel("ui").setProperty("/editing", false);
-
             if (this.getModel("ui").getProperty("/createMode") === true) {
                 this.getModel("ui").setProperty("/createMode", false);
-                this.back();
+                 this.back();
                 return;
             }
             this.loadODataPRItem(this.PreqNo);
@@ -183,6 +189,7 @@ sap.ui.define([
             draftPR.To_PRItems.push(newPRItem);
             draftModel.refresh();
             this.getRouter().navTo("itemDetail", {
+                PreqNo: newPRItem.PreqNo,
                 PreqItem: newPRItem.PreqItem,
                 edit: true
             }, false);
@@ -196,6 +203,7 @@ sap.ui.define([
                 var PRItem = e.getSource().getBindingContext("display").getObject();
             }
             this.getRouter().navTo("itemDetail", {
+                PreqNo: PRItem.PreqNo,
                 PreqItem: PRItem.PreqItem,
                 edit: edit
             }, false);
@@ -211,7 +219,8 @@ sap.ui.define([
                         PreqNo: that.PreqNo
                     });
                     var onSuccess = function () {
-                            MessageToast.show("Deleted" + that.PreqNo);
+                            var msg = that.getModel("i18n").getResourceBundle().getText("MSG_SUCCESS_DELETE_PR_SINGLE", [that.PreqNo]);
+                            MessageToast.show(msg);
                             that.setViewProperty("/", {
                                 editing: false,
                                 createMode: false,
@@ -244,10 +253,12 @@ sap.ui.define([
                 }
             );
         },
+
         handleMessagePopoverPress: function (e) {
             var messagePopover = e.getSource().getDependents()[0];
             messagePopover.openBy(e.getSource());
         },
+
         onSavePR: function (oEvent, isHold) {
             var that = this;
             this.setViewProperty("busy", true);

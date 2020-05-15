@@ -124,7 +124,7 @@
         },
         {
           "name": "itemDetail",
-          "pattern": "itemDetail/{PreqItem}/:edit:",
+          "pattern": "PRDetail/:PreqNo:/itemDetail/{PreqItem}/:edit:",
           "target": [
             "ItemDetail"
           ]

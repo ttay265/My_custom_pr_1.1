@@ -226,7 +226,7 @@
                                             <Input cust:VHKey="Plant"
                                                    showValueHelp="true"
                                                    valueHelpRequest="onValHelpReq" value="{draft>Plant}"/>
-                                            <Input textAlign="End" value="{draft>Quantity}" fieldWidth="50%"
+                                            <Input textAlign="End" value="{draft>Quantity}" fieldWidth="80%"
                                                    description="{draft>Unit}"/>
                                             <!--<u:Currency useSymbol="false" stringValue="{draft>PreqPrice}"-->
                                             <!--currency="{draft>Currency}"/>-->
