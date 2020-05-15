@@ -1,9 +1,9 @@
 {
   "error": {
-    "code": "CX_SXML_PARSE_ERROR/001560AA0E081DEB8CA398CC1690D406",
+    "code": "ME/083",
     "message": {
       "lang": "en",
-      "value": "Failed to read property 'PreqPrice' at offset '100'"
+      "value": "Enter Document Type"
     },
     "innererror": {
       "application": {
@@ -12,14 +12,31 @@
         "service_id": "Z_PURREQUISITION_EXT_SRV",
         "service_version": "0001"
       },
-      "transactionid": "481A5C65E40C0090E005E871878A7F8A",
-      "timestamp": "20200513093826.6923460",
+      "transactionid": "481A5C65E40C00B0E005E8718786DA40",
+      "timestamp": "20200514082047.7745470",
       "Error_Resolution": {
         "SAP_Transaction": "For backend administrators: use ADT feed reader \"SAP Gateway Error Log\" or run transaction /IWFND/ERROR_LOG on SAP Gateway hub system and search for entries with the timestamp above for more details",
         "SAP_Note": "See SAP Note 1797736 for error analysis (https://service.sap.com/sap/support/notes/1797736)",
         "Batch_SAP_Note": "See SAP Note 1869434 for details about working with $batch (https://service.sap.com/sap/support/notes/1869434)"
       },
-      "errordetails": []
+      "errordetails": [
+        {
+          "code": "ME/083",
+          "message": "Enter Document Type",
+          "propertyref": "",
+          "severity": "error",
+          "transition": false,
+          "target": ""
+        },
+        {
+          "code": "BAPI/003",
+          "message": "Instance PurchaseRequisition of object type 10002159 could not be changed",
+          "propertyref": "",
+          "severity": "error",
+          "transition": false,
+          "target": ""
+        }
+      ]
     }
   }
 }

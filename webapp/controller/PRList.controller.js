@@ -22,6 +22,10 @@ sap.ui.define([
             this.setModel(this.UIModel, "ui");
             this.table_PRList = this.byId("table_PRList");
         },
+        onAfterRendering: function () {
+            this.getModel().updateBindings(true);
+        },
+
         onSearchPRList: function () {
 
         },
@@ -37,11 +41,36 @@ sap.ui.define([
             var table = e.getSource();
             var hasItemSelected = table.getSelectedItems().length > 0 ? true : false;
             this.getModel("ui").setProperty("/hasItemSelected", hasItemSelected);
+
+            var hasMultiItemSelected = table.getSelectedItems().length > 1 ? false : true;
+            this.getModel("ui").setProperty("/hasMultiItemSelected", hasMultiItemSelected);
         },
         onCreatePR: function () {
             this.getRouter().navTo("PRDetail", {
                 PreqNo: "new"
             }, false);
+        },
+        onNavDocFlow: function (o) {
+            var selectedItems = this.table_PRList.getSelectedItems();
+            var PreqNo;
+            var PreqItem;
+
+            if (this.table_PRList.getSelectedItems().length > 1) {
+                //var hasMultiItemSelected = this.table_PRList.getSelectedItems().length > 1 ? true : false;
+                //this.getModel("ui").setProperty("/hasMultiItemSelected", hasMultiItemSelected);
+                MessageBox.alert("It can not proceed with multiple items. Please select 1 item only.");
+            } else {
+                selectedItems.forEach(function (e) {
+                    var ob = e.getBindingContext().getObject();
+                    //DocumentFlow/{PreqNo}/{PreqItem}
+                    PreqNo = ob.PreqNo;
+                    PreqItem = ob.PreqItem;
+                });
+                this.getRouter().navTo("DocumentFlow", {
+                    PreqNo: PreqNo,
+                    PreqItem: PreqItem
+                }, false);
+            }
         },
         onPressDeletePR: function () {
 

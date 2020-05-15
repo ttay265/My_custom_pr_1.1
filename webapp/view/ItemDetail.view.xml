@@ -308,7 +308,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <Table items="{PRItem>/to_accounts}">
+                            <Table alternateRowColors="true" items="{PRItem>/to_accounts}">
                                 <headerToolbar>
                                     <Toolbar>
                                         <content>
@@ -496,6 +496,16 @@
                                             beforeUploadStarts="onBeforeUploadStarts"/>
                                 </items>
                             </VBox>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>DocFlow}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <mvc:XMLView controllerName="com.tw.mypr.My_custom_pr.controller.DocumentFlow"
+                                         viewName="com.tw.mypr.My_custom_pr.view.DocumentFlow"/>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>

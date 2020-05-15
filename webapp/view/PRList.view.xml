@@ -148,12 +148,14 @@
                         <!--<Link enabled="false" id="EditReqLinkId" press="fnNavigateEditItemList" text="{i18n>edit}"/>-->
                         <Button type="Transparent" enabled="true" id="ConfirmGRLinkId" press="onCreatePR"
                                 text="{i18n>createPR}"/>
+                        <Button type="Transparent" enabled="{ui>/hasMultiItemSelected}" press="onNavDocFlow"
+                                text="{i18n>DocFlow}" id="btnDocFlow"/>
                     </Toolbar>
                 </smartTable:customToolbar>
                 <Table class="sapUiMediumMarginBegin sapUiMediumMarginEnd" enableBusyIndicator="true" growing="true"
                        growingScrollToLoad="true"
                        inset="false"
-                        id="table_PRList"
+                       id="table_PRList"
                        mode="MultiSelect" selectionChange="onPressRow" visible="true"
                        width="auto">
                     <columns>

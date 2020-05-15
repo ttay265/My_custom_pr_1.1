@@ -3,7 +3,8 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
     "sap/m/MessageToast",
-    "com/tw/mypr/My_custom_pr/model/formatter"
+    "com/tw/mypr/My_custom_pr/model/formatter",
+    "com/tw/mypr/My_custom_pr/controller/DocumentFlow.controller"
 ], function (BaseController, JSONModel, MessageBox, MessageToast, formatter) {
     "use strict";
 
@@ -20,10 +21,6 @@ sap.ui.define([
             }, true), "ui");
             this.setModel(new JSONModel({}, true), "PRItem");
             this.getRouter().getRoute("itemDetail").attachPatternMatched(this._onObjectMatched, this);
-
-        },
-        onAfterRendering: function () {
-
         },
 
         _onObjectMatched: function (o) {

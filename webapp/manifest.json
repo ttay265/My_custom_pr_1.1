@@ -128,6 +128,15 @@
           "target": [
             "ItemDetail"
           ]
+        },
+        {
+          "name": "DocumentFlow",
+          "pattern": "DocumentFlow/{PreqNo}/{PreqItem}",
+          "titleTarget": "",
+          "greedy": false,
+          "target": [
+            "DocumentFlow"
+          ]
         }
       ],
       "targets": {
@@ -142,6 +151,10 @@
         "ItemDetail": {
           "viewType": "XML",
           "viewName": "ItemDetail"
+        },
+        "DocumentFlow": {
+          "viewType": "XML",
+          "viewName": "DocumentFlow"
         }
       }
     }

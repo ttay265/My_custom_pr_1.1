@@ -165,8 +165,9 @@ sap.ui.define([
         onCancelEditPR: function () {
             this.getModel("message").setProperty("/", {});
             this.getModel("ui").setProperty("/editing", false);
-            this.getModel("ui").setProperty("/createMode", false);
+
             if (this.getModel("ui").getProperty("/createMode") === true) {
+                this.getModel("ui").setProperty("/createMode", false);
                 this.back();
                 return;
             }

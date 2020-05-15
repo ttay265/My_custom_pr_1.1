@@ -30,6 +30,7 @@ sap.ui.define([
             this.setModel(models.createDeviceModel(), "device");
             this.loadStatusTextTypeSet();
             this.loadPurcDocTypeSet();
+            this.setModel(new JSONModel({}, true), "documentFlow");
         }, createContent: function () {
             var r = UIComponent.prototype.createContent.apply(this, arguments);
             r.addStyleClass(this.getContentDensityClass());

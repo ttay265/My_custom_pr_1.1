@@ -42,6 +42,14 @@ sap.ui.define([
         getI18N: function (t) {
             return this.getView().getModel("i18n").getResourceBundle().getText(t);
         },
+        GetFormattedDate: function (dat) {
+            var date_format = new Date(dat);
+            var month = date_format.getMonth() + 1;
+            var day = date_format.getDate();
+            var year = date_format.getFullYear();
+            var format_date = day + "/" + month + "/" + year;
+            return format_date;
+        },
 
         createJSONObjectFromOData: function (sPath, oModel) {
             let model;
