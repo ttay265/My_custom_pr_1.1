@@ -51,7 +51,7 @@
             <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
                 <Label labelFor="statusID" text="{i18n>Status}:"/>
                 <Title id="statusID" titleStyle="H2"
-                       text="{path:'display>/StatusID', formatter:'.formatter.prStatusText'}"/>
+                       text="{path: 'display>/StatusID', formatter:'.formatter.prStatusText'}"/>
             </layout:VerticalLayout>
             <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
                 <Label labelFor="TotalValue" text="{i18n>TotalValue}:"/>

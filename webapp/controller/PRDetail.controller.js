@@ -174,7 +174,7 @@ sap.ui.define([
             this.getModel("ui").setProperty("/editing", false);
             if (this.getModel("ui").getProperty("/createMode") === true) {
                 this.getModel("ui").setProperty("/createMode", false);
-                 this.back();
+                this.back();
                 return;
             }
             this.loadODataPRItem(this.PreqNo);

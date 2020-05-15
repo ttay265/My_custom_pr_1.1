@@ -1,40 +1,68 @@
 {
-  "error": {
-    "code": "ME/083",
-    "message": {
-      "lang": "en",
-      "value": "Enter Document Type"
+  "d": {
+    "__metadata": {
+      "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_HeaderSet('0010000508')",
+      "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_HeaderSet('0010000508')",
+      "type": "Z_PURREQUISITION_EXT_SRV.PR_HeaderType"
     },
-    "innererror": {
-      "application": {
-        "component_id": "",
-        "service_namespace": "/SAP/",
-        "service_id": "Z_PURREQUISITION_EXT_SRV",
-        "service_version": "0001"
-      },
-      "transactionid": "481A5C65E40C00B0E005E8718786DA40",
-      "timestamp": "20200514082047.7745470",
-      "Error_Resolution": {
-        "SAP_Transaction": "For backend administrators: use ADT feed reader \"SAP Gateway Error Log\" or run transaction /IWFND/ERROR_LOG on SAP Gateway hub system and search for entries with the timestamp above for more details",
-        "SAP_Note": "See SAP Note 1797736 for error analysis (https://service.sap.com/sap/support/notes/1797736)",
-        "Batch_SAP_Note": "See SAP Note 1869434 for details about working with $batch (https://service.sap.com/sap/support/notes/1869434)"
-      },
-      "errordetails": [
+    "PurReqnDescription": "",
+    "PreqNo": "0010000508",
+    "PrType": "NB",
+    "StatusID": "S",
+    "TotalValue": "0.00",
+    "AutoSource": "",
+    "Memory": "",
+    "HoldComplete": "",
+    "HoldUncomplete": "",
+    "MemoryType": "",
+    "TestRun": "",
+    "To_PRItems": {
+      "results": [
         {
-          "code": "ME/083",
-          "message": "Enter Document Type",
-          "propertyref": "",
-          "severity": "error",
-          "transition": false,
-          "target": ""
-        },
-        {
-          "code": "BAPI/003",
-          "message": "Instance PurchaseRequisition of object type 10002159 could not be changed",
-          "propertyref": "",
-          "severity": "error",
-          "transition": false,
-          "target": ""
+          "__metadata": {
+            "id": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000508',PreqItem='00010')",
+            "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000508',PreqItem='00010')",
+            "type": "Z_PURREQUISITION_EXT_SRV.PR_ItemType"
+          },
+          "CreationDate": "\/Date(1539907200000)\/",
+          "LastChangeDate": "\/Date(1540339200000)\/",
+          "PreqNo": "10000508",
+          "PreqItem": "00010",
+          "DeleteInd": "",
+          "AcctAssCat": "",
+          "Material": "NL001",
+          "ItemDescription": "Screw",
+          "Quantity": "1.000",
+          "Unit": "PC",
+          "PreqPrice": "0.000000000",
+          "PriceUnit": "1",
+          "Currency": "USD",
+          "DelivDate": "\/Date(1539907200000)\/",
+          "PurGroup": "Z90",
+          "Plant": "1710",
+          "PurchOrg": "1710",
+          "FixedVend": "17300001",
+          "StatusID": "B",
+          "MatlGroup": "YBMM01",
+          "PONumber": "4500000211",
+          "POItem": "00010",
+          "POSupplier": "",
+          "POCreationDate": "\/Date(1540252800000)\/",
+          "PR_Completed": false,
+          "PO_Completed": false,
+          "to_accounts": {
+            "results": []
+          },
+          "to_GoodsReceiptSet": {
+            "__deferred": {
+              "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000508',PreqItem='00010')/to_GoodsReceiptSet"
+            }
+          },
+          "to_invoices": {
+            "__deferred": {
+              "uri": "https://mydemo21.teamwork.net:44301/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/PR_ItemSet(PreqNo='10000508',PreqItem='00010')/to_invoices"
+            }
+          }
         }
       ]
     }

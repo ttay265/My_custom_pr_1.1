@@ -15,10 +15,12 @@ sap.ui.define([
          */
 
         onInit: function () {
-            debugger;
-
+            this.setModel(new JSONModel({
+                busy: false
+            }, true), "ui");
             //this.setModel(new JSONModel(), "docflow")
             this.getRouter().getRoute("DocumentFlow").attachPatternMatched(this._onObjectMatched, this);
+            // this.getRouter().getRoute("itemDetail").attachPatternMatched(this._onObjectMatched, this);
 
             //var oView = this.getView();
             //this.oProcessFlow1 = oView.byId("processflow1");
@@ -27,11 +29,14 @@ sap.ui.define([
             //oView.setModel(oModelPf1);
             //oModelPf1.attachRequestCompleted(this.oProcessFlow1.updateModel.bind(this.oProcessFlow1));
         },
+
         onAfterRendering: function () {
-            this.getModel("documentFlow").getProperty("/");
+            let PRItem = this.getModel("documentFlow").getProperty("/");
+            this.loadProcessFlow(PRItem.PreqNo, PRItem.PreqItem);
             // this._onObjectMatched();
         },
         _onObjectMatched: function (o) {
+            this.getModel("ui").setProperty("/busy", true);
             var PreqNo = o.getParameter("arguments").PreqNo;
             var PreqItem = o.getParameter("arguments").PreqItem;
             this.loadProcessFlow(PreqNo, PreqItem);
@@ -180,10 +185,11 @@ sap.ui.define([
                     oModelPf1.setData(pr_processflow);
                     viewPf1.setModel(oModelPf1, "flow");
                     viewPf1.byId("processflow1").updateModel();
-
+                    that.getModel("ui").setProperty("/busy", false);
                 },
                 onError = function (e) {
                     //console.log(e);
+                    that.getModel("ui").setProperty("/busy", false);
                 };
 
             var oDataModel = this.getModel();

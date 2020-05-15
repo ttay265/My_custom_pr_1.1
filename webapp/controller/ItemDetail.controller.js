@@ -27,6 +27,10 @@ sap.ui.define([
             var that = this;
             this.PreqNo = o.getParameter("arguments").PreqNo;
             this.PreqItem = o.getParameter("arguments").PreqItem;
+            this.getModel("documentFlow").setProperty("/", {
+                PreqNo: this.PreqNo,
+                PreqItem: this.PreqItem
+            }, null, false);
             var editing = o.getParameter("arguments").edit === "true";
             if (editing === true) {
                 var PRItemModel = this.getModel("draft");

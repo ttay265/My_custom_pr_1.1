@@ -72,7 +72,7 @@
                         <smartfilterbar:controlConfiguration>
                             <smartfilterbar:ControlConfiguration controlType="auto" width="20rem" groupId="_BASIC"
                                                                  hasValueHelpDialog="true" index="6"
-                                                                 key="PurGroup" label="{i18n>PurchGr}"
+                                                                 key="PurGroup" label="{i18n>PurGrp}"
                                                                  preventInitialDataFetchInValueHelpDialog="false"
                                                                  visible="true"/>
                         </smartfilterbar:controlConfiguration>
@@ -149,7 +149,7 @@
                         <Button type="Transparent" enabled="true" id="ConfirmGRLinkId" press="onCreatePR"
                                 text="{i18n>createPR}"/>
                         <Button type="Transparent" enabled="{ui>/hasMultiItemSelected}" press="onNavDocFlow"
-                                text="{i18n>DocFlow}" id="btnDocFlow"/>
+                                text="{i18n>Flow}" id="btnDocFlow"/>
                     </Toolbar>
                 </smartTable:customToolbar>
                 <Table class="sapUiMediumMarginBegin sapUiMediumMarginEnd" enableBusyIndicator="true" growing="true"
