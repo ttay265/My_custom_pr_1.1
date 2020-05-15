@@ -2,8 +2,8 @@
           controllerName="com.tw.mypr.My_custom_pr.controller.ItemDetail"
           xmlns:core="sap.ui.core"
           xmlns:cust="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-          xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
-          xmlns:uxap="sap.uxap" xmlns:layout="sap.ui.layout">
+          xmlns:f="sap.ui.layout.form"
+          xmlns:uxap="sap.uxap">
     <uxap:ObjectPageLayout showFooter="{= ${ui>/editing} }" upperCaseAnchorBar="false"
                            showTitleInHeaderContent="false"
                            showHeaderContent="{= !${ui>/editing} }">
@@ -308,12 +308,50 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <Table items="{PRItem>/to_accounts}">
+                            <Table visible="{= !${ui>/editing} }" items="{PRItem>/to_accounts}">
                                 <headerToolbar>
                                     <Toolbar>
                                         <content>
                                             <Title text="{i18n>AcctAss} ({= ${PRItem>/to_accounts}.length })"/>
                                             <ToolbarSpacer/>
+                                            <!--                                            <Button icon="sap-icon://add" press="onAddAccAssPress"/>-->
+                                        </content>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{i18n>SerialNo}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{i18n>GlAccount}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{i18n>Quantity}"/>
+                                    </Column>
+                                    <Column demandPopin="true" minScreenWidth="Phone">
+                                        <Text text="{i18n>DistributionPercent} (%)"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{PRItem>SerialNo}"/>
+                                            <Text text="{PRItem>GlAccount}"/>
+                                            <Text text="{PRItem>Quantity}  {PRItem>/Unit}"/>
+                                            <Text text="{PRItem>DistributionPercent}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <Table mode="MultiSelect"
+
+                                   visible="{ui>/editing}" items="{PRItem>/to_accounts}">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <content>
+                                            <Title text="{i18n>AcctAss} ({= ${PRItem>/to_accounts}.length })"/>
+                                            <ToolbarSpacer/>
+                                            <Button text="{i18n>Delete}" press="onDeleteAccAssPress"/>
                                             <Button icon="sap-icon://add" press="onAddAccAssPress"/>
                                         </content>
                                     </Toolbar>
@@ -329,16 +367,17 @@
                                         <Text text="{i18n>Quantity}"/>
                                     </Column>
                                     <Column demandPopin="true" minScreenWidth="Phone">
-                                        <Text text="{i18n>DistributionPercent}"/>
+                                        <Text text="{i18n>DistributionPercent} (%)"/>
                                     </Column>
                                 </columns>
                                 <items>
                                     <ColumnListItem>
                                         <cells>
-                                            <Text text="{PRItem>SerialNo}"/>
-                                            <Text text="{PRItem>GlAccount}"/>
-                                            <Text text="{PRItem>Quantity}"/>
-                                            <Text text="{PRItem>DistributionPercent}"/>
+                                            <Input value="{PRItem>SerialNo}"/>
+                                            <Input value="{PRItem>GlAccount}" showValueHelp="true"/>
+                                            <Input value="{PRItem>Quantity}" fieldWidth="80%"
+                                                   description="{PRItem>/Unit}"/>
+                                            <Input value="{PRItem>DistributionPercent}"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -480,7 +519,6 @@
                             <VBox width="100%">
                                 <items>
                                     <UploadCollection
-                                            width="100%"
                                             id="UploadCollection"
                                             maximumFilenameLength="55"
                                             maximumFileSize="10"

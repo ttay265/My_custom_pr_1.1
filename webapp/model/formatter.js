@@ -56,7 +56,6 @@ sap.ui.define([
                         }
                     }
                 }
-
             },
             formatNUMC: function (d, n) {
                 try {
@@ -79,16 +78,14 @@ sap.ui.define([
                 }
             },
             calculateTotalValue: function (PreqPrice, PriceUnit, Quantity, Currency) {
-
                 var oCurrency = new sap.ui.model.type.Currency({
                     showMeasure: false
                 });
-
                 function isNumber(n) {
                     return typeof n == 'number' && !isNaN(n) && isFinite(n);
                 }
-
-                var totalValue = PreqPrice / PriceUnit * Quantity;
+                let priceUnit_d = !PriceUnit ? 1 : PriceUnit;
+                var totalValue = PreqPrice / priceUnit_d * Quantity;
                 if (!isNumber(totalValue)) {
                     totalValue = 0;
                 }
