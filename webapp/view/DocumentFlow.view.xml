@@ -1,17 +1,19 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns="sap.suite.ui.commons"
           xmlns:core="sap.ui.core"
           controllerName="com.tw.mypr.My_custom_pr.controller.DocumentFlow">
-    <m:Page>
-        <m:headerContent>
-            <m:Bar>
-                <m:contentMiddle>
-                    <m:Title text="Purchase Requisition Document Flow" level="H1"/>
-                </m:contentMiddle>
-            </m:Bar>
-        </m:headerContent>
-        <m:content>
-            <!--            <core:Fragment fragmentName="com.tw.mypr.My_custom_pr.fragment.DocumentFlow" type="XML"-->
-            <!--                           id="Flow2"/>-->
+    <!--    <m:Page>-->
+    <!--        <m:headerContent>-->
+    <!--            <m:Bar>-->
+    <!--                <m:contentMiddle>-->
+    <!--                    <m:Title text="Purchase Requisition Document Flow" level="H1"/>-->
+    <!--                </m:contentMiddle>-->
+    <!--            </m:Bar>-->
+    <!--        </m:headerContent>-->
+    <!--        <m:content>-->
+    <!--            <core:Fragment fragmentName="com.tw.mypr.My_custom_pr.fragment.DocumentFlow" type="XML"-->
+    <!--                           id="Flow2"/>-->
+    <m:VBox width="100%">
+        <m:items>
             <ProcessFlow id="processflow1" showLabels="true" scrollable="false" nodePress="onNodePress"
                          nodeTitlePress="onNodeTitlePress"
                          nodes="{flow>flow>/nodes}" lanes="{flow>flow>/lanes}">
@@ -27,6 +29,9 @@
                                            position="{flow>position}"/>
                 </lanes>
             </ProcessFlow>
-        </m:content>
-    </m:Page>
+        </m:items>
+    </m:VBox>
+
+    <!--        </m:content>-->
+    <!--    </m:Page>-->
 </mvc:View>

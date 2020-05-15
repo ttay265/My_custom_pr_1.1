@@ -541,7 +541,13 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <core:Fragment type="XML" fragmentName="com.tw.mypr.My_custom_pr.fragment.DocumentFlow"/>
+                            <VBox height="190px">
+                                <items>
+                                    <!--                                    <core:Fragment fragmentName="com.tw.mypr.My_custom_pr.fragment.DocumentFlow"-->
+                                    <!--                                                   type="XML"/>-->
+                                    <mvc:XMLView viewName="com.tw.mypr.My_custom_pr.view.DocumentFlow"/>
+                                </items>
+                            </VBox>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>

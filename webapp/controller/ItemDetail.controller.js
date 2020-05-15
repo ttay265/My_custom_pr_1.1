@@ -5,11 +5,12 @@ sap.ui.define([
     "sap/m/MessageToast",
     "com/tw/mypr/My_custom_pr/model/formatter",
     "com/tw/mypr/My_custom_pr/controller/DocumentFlow.controller"
-], function (BaseController, JSONModel, MessageBox, MessageToast, formatter) {
+], function (BaseController, JSONModel, MessageBox, MessageToast, formatter, DocumentFlow) {
     "use strict";
 
     return BaseController.extend("com.tw.mypr.My_custom_pr.controller.ItemDetail", {
         formatter: formatter,
+        // DocumentFlow: new DocumentFlow(this),
         /**
          * Called when a controller is instantiated and its View controls (if available) are already created.
          * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.

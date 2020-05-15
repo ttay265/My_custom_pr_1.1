@@ -188,6 +188,10 @@ sap.ui.define([
             newPRItem.PreqItem = formatter.formatNUMC((draftPR.To_PRItems.length + 1) * 10, 5);
             draftPR.To_PRItems.push(newPRItem);
             draftModel.refresh();
+            this.getModel("documentFlow").setProperty("/", {
+                PreqNo: newPRItem.PreqNo,
+                PreqItem: newPRItem.PreqItem,
+            }, null, false);
             this.getRouter().navTo("itemDetail", {
                 PreqNo: newPRItem.PreqNo,
                 PreqItem: newPRItem.PreqItem,
@@ -202,6 +206,10 @@ sap.ui.define([
             } else {
                 var PRItem = e.getSource().getBindingContext("display").getObject();
             }
+            this.getModel("documentFlow").setProperty("/", {
+                PreqNo: PRItem.PreqNo,
+                PreqItem: PRItem.PreqItem,
+            }, null, false);
             this.getRouter().navTo("itemDetail", {
                 PreqNo: PRItem.PreqNo,
                 PreqItem: PRItem.PreqItem,
