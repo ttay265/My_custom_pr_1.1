@@ -16,6 +16,7 @@
   "private": "true",
   "main": "index.html",
   "dependencies": {
+    "dotenv": "^8.2.0"
   },
   "repository": {
     "type": "git",

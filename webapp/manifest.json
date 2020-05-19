@@ -15,7 +15,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "https://mydemo21.teamwork.net/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/",
+        "uri": "/sap/opu/odata/SAP/Z_PURREQUISITION_EXT_SRV/",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0",
@@ -78,8 +78,6 @@
         "dataSource": "mainService",
         "settings": {
           "useBatch": true,
-          "user": "QTNGO",
-          "password": "Dangerfi0",
           "metadataUrlParams": {
             "sap-documentation": "heading,quickinfo"
           }

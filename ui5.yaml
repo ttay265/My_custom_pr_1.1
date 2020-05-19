@@ -18,15 +18,10 @@ builder:
       configuration:
         resources:
           pattern: "**/*.*"
-        connection:
-          server: https://lhanayb001p.sap.twm.ch:44300
-        authentication:
-          user: QTNGO
-          password: Dangerfi0
         ui5:
           language: EN
           package: ZZ_UI5_REPO
-          bspContainer: Z_CUSTOM_PR
+          bspContainer: Z_CUSTOM_PR_2
           bspContainerText: Custom Purchase Requisition Management
           transportNo: S4HK901285
           calculateApplicationIndex: true

@@ -544,7 +544,7 @@
                             <VBox height="190px">
                                 <items>
                                     <!--                                    <core:Fragment fragmentName="com.tw.mypr.My_custom_pr.fragment.DocumentFlow"-->
-                                    <!--                                                   type="XML"/>-->
+                                    <!--                                                                                       type="XML"/>-->
                                     <mvc:XMLView viewName="com.tw.mypr.My_custom_pr.view.DocumentFlow"/>
                                 </items>
                             </VBox>

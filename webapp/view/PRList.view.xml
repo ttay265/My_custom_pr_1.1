@@ -10,9 +10,6 @@
                                                persistencyKey="RequisitionsTable.customPR" showShare="true"
                                                showExecuteOnSelection="true" entitySet="PR_ItemSet"/>
                 </f:heading>
-                <f:snappedContent>
-                    <Text id="statusText"></Text>
-                </f:snappedContent>
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
@@ -86,7 +83,7 @@
                         <smartfilterbar:controlConfiguration>
                             <smartfilterbar:ControlConfiguration controlType="auto" width="20rem" groupId="_BASIC"
                                                                  hasValueHelpDialog="true" index="8"
-                                                                 key="PurchOrg" label="{i18n>PurOrg}"
+                                                                 key="PurOrg" label="{i18n>PurOrg}"
                                                                  preventInitialDataFetchInValueHelpDialog="false"
                                                                  visible="true"/>
                         </smartfilterbar:controlConfiguration>
