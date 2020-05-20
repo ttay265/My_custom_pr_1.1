@@ -2,7 +2,10 @@
   "name": "My_custom_pr",
   "version": "0.0.1",
   "devDependencies": {
-    "@ui5/cli": "1.13.0",
+    "@ui5/cli": "^1.13.0",
+    "sapui5-runtime": "^1.5.5",
+    "ui5-middleware-livereload": "^0.2.0",
+    "ui5-middleware-servestatic": "^0.2.0",
     "ui5-task-nwabap-deployer": "^1.0.12"
   },
   "scripts": {
@@ -10,8 +13,13 @@
   },
   "ui5": {
     "dependencies": [
-      "ui5-task-nwabap-deployer"
+      "ui5-task-nwabap-deployer",
+      "ui5-middleware-servestatic",
+      "ui5-middleware-livereload"
     ]
+  },
+  "sapui5-runtime": {
+    "version": "1.77.0"
   },
   "private": "true",
   "main": "index.html",

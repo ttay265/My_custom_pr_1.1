@@ -4,13 +4,26 @@ metadata:
 type: application
 framework:
   name: SAPUI5
-  version: "1.77.2"
+  version: "1.77.0"
   libraries:
     - name: sap.f
     - name: sap.m
     - name: sap.ui.core
     - name: sap.ui.layout
     - name: sap.uxap
+server:
+  customMiddleware:
+    - name: ui5-middleware-servestatic
+      afterMiddleware: compression
+      mountPath: /resources
+      configuration:
+        rootPath: ${env.SAPUI5_SDK_1_77_0__RESOURCES}
+    - name: ui5-middleware-livereload
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        port: 35729
+        path: webapp
 builder:
   customTasks:
     - name: ui5-task-nwabap-deployer
