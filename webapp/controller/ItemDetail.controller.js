@@ -38,7 +38,7 @@ sap.ui.define([
             } else {
                 var PRItemModel = this.getModel("display");
             }
-            this.getModel("ui").setProperty("/editing", editing);
+            this.setViewProperty("/editing", editing);
             var To_PRItems = PRItemModel.getProperty("/To_PRItems");
             var currentPRItem = To_PRItems.find(function (a) {
                 return a.PreqItem == that.PreqItem;

@@ -53,7 +53,7 @@
       "id": "Init"
     },
     "dependencies": {
-      "minUI5Version": "1.65.6",
+      "minUI5Version": "1.64.3",
       "libs": {
         "sap.ui.layout": {},
         "sap.ui.core": {},

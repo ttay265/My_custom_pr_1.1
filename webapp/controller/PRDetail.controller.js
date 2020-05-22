@@ -58,7 +58,7 @@ sap.ui.define([
             }
         },
         onSelectionChange: function (o) {
-            this.getModel("ui").setProperty("/itemSelected", o.getSource().getSelectedItems().length > 0);
+            this.setViewProperty("/itemSelected", o.getSource().getSelectedItems().length > 0);
         },
         onAfterRendering: function () {
 
@@ -79,19 +79,19 @@ sap.ui.define([
         _onObjectMatched: function (o) {
             var that = this;
             const oDataModel = this.getModel(), PreqNo = o.getParameter("arguments").PreqNo,
-                isEdit = this.getModel("ui").getProperty("/editing");
+                isEdit = this.getViewProperty("/editing");
             if (!isEdit) {
                 if (PreqNo === "new" || PreqNo === "copy") {
                     //Default mode is EDIT & CREATE MODE
                     var draftModel = this.initDraft();
                     var draftPR_Items = draftModel.getProperty("/To_PRItems");
-                    this.getModel("ui").setProperty("/", {
+                    this.setViewProperty("/", {
                         editing: true,
                         createMode: true
                     });
                     //check if newPR is created as copy PR
                     if (PreqNo === "copy") {
-                        this.getModel("ui").setProperty("/busy", true, null, false);
+                        this.setViewProperty("/busy", true, null, false);
                         //Read Copy PR data
                         var copyModel = this.getModel("copyPR");
                         if (!copyModel) {
@@ -130,7 +130,6 @@ sap.ui.define([
                             });
                         }
                     }
-
                 } else {
                     this.PreqNo = PreqNo;
                     this.loadODataPRItem(this.PreqNo);
@@ -163,7 +162,7 @@ sap.ui.define([
         }
         ,
         onEditPress: function (e) {
-            this.getModel("ui").setProperty("/editing", true);
+            this.setViewProperty("/editing", true);
             //copy display data to edit model
             var prData = this.getModel("display").getProperty("/");
             this.getModel("draft").setProperty("/", prData);
@@ -171,9 +170,9 @@ sap.ui.define([
         },
         onCancelEditPR: function () {
             this.getModel("message").setProperty("/", {});
-            this.getModel("ui").setProperty("/editing", false);
+            this.setViewProperty("/editing", false);
             if (this.getModel("ui").getProperty("/createMode") === true) {
-                this.getModel("ui").setProperty("/createMode", false);
+                this.setViewProperty("/createMode", false);
                 this.back();
                 return;
             }
@@ -272,7 +271,10 @@ sap.ui.define([
             this.setViewProperty("busy", true);
             var btnMessagesStrip = this.byId("__btnMessagesStrip");
             if (!this.MessageDialog) {
-                this.MessageDialog = sap.ui.xmlfragment("com.tw.mypr.My_custom_pr.fragment.MessageContainerDialog", this);
+                this.MessageDialog = sap.ui.core.Fragment.load({
+                    name: "com.tw.mypr.My_custom_pr.fragment.MessageContainerDialog",
+                    controller: this
+                });
             }
             const onSuccess = function (d, r) {
                 // case success
@@ -327,7 +329,7 @@ sap.ui.define([
 
                     that.onCancelEditPR();
                     that.setViewProperty("busy", false);
-                    return;
+
                 }
             }
 

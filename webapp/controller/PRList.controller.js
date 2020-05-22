@@ -16,10 +16,15 @@ sap.ui.define([
          * @memberOf com.tw.mypr.My_custom_pr.view.PRList
          */
         onInit: function () {
-            this.UIModel = new JSONModel({
-                hasItemSelected: false    // By default, no items have been selected yet.
-            });
-            this.setModel(this.UIModel, "ui");
+            // this.UIModel = new JSONModel({
+            //     hasItemSelected: false    // By default, no items have been selected yet.
+            // });
+            // this.setModel(this.UIModel, "ui");
+            //Use base controller as replacement
+            this.setViewModel(new JSONModel({
+                hasItemSelected: false
+            }));
+
             this.table_PRList = this.byId("table_PRList");
         },
         onAfterRendering: function () {
@@ -40,16 +45,17 @@ sap.ui.define([
         onPressRow: function (e) {
             var table = e.getSource();
             var hasItemSelected = table.getSelectedItems().length > 0 ? true : false;
-            this.getModel("ui").setProperty("/hasItemSelected", hasItemSelected);
+            this.setViewProperty("/hasItemSelected", hasItemSelected);
 
             var hasMultiItemSelected = table.getSelectedItems().length > 1 ? false : true;
-            this.getModel("ui").setProperty("/hasMultiItemSelected", hasMultiItemSelected);
+            this.setViewProperty("/hasMultiItemSelected", hasMultiItemSelected);
         },
         onCreatePR: function () {
             this.getRouter().navTo("PRDetail", {
                 PreqNo: "new"
             }, false);
         },
+
         onNavDocFlow: function (o) {
             var selectedItems = this.table_PRList.getSelectedItems();
             var PreqNo;
@@ -57,7 +63,7 @@ sap.ui.define([
 
             if (this.table_PRList.getSelectedItems().length > 1) {
                 //var hasMultiItemSelected = this.table_PRList.getSelectedItems().length > 1 ? true : false;
-                //this.getModel("ui").setProperty("/hasMultiItemSelected", hasMultiItemSelected);
+                //this.setViewProperty("/hasMultiItemSelected", hasMultiItemSelected);
                 MessageBox.alert("It can not proceed with multiple items. Please select 1 item only.");
             } else {
                 selectedItems.forEach(function (e) {
@@ -186,5 +192,4 @@ sap.ui.define([
 
     });
 
-})
-;
+});

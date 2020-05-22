@@ -36,7 +36,7 @@ sap.ui.define([
             // this._onObjectMatched();
         },
         _onObjectMatched: function (o) {
-            this.getModel("ui").setProperty("/busy", true);
+            this.setViewProperty("/busy", true);
             var PreqNo = o.getParameter("arguments").PreqNo;
             var PreqItem = o.getParameter("arguments").PreqItem;
             this.loadProcessFlow(PreqNo, PreqItem);
